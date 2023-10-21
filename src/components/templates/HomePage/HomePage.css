@@ -1,5 +1,13 @@
 /* Styling for the Hero section */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  border: 0px;
+  vertical-align: baseline;
+}
+
 .noise {
   animation: noise 1.2s steps(3) infinite both;
   background: url(https://contra.com/freelance-industry-report-2021/images/background-noise.png?0140508b3ca119631050c945a1c2987c);
@@ -12,6 +20,11 @@
   will-change: auto;
   z-index: 99999;
 }
+
+.container {
+  padding: 0 80px;
+}
+
 
 @keyframes noise {
   0% { transform: translate3d(1%,-1%,0);}
@@ -40,9 +53,15 @@
     display: flex;
     align-items: center;
     
-
+    h1 {
+      color: white;
+      font-size: calc(53px + (4500vw - 46080px)/896);
+      letter-spacing: calc(-2px + (-200vw - -2048px)/896);
+    }
   }
 }
+
+
 
 
 
@@ -95,5 +114,29 @@
     font-size: 18px;
   }
   
-  /* Add more CSS for other sections as needed */
+/*RESPONSIVE*/
+
+@media screen and (max-width:768px) {
+  body {
+    font-size: 15px;
+  }
   
+  .container {
+    padding: 0 30px;
+  }
+  
+  .form {
+    flex-direction: column;
+    
+    input {
+      margin: 0;
+    }
+    .invest {
+      width: 100%;
+      
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+}  

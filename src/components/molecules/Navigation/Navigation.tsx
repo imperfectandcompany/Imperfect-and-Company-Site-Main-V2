@@ -1,15 +1,23 @@
 import React from "react";
-import NavLink from "../../atoms/NavLink/NavLink";
+import "./Navigation.css"; // Import the CSS for styling
+import Link from "../../atoms/Link/Link"; // Import the Link component
 
-function Navigation() {
-  return (
-    <ul className="navbar-links">
-      <NavLink to="/" text="Home" />
-      <NavLink to="/about" text="About" />
-      <NavLink to="/services" text="Services" />
-      <NavLink to="/contact" text="Contact" />
-    </ul>
-  );
+interface NavigationProps {
+    isOpen: boolean;
 }
+
+function Navigation({ isOpen }: NavigationProps) {
+    return (
+        <div className="navbar-links">
+            <ul className={`${isOpen ? 'open' : ''}`}>
+                <li><Link to="/" text="Home" /></li>
+                <li><Link to="/about" text="About" /></li>
+                <li><Link to="/services" text="Services" /></li>
+                <li><Link to="/contact" text="Contact" /></li>
+            </ul>
+        </div>
+    );
+}
+
 
 export default Navigation;

@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css"; // Import the CSS for styling
 import LogoWithText from "../../molecules/LogoWithText/LogoWithText";
 import Navigation from "../../molecules/Navigation/Navigation";
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className="header">
-      <nav className="navbar">
-        <LogoWithText src="https://imperfectdesignsystem.com/assets/img/imperfectandcompany/imperfectandcompany_lightning.png" alt="Company Logo" companyName="Imperfect and Company" />
-        <Navigation />
-      </nav>
+    <header className={`header ${isMenuOpen ? "menu-open" : ""}`}>
+      <div className="container content-header">
+          <LogoWithText
+            alt="Company Logo"
+            companyName="Imperfect & Co."
+          />
+        <Navigation isOpen={isMenuOpen} />
+        <div className="burger" id="burger" onClick={toggleMenu}>
+          <span id="bline1" className="bline"></span>
+          <span id="bline2" className="bline"></span>
+        </div>
+      </div>
     </header>
   );
 }

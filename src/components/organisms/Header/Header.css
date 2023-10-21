@@ -1,51 +1,98 @@
 /* Styling for the Header */
 .header {
-    background: #343a40;
+  width: 100%;
+  background: #343a40;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between; /* Align the company text and navigation links */
+  align-items: center; /* Vertically align items in the center */
+  padding: 20px; /* Add padding to create space around header content */
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px auto;
+  max-width: 1920px;
+  
+  p {
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin-top: 60px;
     color: #fff;
+    cursor:pointer;
   }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+}
+
+.burger{
+  margin-top: 75px;
+	display: block;
+	cursor: pointer;
+}
+
+.bline{
+	display: none;
+	width: 35px;
+  height: 2px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+
+.header.menu-open {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.navbar-logo img {
+  width: 40px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.navbar-logo p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+
+  .burger {
+    margin-top: 65px;
   }
-  
-  .navbar-logo img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+
+  header p {
+    font-size: 24px;
   }
-  
-  .navbar-logo p {
-    font-size: 20px;
-    font-weight: bold;
+
+  .bline {
+    width: 25px;
+    display: block;
   }
-  
-  .navbar-links ul {
-    list-style: none;
-    padding: 0;
+
+  /* For future when hamburger is open (animation stuff) */
+  .header.menu-open .burger {
   }
-  
-  .navbar-links ul li {
-    margin-right: 20px;
+
+  .header.menu-open .bline {
+    width: 25px;
   }
-  
-  .navbar-links ul li:last-child {
-    margin-right: 0;
+
+  .content-header {
+    padding: 0 20px;
   }
-  
-  .navbar-links ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .navbar-links ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Add more CSS styles as needed */
-  
+
+}
