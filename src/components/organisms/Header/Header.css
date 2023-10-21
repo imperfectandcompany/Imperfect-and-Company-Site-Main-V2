@@ -1,1 +1,51 @@
-/* Header styles here */
+/* Styling for the Header */
+.header {
+    background: #343a40;
+    color: #fff;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .navbar-logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .navbar-logo p {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .navbar-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .navbar-links ul li {
+    margin-right: 20px;
+  }
+  
+  .navbar-links ul li:last-child {
+    margin-right: 0;
+  }
+  
+  .navbar-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .navbar-links ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Add more CSS styles as needed */
+  

@@ -3,9 +3,7 @@ const path = require('path');
 
 // Define the directory structure
 const structure = [
-  'src/components/templates/HomePage',
-  'src/components/organisms/Header',
-  'src/components/organisms/Footer',
+  'src/components/atoms/Link',
 ];
 
 // Create directories
@@ -17,61 +15,35 @@ structure.forEach((dir) => {
 
 // Create files
 const fileStructure = [
-  // HomePage component
   {
-    path: 'src/components/templates/HomePage/HomePage.tsx',
-    content: `import React from "react";
-import Header from "../../organisms/Header/Header";
-import Footer from "../../organisms/Footer/Footer";
+    path: 'src/components/atoms/Link/Link.tsx',
+    content: `import React from 'react';
+import './Link.css'; // Import CSS for link styling
 
-function HomePage() {
+function Link({ to, text }) {
   return (
-    <div>
-      <Header />
-      {/* Homepage content here */}
-      <Footer />
-    </div>
+    <a href={to} className="link">
+      {text}
+    </a>
   );
 }
 
-export default HomePage;`,
+export default Link;
+`,
   },
-  // HomePage CSS
   {
-    path: 'src/components/templates/HomePage/HomePage.css',
-    content: `/* Homepage styles here */`,
-  },
-  // Header component
-  {
-    path: 'src/components/organisms/Header/Header.tsx',
-    content: `import React from "react";
+    path: 'src/components/atoms/Link/Link.css',
+    content: `.link {
+  /* Your link styling here */
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
 
-function Header() {
-  return <header>Header</header>;
+  &:hover {
+    color: #0056b3;
+  }
 }
-
-export default Header;`,
-  },
-  // Header CSS
-  {
-    path: 'src/components/organisms/Header/Header.css',
-    content: `/* Header styles here */`,
-  },
-  // Footer component
-  {
-    path: 'src/components/organisms/Footer/Footer.tsx',
-    content: `import React from "react";
-
-function Footer() {
-  return <footer>Footer</footer>;
-}
-
-export default Footer;`,
-  },
-  // Footer CSS
-  {
-    path: 'src/components/organisms/Footer/Footer.css',
-    content: `/* Footer styles here */`,
+`,
   },
 ];
 
@@ -82,4 +54,4 @@ fileStructure.forEach((file) => {
   console.log(`Created file: ${filePath}`);
 });
 
-console.log('File and directory generation completed.');
+console.log('Anchor link atom generation completed.');

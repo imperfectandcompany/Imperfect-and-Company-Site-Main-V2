@@ -1,9 +1,14 @@
 /* Add these Tailwind CSS imports */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .App {
+  font-family: 'Poppins', sans-serif;
+
   text-align: center;
 }
 

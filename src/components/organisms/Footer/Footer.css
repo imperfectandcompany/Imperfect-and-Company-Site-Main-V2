@@ -1,1 +1,85 @@
-/* Footer styles here */
+.c-footer {
+  padding-top: 37px;
+  padding-bottom: 40px;
+  background: #fff;
+  border-top: 1px solid #e3e3e3;
+}
+
+.c-footer .container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 90%; /* Adjust the percentage as needed */
+  margin-bottom: 20px;
+}
+
+.c-footer__contact {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  padding-left: 20px; /* Add padding to the left side of the container */
+}
+
+.c-footer__contact .c-contact {
+  padding-right: 20px;
+  width: auto;
+}
+
+.c-footer__contact a {
+  display: block;
+  line-height: 30px;
+  color: #404045;
+}
+
+.c-footer__contact .c-contact:last-child a {
+  line-height: 30px;
+}
+
+.c-footer__contact .c-contact__title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.c-footer__contact .c-contact__title a {
+  color: #1b1b1c;
+  display: block;
+  line-height: 30px;
+}
+
+.imperfect-absolute {
+  position: absolute;
+  bottom: 0px;
+  right: 80px;
+  opacity: .15;
+  font-weight: 600;
+  letter-spacing: -1px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Add styling for the left section here */
+/* For example, you can define styles for .content-contact and .ft-h elements */
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 0 30px;
+  }
+
+  .c-footer__contact {
+    width: 100%; /* Make it full width on smaller screens */
+    flex-direction: column; /* Stack elements vertically */
+  }
+
+  .c-footer__contact .c-contact {
+    padding: 10px 0; /* Add vertical padding for spacing */
+  }
+
+}
