@@ -1,11 +1,8 @@
 import React from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
-import "./HomePage.css"; // Import the CSS for styling
-import Button from "../../atoms/Button/Button";
-import Link from "../../atoms/Link/Link"; // Import the Link component
+import "./HomePage.css";
 import { motion } from "framer-motion";
-
 
 function NoiseEffect() {
   return (
@@ -19,31 +16,48 @@ function NoiseEffect() {
 }
 
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 1 } },
+};
+
 function HomePage() {
   return (
     <>
       <NoiseEffect />
-    <div className="main">
-      <Header />
-      <section className="hero">
-        <div className="hero-content">
-          <h1>Continually Crafting User-Centric and Ethical Digital Solutions</h1>
+      <motion.div
+      className="main"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+    > 
+    <Header />
+      <motion.section
+        className="hero"
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <div className="container">
+        <h1>Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
           <p>To Foster Authentic, User-Driven Connectivity</p>
-          <Button text="Learn More" />
-          <Link to="/about" text="Learn About Us" />
         </div>
-      </section>
-      <section className="about">
-        <div className="about-content">
+        </motion.section>
+        <motion.section
+        className="about"
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <div className="container about-content">
           <h2>About Us</h2>
           <p>
             At Imperfect and Company, we're dedicated to crafting digital solutions that prioritize user needs and ethical practices. Our mission is to foster authentic, user-driven connectivity in the digital world.
           </p>
         </div>
-      </section>
+        </motion.section>
       {/* Add more sections below */}
       <Footer />
-    </div>
+      </motion.div>
     </>
   );
 }

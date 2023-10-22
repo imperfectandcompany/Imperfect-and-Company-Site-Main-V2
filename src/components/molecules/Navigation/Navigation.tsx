@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navigation.css"; // Import the CSS for styling
 import Link from "../../atoms/Link/Link"; // Import the Link component
+import { motion } from "framer-motion";
 
 interface NavigationProps {
     isOpen: boolean;
@@ -8,14 +9,27 @@ interface NavigationProps {
 
 function Navigation({ isOpen }: NavigationProps) {
     return (
-        <div className="navbar-links">
-            <ul className={`${isOpen ? 'open' : ''}`}>
-                <li><Link to="/" text="Home" /></li>
-                <li><Link to="/about" text="About" /></li>
-                <li><Link to="/services" text="Services" /></li>
-                <li><Link to="/contact" text="Contact" /></li>
+        <motion.div
+            className={`navbar-links ${isOpen ? "open" : ""}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
+            <ul className="desktop-nav">
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                    <Link to="/" text="Home" />
+                </motion.li>
+
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                    <Link to="/about" text="About" />
+                </motion.li>
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                    <Link to="/services" text="Services" /></motion.li>
+                <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                    <Link to="/contact" text="Contact" />
+                </motion.li>
             </ul>
-        </div>
+        </motion.div>
     );
 }
 

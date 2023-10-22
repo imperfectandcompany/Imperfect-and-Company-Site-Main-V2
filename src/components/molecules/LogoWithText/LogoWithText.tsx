@@ -10,10 +10,10 @@ interface LogoWithTextProps {
 
 function LogoWithText({ src, alt, companyName }: LogoWithTextProps) {
     return (
-        <div className="navbar-logo">
+            <>
             {src && <Image src={src} alt={alt} />} {/* Render Image only if src is provided */}
             <Text text={companyName} />
-        </div>
+            </>
     );
 }
 

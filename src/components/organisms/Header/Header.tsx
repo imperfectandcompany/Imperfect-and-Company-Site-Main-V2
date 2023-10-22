@@ -15,13 +15,13 @@ function Header() {
       <div className="container content-header">
           <LogoWithText
             alt="Company Logo"
-            companyName="Imperfect & Co."
+            companyName="Imperfect and Company"
           />
-        <Navigation isOpen={isMenuOpen} />
         <div className="burger" id="burger" onClick={toggleMenu}>
           <span id="bline1" className="bline"></span>
           <span id="bline2" className="bline"></span>
         </div>
+        <Navigation isOpen={isMenuOpen} />
       </div>
     </header>
   );

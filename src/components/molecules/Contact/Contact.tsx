@@ -14,7 +14,7 @@ function Contact() {
       </div>
       <div className="c-contact">
         <span className="c-contact__title"><Link to="#" text="Contact us" /></span>
-        <Link to="mailto:contact@example.com" text="contact@example.com" />
+        <Link to="mailto:hello@imperfectandcompany.com" text="hello@imperfectandcompany.com" />
       </div>
     </div>
   );
