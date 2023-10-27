@@ -30,22 +30,20 @@ function Navigation({ isOpen, toggleMenu }: NavigationProps) {
                     </div>
                 </li>
             </ul>             
-                <ul className="desktop-nav">
-                    <motion.li whileTap={{ scale: 0.9 }} >                     
+            <ul className="desktop-nav">
+                    <motion.li className="items-center hidden text-white justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
+                        Imperfect and Company
                     </motion.li>
                     <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
                         <Link to="/" text="Home" />
                     </motion.li>
-                    <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                    <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                         <Link to="/about" text="About" />
-                    </motion.li>
-                    <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
-                        <Link to="/services" text="Services" />
                     </motion.li>
                     <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
                         <Link to="/contact" text="Contact" />
                     </motion.li>
-                </ul>
+            </ul>
             </nav>
         </motion.div>
     );

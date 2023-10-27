@@ -20,8 +20,13 @@ body {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 20px;
     margin-top:  40px;
+    background: rgba(0, 0, 0, 0.1);
+    height: 44px;
+    z-index: 300;
+    left: 0;
+    top: 0;
+    right: 0;
     background: rgba(0, 0, 0, 0.1);
     height: 44px;
     z-index: 300;
@@ -29,6 +34,10 @@ body {
     left: 0;
     top: 0;
     right: 0;
+}
+
+.nav-container.active {
+    position: fixed;
 }
 
 .nav-container nav {
@@ -71,7 +80,6 @@ nav .desktop-nav li a:hover {
 /* Desktop Nav Animation */
 
 .desktop-nav li {
-    transition: all 400ms ease;
 }
 
 .desktop-nav.hide li {
@@ -177,7 +185,7 @@ nav .desktop-nav li a:hover {
         padding: 0 32px;
     }
 
-    .nav-container .desktop-nav li:first-child {
+    .nav-container .desktop-nav li:nth-of-type(2) {
         margin-top: 80px;
     }
 
@@ -212,7 +220,7 @@ nav .desktop-nav li a:hover {
 
     nav .menu-icon-container {
         width: 20px;
-        height: 44px;
+        height: -44px;
         display: flex;
         align-items: center;
         cursor: pointer;
@@ -259,11 +267,8 @@ nav .desktop-nav li a:hover {
         transition-duration: 200ms;
     }
 
-
-
     /* Nav Animation */
-
-    .nav-container nav {
+    .nav-container nav { 
         transition: all 400ms ease;
     }
 }
