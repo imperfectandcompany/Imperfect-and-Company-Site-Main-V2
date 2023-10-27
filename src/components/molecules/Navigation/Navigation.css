@@ -39,7 +39,6 @@ nav .desktop-nav {
 }
 
 nav .desktop-nav li {
-    font-weight: bold;
 }
 
 nav ul {
@@ -53,7 +52,6 @@ nav .desktop-nav li {
     color: #fff;
     text-decoration: none;
     font-size: 14px;
-    font-weight: bold;
     opacity: 0.8;
     transition: opacity 400ms;
     margin-right: 20px;
@@ -62,7 +60,6 @@ nav .desktop-nav li {
 nav .desktop-nav li a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
 }
 
 nav .desktop-nav li a:hover {
@@ -209,7 +206,7 @@ nav .desktop-nav li a:hover {
         border-bottom: 1px solid #616161;
         width: 100%;
         font-size: 30px;
-        font-weight: 400;
+        font-weight: 100;
         opacity:0;
         transform: translateY(-80px);
         transition: all 700ms ease;
@@ -288,5 +285,5 @@ nav .desktop-nav li a:hover {
 .nav-container .desktop-nav li:first-child {
     opacity:1;
     margin-right: auto;
-    font-size:larger;
+    font-size:x-large;
 }
