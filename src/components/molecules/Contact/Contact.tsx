@@ -4,16 +4,15 @@ import Link from "../../atoms/Link/Link";
 function Contact() {
   return (
     <div className="c-footer__contact c-footer__contact--undefined">
+     <Link to="/about" text="About Us" />
+     <Link to="/contact" text="Contact Us" />
       <div className="c-contact">
-        <span className="c-contact__title"><Link to="#" text="Imperfect Gamers" /></span>
-        <Link to="#" text="Content for Imperfect Gamers" />
+        <span className="c-contact__title">Explore Our Sections</span>
+        <Link to="#imperfectgamers-section" text="ImperfectGamers" />
+        <Link to="#postogon-section" text="Postogon" />
       </div>
       <div className="c-contact">
-        <span className="c-contact__title"><Link to="#" text="Postogon" /></span>
-        <Link to="#" text="Content for Postogon" />
-      </div>
-      <div className="c-contact">
-        <span className="c-contact__title"><Link to="#" text="Contact us" /></span>
+        <span className="c-contact__title">Contact Us</span>
         <Link to="mailto:hello@imperfectandcompany.com" text="hello@imperfectandcompany.com" />
       </div>
     </div>

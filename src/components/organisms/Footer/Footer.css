@@ -59,10 +59,12 @@
   font-size: 20px;
 }
 
-/* Add styling for the left section here */
-/* For example, you can define styles for .content-contact and .ft-h elements */
+/* Add space between the "Contact Us" and "Explore Our" sections in mobile view */
+.c-contact:last-child {
+  margin-bottom: 20px;
+}
 
-/* RESPONSIVE */
+/* For example, you can define styles for .content-contact and .ft-h elements */
 
 @media screen and (max-width: 768px) {
   body {
@@ -82,4 +84,9 @@
     padding: 10px 0; /* Add vertical padding for spacing */
   }
 
+  /* Adjust font size and add margin for the "Imperfect and Company" text in mobile view */
+  .imperfect-absolute {
+    font-size: 16px; /* Reduce font size for mobile view */
+    margin-top: 20px; /* Increase the margin for more separation */
+  }
 }

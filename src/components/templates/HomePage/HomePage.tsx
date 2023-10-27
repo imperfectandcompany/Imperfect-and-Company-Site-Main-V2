@@ -4,18 +4,6 @@ import Footer from "../../organisms/Footer/Footer";
 import "./HomePage.css";
 import { motion } from "framer-motion";
 
-function NoiseEffect() {
-  return (
-    <motion.div
-      className="noise"
-      initial={{ opacity: 0, scale: 1.2 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 1.2 }}
-    ></motion.div>
-  );
-}
-
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 1 } },
@@ -24,7 +12,6 @@ const containerVariants = {
 function HomePage() {
   return (
     <>
-      <NoiseEffect />
       <motion.div
       className="main"
       variants={containerVariants}
@@ -55,6 +42,20 @@ function HomePage() {
           </p>
         </div>
         </motion.section>
+  <div className="contact">
+    <div className="container content-contact">
+      <p className="ft-h">Sign Up<br/> For our newsletter</p>
+      <p className="subtitle">Drop your<br />
+email here</p>
+      <a href="mailto:hello@imperfectandcompany.com" className="c-btn">
+        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path fill="#231F20" fill-rule="nonzero" d="M15.826 11H0V9h15.826L11.24 3.65l1.518-1.3L19.317 10l-6.558 7.65-1.518-1.3z"></path></svg>
+        <span className="strong">hello</span>
+        <span>@imperfectandcompany.com</span>
+      </a>
+    </div>
+  </div>
+  
+               
       {/* Add more sections below */}
       <Footer />
       </motion.div>

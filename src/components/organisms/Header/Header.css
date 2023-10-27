@@ -6,8 +6,7 @@
 }
 
 .header p {
-  font-size: 24px;
-  margin-top: 60px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: -1px;
   color: #fff;
@@ -17,10 +16,12 @@
 .content-header {
   display: flex;
   justify-content: space-between;
-  margin: 0px auto;
+  margin: 8px auto;
   max-width: 1920px;
 }
 
+<<<<<<< Updated upstream
+=======
 .burger{
 	display: block;
   margin-top: 75px;
@@ -29,10 +30,22 @@
 
 .bline{
 	display: none;
+  transition-property: transform, top;
+  transition-delay: 0ms, 160ms;
+  transition-duration: 200ms;
 	width: 35px;
   height: 2px;
   background-color: white;
   margin: 6px 0;
+}
+/* RETURN */
+.header.container{
+  display:none;
+  top: 0;
+  transform: rotateZ(45deg);
+  transition-property: top, transform;
+  transition-delay: 0ms, 160ms;
+  transition-duration: 200ms;
 }
 
 .navbar {
@@ -44,6 +57,7 @@
   padding: 20px;
 }
 
+>>>>>>> Stashed changes
 /*
 .navbar-logo img {
   width: 40px;
@@ -53,6 +67,13 @@
 
 /* Mobile styles */
 @media screen and (max-width: 768px) {
+
+  /* Decrease font size and line height for smaller screens */
+  .hero .container h1 {
+    font-size: 36px; /* Adjust as needed */
+    line-height: 1.5; /* Adjust as needed */
+  }
+
   header p {
     font-size: 24px;
   }
