@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
 import "./HomePage.css";
@@ -10,8 +10,41 @@ const containerVariants = {
 };
 
 function HomePage() {
+
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    // Function to add the "scrolled" class when scrolling down
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+          if(window.scrollY > 0){
+          setIsSticky(true);
+        }
+      } else {
+        setIsScrolled(false);
+        setIsSticky(false);
+      }
+    }
+    
+
+    // Add a scroll event listener to call the handleScroll function
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
+    <div className="items-center justify-center transition-bg dark">
+    <div className="absolute inset-0 overflow-hidden">
+            <div className="jumbo absolute -inset-[10px] opacity-50"></div>
+        </div>
       <motion.div
       className="main"
       variants={containerVariants}
@@ -19,17 +52,27 @@ function HomePage() {
       animate="visible"
       exit="hidden"
     > 
+
+
+<div className={`header ${isScrolled ? isSticky ? "sticky" : "sticky" : ""}`}>
+
     <Header />
+
+    </div>
+
+
       <motion.section
-        className="hero"
+        className="hero "
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <div className="container">
+        <div className="container relative">
         <h1>Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
           <p>To Foster Authentic, User-Driven Connectivity</p>
         </div>
         </motion.section>
+          {/**
+           Keep main page very simple for now. Only render finished parts.
         <motion.section
         className="about"
         initial={{ opacity: 0, y: 100 }}
@@ -42,23 +85,24 @@ function HomePage() {
           </p>
         </div>
         </motion.section>
+
   <div className="contact">
     <div className="container content-contact">
       <p className="ft-h">Sign Up<br/> For our newsletter</p>
-      <p className="subtitle">Drop your<br />
+      <p className="subtitle">Drop your 
 email here</p>
       <a href="mailto:hello@imperfectandcompany.com" className="c-btn">
-        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path fill="#231F20" fill-rule="nonzero" d="M15.826 11H0V9h15.826L11.24 3.65l1.518-1.3L19.317 10l-6.558 7.65-1.518-1.3z"></path></svg>
         <span className="strong">hello</span>
         <span>@imperfectandcompany.com</span>
       </a>
     </div>
-  </div>
+  </div>*/}
   
-               
       {/* Add more sections below */}
       <Footer />
       </motion.div>
+    </div>
+
     </>
   );
 }

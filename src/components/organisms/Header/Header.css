@@ -16,48 +16,9 @@
 .content-header {
   display: flex;
   justify-content: space-between;
-  margin: 8px auto;
   max-width: 1920px;
 }
 
-<<<<<<< Updated upstream
-=======
-.burger{
-	display: block;
-  margin-top: 75px;
-	cursor: pointer;
-}
-
-.bline{
-	display: none;
-  transition-property: transform, top;
-  transition-delay: 0ms, 160ms;
-  transition-duration: 200ms;
-	width: 35px;
-  height: 2px;
-  background-color: white;
-  margin: 6px 0;
-}
-/* RETURN */
-.header.container{
-  display:none;
-  top: 0;
-  transform: rotateZ(45deg);
-  transition-property: top, transform;
-  transition-delay: 0ms, 160ms;
-  transition-duration: 200ms;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
->>>>>>> Stashed changes
 /*
 .navbar-logo img {
   width: 40px;
@@ -86,16 +47,8 @@
     display: block;
   }
 
-  /* For future when hamburger is open (animation stuff) */
-  .header.menu-open .burger {
-  }
-
   .header.menu-open .bline {
     width: 25px;
-  }
-
-  .content-header {
-    padding: 0 20px;
   }
 
 }

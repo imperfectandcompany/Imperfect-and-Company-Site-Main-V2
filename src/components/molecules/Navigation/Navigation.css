@@ -6,12 +6,19 @@
     box-sizing: border-box;
 }
 
+@keyframes jumbo {
+    from {
+        background-position: 50% 50%, 50% 50%;
+    }
+    to {
+        background-position: 350% 50%, 350% 50%;
+    }
+}
 
 /* Desktop Nav */
 
 .nav-container {
     margin-top: 40px;
-    background: rgba(0, 0, 0, 0.1);
     height: 44px;
     width: 100%; /* Add this line to make it full-width */
     z-index: 300;
@@ -45,6 +52,13 @@ nav .desktop-nav li.active {
   transition: all 700ms ease;
 }
 
+nav .desktop-nav li.active:hover {
+    opacity:0.50 !important;
+    font-weight: 200;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        transition: all 700ms ease;
+  }
+
 nav ul {
     display: flex;
     flex-direction: row;
@@ -67,8 +81,8 @@ nav .desktop-nav li a {
 }
 
 nav .desktop-nav li a:hover {
-    opacity: 1;
-    text-decoration: underline;
+    color: #fff;
+    opacity: 0.5;
 }
 
 
@@ -229,7 +243,14 @@ nav .desktop-nav li a:hover {
         font-weight: 200;
         transition: all 700ms ease;
         border-bottom: 1px solid white;
+      }
 
+      /* Add styles for the active link:hover */
+      .nav-container.active .desktop-nav li.active a:hover {
+        opacity: 0.50 !important;
+        font-weight: 200;
+        transition: all 700ms ease;
+        border-bottom: 1px solid white;
       }
 
     .nav-container.active .desktop-nav li a {
@@ -244,6 +265,7 @@ nav .desktop-nav li a:hover {
         width: 100%;
         justify-content: space-between;
         list-style: none;
+        transition: all;
     }
 
     nav .menu-icon-container {

@@ -36,22 +36,22 @@ function Navigation({ isOpen, toggleMenu }: NavigationProps) {
                     </li>
                 </ul>
                 <ul className="desktop-nav">
-                    <motion.li className="items-center hidden text-white justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
-                        Imperfect and Company
+                    <motion.li className="items-center hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
+                        <a href="/">Imperfect and Company</a>
                     </motion.li>
-                    <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                    <motion.li whileHover={{ scale: 0.99 }} whileTap={{ scale: 1.0 }}
                         className={`${currentPage === "/" ? "active" : ""
                             }`}
                     >
                         <Link to="/" text="Home" />
                     </motion.li>
-                    <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                    <motion.li whileHover={{ scale: 0.99 }} whileTap={{ scale: 1.0 }}
                         className={`${currentPage === "/about" ? "active" : ""
                             }`}
                     >
                         <Link to="/about" text="About" />
                     </motion.li>
-                    <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                    <motion.li whileHover={{ scale: 0.99 }} whileTap={{ scale: 1.0 }}
                         className={`${currentPage === "/contact" ? "active" : ""
                             }`}
                     >
