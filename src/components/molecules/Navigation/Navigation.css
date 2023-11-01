@@ -203,7 +203,6 @@ nav .desktop-nav li a:hover {
     }
     
     .nav-container {
-        position: absolute;
     }
 
 
@@ -263,7 +262,6 @@ nav .desktop-nav li a:hover {
         justify-content: space-between;
         list-style: none;
         transition: all;
-
     }
 
     nav .menu-icon-container {

@@ -1,18 +1,60 @@
-/* Styling for the Header */
+
+
+/* CSS */
+.sticky-background {
+  background-color: hsla(22, 10%, 2%, 0.8) !important; /* Change to your desired background color */
+  box-shadow: 0 4px 8px hsla(22, 10%, 2%, 0.4); /* Add box-shadow as needed */
+}
+
 header {
   width: 100%;
   transition: all 0.3s ease-in-out;
 }
 
 .header p {
-
+  font-size: 18px;
+  font-weight: 200;
+  letter-spacing: -1px;
+  color: #fff;
+  cursor:pointer;
 }
 
 .content-header {
   display: flex;
+  justify-content: space-between;
+  max-width: 1920px;
+}
+
+/*
+.navbar-logo img {
+  width: 40px;
+  height: 35px;
+  margin-right: 10px;
 }
 
 /* Mobile styles */
 @media screen and (max-width: 768px) {
+
+  /* Decrease font size and line height for smaller screens */
+  .hero .container h1 {
+    font-size: 36px; /* Adjust as needed */
+    line-height: 1.5; /* Adjust as needed */
+  }
+
+  header p {
+    font-size: 24px;
+  }
+  
+  .burger{
+    margin-top: 65px;
+  }
+
+  .bline {
+    display: block;
+  }
+
+  .header.menu-open .bline {
+    width: 25px;
+  }
 
 }

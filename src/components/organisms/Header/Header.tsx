@@ -10,8 +10,8 @@ function Header({ isScrolled }: { isScrolled: boolean }): React.JSX.Element {
   };
 
   return (
-    <header>
-      <div className={`header content-header ${isScrolled ? "" : ""}`}>
+    <header className={`header ${isScrolled ? "sticky-background" : ""}`}>
+      <div className="content-header">
         <Navigation isOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </div>
     </header>
