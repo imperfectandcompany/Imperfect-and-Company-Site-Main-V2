@@ -6,13 +6,14 @@
   box-shadow: 0 4px 8px hsla(22, 10%, 2%, 0.4); /* Add box-shadow as needed */
 }
 
+
+
 header {
   width: 100%;
   transition: all 0.3s ease-in-out;
 }
 
 .header p {
-  font-size: 18px;
   font-weight: 200;
   letter-spacing: -1px;
   color: #fff;
@@ -30,7 +31,7 @@ header {
   width: 40px;
   height: 35px;
   margin-right: 10px;
-}
+} */
 
 /* Mobile styles */
 @media screen and (max-width: 768px) {
@@ -42,7 +43,6 @@ header {
   }
 
   header p {
-    font-size: 24px;
   }
   
   .burger{

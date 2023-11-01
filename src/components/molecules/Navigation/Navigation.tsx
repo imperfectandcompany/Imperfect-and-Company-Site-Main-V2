@@ -7,17 +7,18 @@ import { useLocation } from "react-router-dom";
 interface NavigationProps {
     isOpen: boolean;
     isScrolled?: boolean;
+    isMenuOpen: boolean;
     toggleMenu: Function;
 }
 
-function Navigation({ isOpen, isScrolled, toggleMenu }: NavigationProps) {
+function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationProps) {
 
     const location = useLocation();
     const currentPage = location.pathname;
-
+            
     return (
         <motion.div
-            className={`nav-container  ${isOpen ?  "active" : isScrolled !== undefined && isScrolled ? "" : ""}`}
+            className={`nav-container  ${isOpen ? isScrolled !== undefined && isScrolled && isMenuOpen ? "active": "active":""}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

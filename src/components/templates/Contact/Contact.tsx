@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Contact.css"; // Import your Contact-specific CSS file
 import { motion } from "framer-motion";
 import Header from "components/organisms/Header/Header";
@@ -8,7 +8,10 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 1 } },
 };
+
+
 function Contact() {
+const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <motion.div
@@ -18,7 +21,7 @@ function Contact() {
       animate="visible"
       exit="hidden"
     >
-      <Header isScrolled={false} />
+      <Header isScrolled={false} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <section className="hero">
 
 
@@ -30,7 +33,7 @@ function Contact() {
         <div className="contact-form">
 
           <div id="form-messages"></div>
-          <form id="ajax-contact" className="outline-none" method="post" role="form" action="contact.php" data-toggle="validator">
+          <form id="ajax-contact" className="outline-none" method="post" action="contact.php" data-toggle="validator">
             <div className="form-group has-feedback wow fadeInLeft" data-wow-delay="0.6s">
               <input type="text" className="form-control" id="name" name="name" placeholder="NAME" data-error="Field can't be blank!" required/>
               <span className="glyphicon form-control-feedback" aria-hidden="true"></span>

@@ -12,27 +12,37 @@ const containerVariants = {
 function HomePage() {
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     // Function to add the "scrolled" class when scrolling down
     function handleScroll() {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 40) {
         setIsScrolled(true);
-        if (window.scrollY > 0) {
-        }
       } else {
         setIsScrolled(false);
       }
     }
 
+    const handleScrollUp = () => {
+      const currentScrollPos = window.pageYOffset;
+      const visible = prevScrollPos > currentScrollPos;
+      setPrevScrollPos(currentScrollPos);
+      setVisible(visible);
+    };
+
     // Add a scroll event listener to call the handleScroll function
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollUp);
 
     // Remove the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollUp);
     };
-  }, []);
+  }, [prevScrollPos]);
 
   return (
     <>
@@ -47,8 +57,8 @@ function HomePage() {
           animate="visible"
           exit="hidden"
         >
-          <div className="sticky">
-            <Header isScrolled={isScrolled} />
+          <div className={`sticky ${visible ? '': isMenuOpen ? '' :'sticky-hidden'}`}>
+            <Header isScrolled={isScrolled} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           </div>
           <motion.section
             className="hero"

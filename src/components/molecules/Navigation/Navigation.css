@@ -179,7 +179,6 @@ nav .desktop-nav li a:hover {
 @media (max-width: 768px) {
     .nav-container .desktop-nav {
         flex-direction: column;
-        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -189,6 +188,7 @@ nav .desktop-nav li a:hover {
         overflow: hidden;
         z-index: -1;
         transition: all 1000ms ease;
+        position: fixed;
     }
 
     nav ul {
@@ -257,7 +257,8 @@ nav .desktop-nav li a:hover {
     /* Mobile Nav */
 
     nav .mobile-nav {
-        display: flex;
+        display: inline-block;
+        display: flex;  
         width: 100%;
         justify-content: space-between;
         list-style: none;
@@ -295,6 +296,13 @@ nav .desktop-nav li a:hover {
 
     nav .menu-icon .line-2 {
         top: 4px;
+    }
+
+    .nav-container.active {
+        transition: top 0.3s ease-in-out;  
+    }
+
+    .nav-container.active.visible {
     }
 
     .nav-container.active nav .menu-icon-container .menu-icon .line-1 {

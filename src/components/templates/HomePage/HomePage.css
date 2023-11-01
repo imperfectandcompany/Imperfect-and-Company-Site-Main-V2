@@ -17,6 +17,11 @@
 .sticky {
   top: 0;
   z-index: 999999999; /* Adjust the z-index as needed */
+  transition: top 0.3s ease-in-out;
+}
+
+.sticky-hidden {
+  top: -65px;  /* Or -var(--header-height, 65px) if you prefer */
 }
 
 .container {

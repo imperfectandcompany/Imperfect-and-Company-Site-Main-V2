@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
 import "./AboutUs.css"; // Import your AboutUs-specific CSS file
 
+
 function AboutUs() {
+const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
       <div>
-      <Header isScrolled={false} />
+      <Header isScrolled={false} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
         <section className="hero">
           <div className="container">
             <h1>About Imperfect and Company</h1>
