@@ -6,7 +6,7 @@ import "./AboutUs.css"; // Import your AboutUs-specific CSS file
 function AboutUs() {
     return (
       <div>
-        <Header />
+      <Header isScrolled={false} />
         <section className="hero">
           <div className="container">
             <h1>About Imperfect and Company</h1>

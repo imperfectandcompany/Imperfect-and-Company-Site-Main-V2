@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Header.css"; // Import the CSS for styling
 import Navigation from "../../molecules/Navigation/Navigation";
 
-function Header() {
+function Header({ isScrolled }: { isScrolled: boolean }): React.JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -10,8 +10,8 @@ function Header() {
   };
 
   return (
-    <header className={`header ${isMenuOpen ? "menu-open" : ""}`}>
-      <div className="container content-header">
+    <header>
+      <div className={`header content-header ${isScrolled ? "" : ""}`}>
         <Navigation isOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </div>
     </header>
