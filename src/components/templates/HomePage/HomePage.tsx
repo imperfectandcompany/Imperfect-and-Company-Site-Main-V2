@@ -157,7 +157,7 @@ function HomePage() {
     > 
 
 
-<div className={` ${isScrolled ? isSticky ? "sticky" : "sticky" : ""}`}>
+<div className={`header ${isScrolled ? isSticky ? "sticky" : "sticky" : ""}`}>
 
 <Header isScrolled={isScrolled} />
 

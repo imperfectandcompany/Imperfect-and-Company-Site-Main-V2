@@ -21,9 +21,8 @@ header {
 /* CSS */
 .sticky {
   top: 0;
-  background-color: hsla(22, 10%, 2%, 0.8) !important; /* Change to your desired background color */
   box-shadow: 0 4px 8px hsla(22, 10%, 2%, 0.4); /* Add box-shadow as needed */
-  z-index: 1000; /* Adjust the z-index as needed */
+  z-index: 999999999; /* Adjust the z-index as needed */
   /* Add any other styling you want for the sticky navigation bar */
 }
 
