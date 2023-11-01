@@ -58,7 +58,6 @@ nav ul {
     padding: 0;
     margin-top:10px;
     margin-bottom:10px;
-
     margin-left: 20px;
 }
 
@@ -191,6 +190,13 @@ nav .desktop-nav li a:hover {
         z-index: -1;
         transition: all 1000ms ease;
     }
+
+    nav ul {
+        margin-left: 0;
+        margin-bottom: 0;
+        margin-top: 0;
+        height:44px;
+    }
     
     nav .desktop-nav li {
         margin-right: 0;
@@ -211,7 +217,7 @@ nav .desktop-nav li a:hover {
     }
 
     .nav-container .desktop-nav li:nth-of-type(2) {
-        margin-top: 120px;
+        margin-top: 75px;
     }
 
     .nav-container .desktop-nav li a {
@@ -219,7 +225,7 @@ nav .desktop-nav li a:hover {
         display: inline-block;
         border-bottom: 1px solid #616161;
         width: 100%;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: 100;
         opacity:0;
         transform: translateY(-80px);
@@ -227,17 +233,12 @@ nav .desktop-nav li a:hover {
     }
 
     nav .desktop-nav li.active {
-      opacity:1 !important;
-      font-weight: 200;
       border-bottom: none;
-      transition: all 700ms ease;
     }    
 
       /* Add styles for the active link */
       .nav-container.active .desktop-nav li.active a {
-        opacity:1 !important;
-        font-weight: 200;
-        transition: all 700ms ease;
+        font-weight: 100;
         border-bottom: 1px solid white;
       }
 
@@ -281,8 +282,8 @@ nav .desktop-nav li a:hover {
     nav .menu-icon .line-2 {
         position: absolute;
         height: 1px;
-        width: 35px;
-        margin: 0px 0px 0px -14px;
+        width: 25px;
+        margin: 0px 0px 0px -0px;
         background: #fff;
         transition-property: transform, top;
         transition-delay: 0ms, 160ms;
