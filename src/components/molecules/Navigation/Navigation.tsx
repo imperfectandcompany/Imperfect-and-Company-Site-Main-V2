@@ -38,7 +38,7 @@ function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationPr
                     </li>
                 </ul>
                 <ul className="desktop-nav">
-                    <motion.li className="items-center hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
+                    <motion.li className="items-center logo hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
                         <a href="/">Imperfect and Company</a>
                     </motion.li>
                     <motion.li whileHover={{ scale: 0.99 }} whileTap={{ scale: 1.0 }}

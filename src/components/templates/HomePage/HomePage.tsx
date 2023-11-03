@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
 import "./HomePage.css";
-import { motion } from "framer-motion";
+import {  motion } from "framer-motion";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -97,6 +97,8 @@ email here</p>
       </a>
     </div>
   </div>*/}
+
+
 
           {/* Add more sections below */}
           <Footer />

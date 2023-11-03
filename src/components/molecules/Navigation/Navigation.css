@@ -80,6 +80,14 @@ nav .desktop-nav li a:hover {
     opacity: 0.5;
 }
 
+nav p {
+    /* makes logo text thin */
+    font-family: 'Poppins', sans-serif;
+}
+
+.desktop-nav .logo {
+    font-family: 'Poppins', sans-serif;
+}
 
 .link-close {
     background: url('../../images/close-icon.svg');

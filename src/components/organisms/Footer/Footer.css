@@ -5,88 +5,44 @@
   border-top: 1px solid #e3e3e3;
 }
 
-.c-footer .container {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 90%; /* Adjust the percentage as needed */
-  margin-bottom: 20px;
-}
-
-.c-footer__contact {
-  display: flex;
-  justify-content: space-between;
-  width: 70%;
-  padding-left: 20px; /* Add padding to the left side of the container */
-}
-
-.c-footer__contact .c-contact {
-  padding-right: 20px;
-  width: auto;
+.test{
+  display:none;
 }
 
 .c-footer__contact a {
-  display: block;
-  line-height: 30px;
-  color: #404045;
-}
-
-.c-footer__contact .c-contact:last-child a {
   line-height: 30px;
 }
 
-.c-footer__contact .c-contact__title {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.c-footer__contact .c-contact__title a {
-  color: #1b1b1c;
-  display: block;
-  line-height: 30px;
-}
-
-.imperfect-absolute {
-  position: absolute;
-  bottom: 0px;
-  right: 80px;
-  opacity: .15;
-  font-weight: 600;
-  letter-spacing: -1px;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/* Add space between the "Contact Us" and "Explore Our" sections in mobile view */
-.c-contact:last-child {
-  margin-bottom: 20px;
+.c-footer .c-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 100px;
 }
 
 /* For example, you can define styles for .content-contact and .ft-h elements */
 
 @media screen and (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-
-  .container {
-    padding: 0 30px;
-  }
-
   .c-footer__contact {
     width: 100%; /* Make it full width on smaller screens */
     flex-direction: column; /* Stack elements vertically */
   }
 
-  .c-footer__contact .c-contact {
-    padding: 10px 0; /* Add vertical padding for spacing */
+  .c-footer .c-container {
+    padding: 0 0px;
   }
+  
+  .c-footer .c-imprint {
+  }
+}
 
-  /* Adjust font size and add margin for the "Imperfect and Company" text in mobile view */
-  .imperfect-absolute {
-    font-size: 16px; /* Reduce font size for mobile view */
-    margin-top: 20px; /* Increase the margin for more separation */
-  }
+
+
+.imperfect-absolute {
+  bottom: 10px;  /* You can adjust this to change distance from the bottom */
+  right: 20px; /* Adjust the right position if it's too close to the edge */
+  opacity: 0.15;
+  font-weight: 600;
+  letter-spacing: -1px;
+  cursor: pointer;
+  font-size: text-xl;
 }
