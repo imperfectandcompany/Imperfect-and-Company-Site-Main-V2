@@ -52,6 +52,12 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
               <div className="help-block with-errors"></div>
             </div>
 
+
+            <div className="form-group has-feedback wow fadeInLeft" data-wow-delay="1s">
+              <textarea data-minlength="10" className="form-control" id="message" name="message" placeholder="MESSAGE" data-error="Minimum of 10 characters" required></textarea>
+              <div className="help-block with-errors"></div>
+            </div>
+
             <div className="hidden">
               <input type="text" className="form-control" id="human" name="human" placeholder=""/>
             </div>

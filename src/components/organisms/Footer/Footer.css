@@ -5,16 +5,11 @@
   border-top: 1px solid #e3e3e3;
 }
 
-.test{
-  display:none;
-}
-
 .c-footer__contact a {
   line-height: 30px;
 }
 
 .c-footer .c-container {
-  display: flex;
   justify-content: space-between;
   padding: 0 100px;
 }
@@ -31,8 +26,6 @@
     padding: 0 0px;
   }
   
-  .c-footer .c-imprint {
-  }
 }
 
 

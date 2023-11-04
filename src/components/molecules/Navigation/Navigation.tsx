@@ -27,10 +27,10 @@ function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationPr
                 <ul className="mobile-nav">
                     <li className="flex items-center justify-between w-full">
                         <div className="items-center text-white flex justify-center animate__animated animate__backInRight">
-                            <p>Imperfect and Company</p>
+                            <p><a href="/">Imperfect and Company</a></p>
                         </div>
                         <div className="menu-icon-container animate__animated animate__slideInDown animate__slow" onClick={() => toggleMenu()} >
-                            <div className="menu-icon">
+                            <div className="menu-icon" onClick={() => toggleMenu()} >
                                 <span className="line-1"></span>
                                 <span className="line-2"></span>
                             </div>

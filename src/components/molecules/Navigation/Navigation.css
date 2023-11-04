@@ -25,12 +25,6 @@
     right: 0;
 }
 
-.nav-container.active {
-}
-
-.nav-container nav {
-}
-
 nav .desktop-nav {
     justify-content: space-between;
     align-items: center;
@@ -88,6 +82,7 @@ nav p {
 .desktop-nav .logo {
     font-family: 'Poppins', sans-serif;
 }
+
 
 .link-close {
     background: url('../../images/close-icon.svg');
@@ -209,11 +204,7 @@ nav p {
     nav .desktop-nav li {
         margin-right: 0;
     }
-    
-    .nav-container {
-    }
-
-
+  
     .nav-container.active .desktop-nav {
         height: 100vh;
     }
@@ -310,8 +301,6 @@ nav p {
         transition: top 0.3s ease-in-out;  
     }
 
-    .nav-container.active.visible {
-    }
 
     .nav-container.active nav .menu-icon-container .menu-icon .line-1 {
         top: 0;

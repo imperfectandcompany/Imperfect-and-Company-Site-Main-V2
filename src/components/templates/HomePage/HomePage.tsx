@@ -4,6 +4,8 @@ import Footer from "../../organisms/Footer/Footer";
 import "./HomePage.css";
 import {  motion } from "framer-motion";
 
+const iconPath = process.env.PUBLIC_URL + '/icons/';
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 1 } },
@@ -66,7 +68,12 @@ function HomePage() {
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="container">
-              <h1>Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
+            <img
+                src={`${iconPath}umbrella_top.svg`}
+                className="h-4 mb-2 md:h-12 "
+                alt="umbrella"
+            />
+              <h1 className="border-solid border-red border-b-2">Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
               <p>To Foster Authentic, User-Driven Connectivity</p>
             </div>
           </motion.section>
