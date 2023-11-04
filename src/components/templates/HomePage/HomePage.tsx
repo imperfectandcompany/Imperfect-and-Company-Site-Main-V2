@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
 import "./HomePage.css";
-import {  motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-const iconPath = process.env.PUBLIC_URL + '/icons/';
+//const iconPath = process.env.PUBLIC_URL + '/icons/';
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0.1, transition: { duration: 0.5 } },
   visible: { opacity: 1, transition: { duration: 1 } },
 };
 
@@ -50,7 +50,7 @@ function HomePage() {
     <>
       <div className="items-center justify-center transition-bg dark">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="jumbo absolute -inset-[10px] opacity-50"></div>
+          <div className="jumbo absolute -inset-[10px] opacity-40"></div>
         </div>
         <motion.div
           className="main"
@@ -59,21 +59,23 @@ function HomePage() {
           animate="visible"
           exit="hidden"
         >
-          <div className={`sticky ${visible ? '': isMenuOpen ? '' :'sticky-hidden'}`}>
+          <div className={`sticky ${visible ? '' : isMenuOpen ? '' : 'sticky-hidden'}`}>
             <Header isScrolled={isScrolled} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           </div>
           <motion.section
             className="hero"
-            initial={{ opacity: 0, y: -100 }}
+            initial={{ opacity: 1, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="container">
+            <div className="container space-y-4">
+              {/** 
             <img
                 src={`${iconPath}umbrella_top.svg`}
                 className="h-4 mb-2 md:h-12 "
                 alt="umbrella"
             />
-              <h1 className="border-solid border-red border-b-2">Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
+               */}
+              <h1 className="border-solid  bord">Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
               <p>To Foster Authentic, User-Driven Connectivity</p>
             </div>
           </motion.section>

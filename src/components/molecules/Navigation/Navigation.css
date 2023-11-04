@@ -10,6 +10,7 @@
     from {
         background-position: 50% 50%, 50% 50%;
     }
+
     to {
         background-position: 350% 50%, 350% 50%;
     }
@@ -18,7 +19,8 @@
 /* Desktop Nav */
 
 .nav-container {
-    width: 100%; /* Add this line to make it full-width */
+    width: 100%;
+    /* Add this line to make it full-width */
     z-index: 300;
     left: 0;
     top: 0;
@@ -32,26 +34,26 @@ nav .desktop-nav {
 }
 
 nav .desktop-nav li.active {
-  opacity:1 !important;
-  font-weight: 500;
-  border-bottom: 1px solid white;
-  transition: all 700ms ease;
+    opacity: 1 !important;
+    font-weight: 500;
+    border-bottom: 1px solid white;
+    transition: all 700ms ease;
 }
 
 nav .desktop-nav li.active:hover {
-    opacity:0.50 !important;
+    opacity: 0.50 !important;
     font-weight: 200;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     transition: all 700ms ease;
-  }
+}
 
 nav ul {
     display: flex;
     flex-direction: row;
     list-style: none;
     padding: 0;
-    margin-top:10px;
-    margin-bottom:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 20px;
 }
 
@@ -198,13 +200,13 @@ nav p {
         margin-left: 0;
         margin-bottom: 0;
         margin-top: 0;
-        height:44px;
+        height: 44px;
     }
-    
+
     nav .desktop-nav li {
         margin-right: 0;
     }
-  
+
     .nav-container.active .desktop-nav {
         height: 100vh;
     }
@@ -225,28 +227,28 @@ nav p {
         width: 100%;
         font-size: 20px;
         font-weight: 100;
-        opacity:0;
+        opacity: 0;
         transform: translateY(-80px);
         transition: all 700ms ease;
     }
 
     nav .desktop-nav li.active {
-      border-bottom: none;
-    }    
+        border-bottom: none;
+    }
 
-      /* Add styles for the active link */
-      .nav-container.active .desktop-nav li.active a {
+    /* Add styles for the active link */
+    .nav-container.active .desktop-nav li.active a {
         font-weight: 100;
         border-bottom: 1px solid white;
-      }
+    }
 
-      /* Add styles for the active link:hover */
-      .nav-container.active .desktop-nav li.active a:hover {
+    /* Add styles for the active link:hover */
+    .nav-container.active .desktop-nav li.active a:hover {
         opacity: 0.50 !important;
         font-weight: 200;
         transition: all 700ms ease;
         border-bottom: 1px solid white;
-      }
+    }
 
     .nav-container.active .desktop-nav li a {
         transform: translateY(0);
@@ -257,7 +259,7 @@ nav p {
 
     nav .mobile-nav {
         display: inline-block;
-        display: flex;  
+        display: flex;
         width: 100%;
         justify-content: space-between;
         list-style: none;
@@ -265,16 +267,48 @@ nav p {
     }
 
     nav .menu-icon-container {
-        width: 20px;
-        height: -44px;
+        min-width: 44px;
+        min-height: 44px;
         display: flex;
         align-items: center;
+        justify-content: center;
         cursor: pointer;
+        position: relative;
+        /* Needed for absolute positioning inside */
     }
 
     nav .menu-icon {
         position: relative;
-        width: 100%;
+        z-index: 1;
+        /* Ensure the icon is above the pseudo-element */
+    }
+
+    /* Extend the clickable area more explicitly */
+    nav .menu-icon-container:before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        /* Increase the negative space if necessary */
+        bottom: -15px;
+        left: -15px;
+        right: -15px;
+        /* Increase this value if the right side is still not clickable */
+        background: transparent;
+    }
+
+    /* Optional: Add a pseudo-element to increase the clickable area */
+    nav .menu-icon:before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        /* Adjust as needed */
+        bottom: -10px;
+        /* Adjust as needed */
+        left: -10px;
+        /* Adjust as needed */
+        right: -10px;
+        /* Increase or adjust this value as needed */
+        background: transparent;
     }
 
     nav .menu-icon .line-1,
@@ -298,7 +332,7 @@ nav p {
     }
 
     .nav-container.active {
-        transition: top 0.3s ease-in-out;  
+        transition: top 0.3s ease-in-out;
     }
 
 
@@ -326,7 +360,7 @@ nav p {
 
 /* Position the "Imperfect and Company" link to the left */
 .nav-container .desktop-nav li:first-child {
-    opacity:1;
+    opacity: 1;
     margin-right: auto;
     font-size: large;
 }

@@ -1,11 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+
+function useMeasureHeight(ref: React.RefObject<HTMLElement>) {
+  const [height, setHeight] = useState<number>(0);
+
+  useLayoutEffect(() => {
+    if (ref.current) {
+      setHeight(ref.current.scrollHeight);
+    }
+  }, [ref]);
+
+  return height;
+}
 
 function Contact() {
   const [openTab, setOpenTab] = useState<string | null>(null);
 
   const endOfContentRef = useRef<HTMLUListElement>(null);
+
+  const measuredHeight = useMeasureHeight(endOfContentRef);
 
   useEffect(() => {
     if (endOfContentRef.current) {
@@ -27,7 +41,7 @@ function Contact() {
     {
       title: 'Explore Our Projects',
       links: [
-        { name: 'Postogon', path: 'projects//postogon' },
+        { name: 'Postogon', path: 'projects/postogon' },
         { name: 'Imperfect Gamers', path: 'projects/imperfectgamers' },
       ],
     },
@@ -56,14 +70,15 @@ function Contact() {
               {/* Mobile view - Collapsible */}
               <div className="md:hidden">
                 <button
-                  className={`flex justify-between items-center w-full text-sm font-bold cursor-pointer relative ${index === sections.length - 1 && openTab === section.title ? 'mt-2' : 'mb-0'}`}
+                  className={`flex justify-between items-center w-full text-sm font-bold cursor-pointer relative ${index === sections.length - 1 && openTab === section.title ? '' : ''}`}
                   onClick={() => toggleTab(section.title)}
                 >
                   <span>{section.title}</span>
                   <motion.span
-                    className={`transition-transform transform ${openTab === section.title ? 'rotate-45' : ''}`}
-                    initial={{ rotate: 0 }}
-                    animate={{ rotate: openTab === section.title ? 45 : 0 }}
+                    className={`transition-transform transform ${openTab === section.title ? 'rotate-180' : ''}`}
+                    initial={false}
+                    animate={{ rotate: openTab === section.title ? 180 : 0 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 20 }} // Add spring physics for a smoother effect
                   >
                     +
                   </motion.span>
@@ -71,10 +86,15 @@ function Contact() {
                 <AnimatePresence>
                   {openTab === section.title && (
                     <motion.ul
-                      className={`list-none mt-2 space-y-1 ${index === sections.length - 1 ? 'mb-0' : 'mb-2'}`} // Conditionally apply 'mb-0' for the last item
+                      className={`list-none ${measuredHeight} mt-2 space-y-1 ${index === sections.length - 1 ? '' : ''}`} // Conditionally apply 'mb-0' for the last item
                       initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto", transition: { duration: 0.5, ease: "easeOut" } }}
+                      exit={{
+                        opacity: 0,
+                        height: openTab === section.title ? measuredHeight : 0,
+                        transition: { duration: 0.3, ease: "easeOut" },
+                        overflow: "hidden"
+                      }}
                       ref={endOfContentRef}
                     >
                       {section.links.map((link) => (

@@ -26,12 +26,28 @@ header {
   max-width: 1920px;
 }
 
-/*
+.header .content-header {
+  display: flex-start;
+  align-items: center;
+  justify-content: start; /* Align items to the start of the container (left side) */
+}
+
+.header .logo img {
+  height: 1rem; /* Adjust as necessary */
+  vertical-align: middle; /* This can help with alignment if the flexbox method isn't enough */
+}
+
+
+/* Ensure that the text is aligned properly */
+.header .logo + div {
+  line-height: 1rem; /* This should match the height of your logo */
+}
+
 .navbar-logo img {
   width: 40px;
   height: 35px;
   margin-right: 10px;
-} */
+} 
 
 /* Mobile styles */
 @media screen and (max-width: 768px) {
