@@ -54,9 +54,8 @@ function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationPr
                 <ul className="desktop-nav">
 
                     <motion.li className="logo-container items-center logo hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
-                        <a href="/" className='flex space-x-4 ml-2'>
+                        <a href="/" className='flex space-x-4 ml-16'>
                             <div className="logo">
-
                                 <Suspense fallback={<SkeletonLoader />}>
                                     <LogoComponent />
                                 </Suspense>

@@ -39,10 +39,10 @@ function Contact() {
 
   const sections = [
     {
-      title: 'Explore Our Projects',
+      title: 'Projects',
       links: [
         { name: 'Postogon', path: 'projects/postogon' },
-        { name: 'Imperfect Gamers', path: 'projects/imperfectgamers' },
+        { name: 'Imperfect Private', path: 'projects/imperfectgamers' },
       ],
     },
     {

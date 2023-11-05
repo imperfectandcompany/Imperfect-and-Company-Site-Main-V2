@@ -9,7 +9,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
       <div>
-      <Header isScrolled={false} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
+      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
         <section className="hero">
           <div className="container">
             <h1>About Imperfect and Company</h1>

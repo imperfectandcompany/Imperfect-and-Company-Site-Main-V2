@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
 import "./HomePage.css";
@@ -13,38 +13,7 @@ const containerVariants = {
 
 function HomePage() {
 
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    // Function to add the "scrolled" class when scrolling down
-    function handleScroll() {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    }
-
-    const handleScrollUp = () => {
-      const currentScrollPos = window.pageYOffset;
-      const visible = prevScrollPos > currentScrollPos;
-      setPrevScrollPos(currentScrollPos);
-      setVisible(visible);
-    };
-
-    // Add a scroll event listener to call the handleScroll function
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("scroll", handleScrollUp);
-
-    // Remove the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", handleScrollUp);
-    };
-  }, [prevScrollPos]);
 
   return (
     <>
@@ -59,9 +28,7 @@ function HomePage() {
           animate="visible"
           exit="hidden"
         >
-          <div className={`sticky ${visible ? '' : isMenuOpen ? '' : 'sticky-hidden'}`}>
-            <Header isScrolled={isScrolled} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-          </div>
+            <Header  isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           <motion.section
             className="hero"
             initial={{ opacity: 1, y: -100 }}

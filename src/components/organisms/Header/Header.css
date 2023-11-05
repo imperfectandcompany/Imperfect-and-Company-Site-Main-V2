@@ -21,20 +21,13 @@ header {
 }
 
 .content-header {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1920px;
 }
 
 .header .content-header {
-  display: flex-start;
-  align-items: center;
-  justify-content: start; /* Align items to the start of the container (left side) */
 }
 
 .header .logo img {
   height: 1rem; /* Adjust as necessary */
-  vertical-align: middle; /* This can help with alignment if the flexbox method isn't enough */
 }
 
 

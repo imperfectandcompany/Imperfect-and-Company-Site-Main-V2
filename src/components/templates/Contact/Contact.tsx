@@ -21,7 +21,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
       animate="visible"
       exit="hidden"
     >
-      <Header isScrolled={false} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <section className="hero">
 
 
