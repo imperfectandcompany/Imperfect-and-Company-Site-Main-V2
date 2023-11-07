@@ -112,11 +112,11 @@ const Team: React.FC = () => {
 
     return (
         <>
+        <motion.div className="team-page" variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
+        <div className=''>
             <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-            <motion.div className="team-container" variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
             <section className="hero" aria-label="Founders Section">
             Our Team
-
             <div className="tabs-wrapper">
             <ul className="tabs" role="tablist">
                             {foundersData.map((founder) => (
@@ -145,9 +145,11 @@ const Team: React.FC = () => {
                         </div>
                     </div>
             </section>
+            </div>
+            <div className="footer">
+            <Footer />
+            </div>
         </motion.div>
-        <Footer />
-
         </>
 
 
