@@ -6,6 +6,7 @@ import AboutUs from 'components/templates/AboutUs/AboutUs';
 import Contact from 'components/templates/Contact/Contact';
 import { motion } from 'framer-motion';
 import Postogon from 'components/templates/Postogon/Postogon';
+import Team from 'components/templates/Team/Team';
 
 function NoiseEffect() {
   return (
@@ -28,7 +29,8 @@ function App() {
         <Route path="/" Component={HomePage} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/projects/postogon" element={<Postogon />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/projects/postogon" element={<Postogon  />} />
         </Routes>
       </div>
     </Router>

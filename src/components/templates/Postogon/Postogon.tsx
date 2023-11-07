@@ -37,16 +37,16 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <motion.div
-      className="bg-black main"
+      className="text-white"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="hidden"
     >
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <div ref={heroRef} className="hero">
+      <div ref={heroRef} className="postogon-hero ">
   <h1>postogon</h1>
-  <div className="down">
+  <div className="mx-auto  mt-80">
     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
   </div>
 </div>

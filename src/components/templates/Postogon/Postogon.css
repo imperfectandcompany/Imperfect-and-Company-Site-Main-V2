@@ -1,34 +1,13 @@
-body {
-    font-family: 'Inter', sans-serif;
-    letter-spacing: -1px;
-    text-align: center;
-    font-size: 20px;
-    height: 100vh;
-    color: #fff;
-    margin: 0;
-  }
-
   
-/* @import url('https://rsms.me/inter/inter.css');
+@import url('https://rsms.me/inter/inter.css');
 
 html,
 body {
   background: #000;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  letter-spacing: -1px;
-  text-align: center;
-  font-size: 20px;
-  height: 100vh;
-  color: #fff;
-  margin: 0;
-}
 
-.hero {
-  background: url('https://images.unsplash.com/photo-1550353127-b0da3aeaa0ca') no-repeat center center;
-  justify-content: center;
+.postogon-hero {
   background-size: cover;
   flex-direction: column;
   border-radius: 10px;
@@ -55,7 +34,6 @@ body {
   position: relative;
   background: #000;
   display: flex;
-  top: 100vh;
+  top: 50vh;
 }
 
-*/

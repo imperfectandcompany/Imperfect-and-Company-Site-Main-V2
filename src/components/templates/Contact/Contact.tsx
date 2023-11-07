@@ -28,7 +28,6 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
       <div className="section" data-anchor="contact">
       <div className="content wow fadeInDown" data-wow-delay="0.2s">
         <h1>CONTACT ME</h1>
-        <p>Whether you're interested in working with me or just want to say hello, I'd love to hear from you!</p>
         <br/>
         <div className="contact-form">
 
