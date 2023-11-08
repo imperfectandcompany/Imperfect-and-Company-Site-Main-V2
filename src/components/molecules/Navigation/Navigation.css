@@ -27,12 +27,11 @@
     right: 0;
 }
 
-
 nav .desktop-nav {
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    
+    color: white;
 }
 
 nav .desktop-nav li.active {
@@ -53,11 +52,10 @@ nav ul {
     display: flex;
     flex-direction: row;
     list-style: none;
-    
+    padding: 0;
 }
 
 nav .desktop-nav li {
-    color: #fff;
     text-decoration: none;
     font-size: 14px;
     opacity: 0.8;
@@ -66,7 +64,7 @@ nav .desktop-nav li {
 }
 
 nav .desktop-nav li a {
-    color: #fff;    
+    color: #fff;
     text-decoration: none;
 }
 
@@ -82,7 +80,6 @@ nav p {
 
 .desktop-nav .logo {
     font-family: 'Poppins', sans-serif;
-    
 }
 
 
@@ -182,7 +179,14 @@ nav p {
 }
 
 @media (max-width: 768px) {
-    .nav-container .desktop-nav {
+
+    .dropdown-content {
+        right: auto; /* Reset right positioning */
+        left: 50%; /* Center it */
+        transform: translateX(-50%); /* Adjust translation to align properly */
+      }
+
+      .nav-container .desktop-nav {
         flex-direction: column;
         top: 0;
         left: 0;
@@ -203,34 +207,17 @@ nav p {
         height: 44px;
     }
 
+    x
     nav .desktop-nav li {
         margin-right: 0;
+        
     }
 
     .nav-container.active .desktop-nav {
         height: 100vh;
     }
 
-    .nav-container .desktop-nav li {
-        width: 100%;
-        padding: 0 24px;
-    }
-
-    .nav-container .desktop-nav li:nth-of-type(2) {
-        margin-top: 90px;
-    }
-
-    .nav-container .desktop-nav li a {
-        padding: 16px 0;
-        display: inline-block;
-        border-bottom: 1px solid #616161;
-        width: 100%;
-        font-size: 20px;
-        font-weight: 100;
-        opacity: 0;
-        transform: translateY(-80px);
-        transition: all 700ms ease;
-    }
+ 
 
     nav .desktop-nav li.active {
         border-bottom: none;
@@ -256,7 +243,6 @@ nav p {
     }
 
     /* Mobile Nav */
-
     nav .mobile-nav {
         display: inline-block;
         display: flex;
@@ -265,6 +251,8 @@ nav p {
         list-style: none;
         transition: all;
     }
+
+
 
     nav .menu-icon-container {
         min-width: 44px;
@@ -358,9 +346,100 @@ nav p {
     }
 }
 
+/* Add a media query for smaller screens if necessary */
+@media (max-width: 500px) {
+    .dropdown-content {
+      box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+}
+
 /* Position the "Imperfect and Company" link to the left */
 .nav-container .desktop-nav li:first-child {
     opacity: 1;
     margin-right: auto;
-    font-size: large;
 }
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    padding-left: 0;
+    padding-right: 0;
+    display: none;
+    position: absolute;
+    min-width: 160px; /* Or as per content size */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+
+/* Ensure the dropdown link fills its container for the hover effect */
+.dropdown-content a {
+    padding-left: 0;
+    padding-right: 0;    
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: transparent; /* No background color */
+    color: white; /* Dropdown text color */
+    padding: 16px; /* Dropdown button padding */
+  font-size: 0.8rem; /* Smaller font size */
+  font-weight: 300; /* Lighter font weight, if needed */
+      border: none; /* Remove borders */
+    cursor: pointer; /* Cursor to signify it's clickable */
+    width: 100%; /* Full width to fill the container */
+    text-align: left; /* Align text to the left */
+  }
+
+  /* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown:hover .dropdown-content { 
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .dropdown:hover .dropdown-content .link:hover { 
+    opacity: 25%;
+  }
+  
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+    backdrop-filter: blur(5px); /* Blur effect for the background */
+    border-radius: 5px; /* Rounded corners for the hover effect */
+}
+
+    .nav-container .desktop-nav a {
+        font-weight: 300; /* Lighter font for a modern look */
+        white-space: nowrap
+    }
+
+/* Inside your media query for max-width: 768px */
+.dropdown-content li {
+  }
+
+/* Hover effect for dropdown links */
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+}
+  
+  .dropdown-content li a {
+    display: block; /* Makes the entire area of the link clickable */
+    color: white; /* Text color for the link */
+    text-align: left; /* Aligns the text to the left */
+    background: transparent; /* No background by default */
+    text-decoration: none; /* Removes underline from links */
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }

@@ -93,7 +93,12 @@ flex-direction: column;
 
 .tabs li button.__active,
 .tabs li button:hover {
-    color: #007bff; /* Highlight color */
+opacity:25%;
+}
+
+.tabs li:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+  opacity:25%;
 }
 
 
