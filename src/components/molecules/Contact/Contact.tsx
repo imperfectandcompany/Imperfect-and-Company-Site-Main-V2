@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import useNavigationData from "components/hooks/useNavigationData";
 
 function useMeasureHeight(ref: React.RefObject<HTMLElement>) {
   const [height, setHeight] = useState<number>(0);
@@ -16,10 +17,10 @@ function useMeasureHeight(ref: React.RefObject<HTMLElement>) {
 
 function Contact() {
   const [openTab, setOpenTab] = useState<string | null>(null);
-
   const endOfContentRef = useRef<HTMLUListElement>(null);
-
   const measuredHeight = useMeasureHeight(endOfContentRef);
+
+  const sections = useNavigationData();
 
   useEffect(() => {
     if (endOfContentRef.current) {
@@ -36,30 +37,6 @@ function Contact() {
       setOpenTab(tabName);
     }
   };
-
-  const sections = [
-    {
-      title: 'Projects',
-      links: [
-        { name: 'Postogon', path: 'projects/postogon' },
-        { name: 'Imperfect Private', path: 'projects/imperfectgamers' },
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        { name: 'About', path: '/about' },
-        { name: 'Team', path: '/team' },
-        { name: 'Contact', path: '/contact' },
-      ],
-    },
-    {
-      title: 'Contact Us',
-      links: [
-        { name: 'hello@imperfectandcompany.com', path: 'mailto:hello@imperfectandcompany.com' },
-      ],
-    },
-  ];
 
   return (
     <div className="c-footer__contact">

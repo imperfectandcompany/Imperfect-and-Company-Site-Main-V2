@@ -3,6 +3,7 @@ import "./Navigation.css"; // Import the CSS for styling
 import Link from "../../atoms/Link/Link"; // Import the Link component
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import useNavigationData from "components/hooks/useNavigationData";
 
 interface NavigationProps {
     isOpen: boolean;
@@ -24,9 +25,10 @@ const SkeletonLoader = () => (
 );
 
 function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationProps) {
-
     const location = useLocation();
     const currentPage = location.pathname;
+    const sections = useNavigationData();
+
 
     return (
         <motion.div
@@ -64,24 +66,19 @@ function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationPr
                             </div>
                         </a>
                     </motion.li>
-                    <motion.li whileHover={{ scale: 0.99 }} whileTap={{ scale: 1.0 }}
-                        className={`${currentPage === "/" ? "active" : ""
-                            }`}
-                    >
-                        <Link to="/" text="Home" />
-                    </motion.li>
-                    <motion.li whileHover={{ scale: 0.99 }} whileTap={{ scale: 1.0 }}
-                        className={`${currentPage === "/about" ? "active" : ""
-                            }`}
-                    >
-                        <Link to="/about" text="About" />
-                    </motion.li>
-                    <motion.li whileHover={{ scale: 0.99 }} whileTap={{ scale: 1.0 }}
-                        className={`${currentPage === "/contact" ? "active" : ""
-                            }`}
-                    >
-                        <Link to="/contact" text="Contact" />
-                    </motion.li>
+
+                    {sections.map(section => (
+                        section.links.map(link => (
+                            <motion.li
+                                key={link.name}
+                                whileHover={{ scale: 0.99 }}
+                                whileTap={{ scale: 1.0 }}
+                                className={`${currentPage === link.path ? "active" : ""}`}
+                            >
+                                <Link to={link.path} text={link.name} />
+                            </motion.li>
+                        ))
+                    ))}
                 </ul>
             </nav>
         </motion.div>
