@@ -15,19 +15,6 @@
 }
 
 
-/* CSS */
-.sticky {
-  top: 0;
-  z-index: 10;
-  transition: top 0.3s ease-in-out;
-}
-
-.sticky-hidden {
-  top: -65px;
-  /* Or -var(--header-height, 65px) if you prefer */
-}
-
-
 @keyframes noise {
   0% {
     transform: translate3d(1%, -1%, 0);

@@ -10,7 +10,7 @@ function Header({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean, setIsMenuO
   useEffect(() => {
     // Function to add the "scrolled" class when scrolling down
     function handleScroll() {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -41,7 +41,7 @@ function Header({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean, setIsMenuO
   
   return (
     <div className={`sticky ${visible ? '' : isMenuOpen ? '' : 'sticky-hidden'}`}>
-    <header className={`header ${isScrolled ? isMenuOpen ? "sticky-background" : "sticky-background" : ""}`}>
+    <header className={`header md:pt-2 md:pb-2 ${isScrolled ? isMenuOpen ? "sticky-background " : "sticky-background" : ""}`}>
       <div className="content-header">
         <Navigation isOpen={isMenuOpen} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </div>

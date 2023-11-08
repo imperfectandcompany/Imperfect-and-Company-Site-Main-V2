@@ -30,7 +30,7 @@ function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationPr
 
     return (
         <motion.div
-            className={`nav-container  ${isOpen ? isScrolled !== undefined && isScrolled && isMenuOpen ? "active" : "active" : ""}`}
+            className={`nav-container ${isOpen ? isScrolled !== undefined && isScrolled && isMenuOpen ? "active" : "active" : ""}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -51,15 +51,15 @@ function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationPr
                         </div>
                     </li>
                 </ul>
-                <ul className="desktop-nav">
-
-                    <motion.li className="logo-container items-center logo hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
-                        <a href="/" className='flex space-x-4 ml-16'>
-                            <div className="logo">
+                <ul className="desktop-nav flex items-center">
+                    <motion.li className="items-center hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
+                        <a href="/" className='flex space-x-6 ml-6'>
+                        <div className="logo">
                                 <Suspense fallback={<SkeletonLoader />}>
                                     <LogoComponent />
                                 </Suspense>
-                            </div>  <div>
+                            </div> 
+                            <div>
                                 Imperfect and Company
                             </div>
                         </a>
