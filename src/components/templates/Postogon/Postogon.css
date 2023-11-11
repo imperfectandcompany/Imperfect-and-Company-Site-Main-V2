@@ -9,14 +9,50 @@ body {
 
 .postogon-hero {
   justify-content: center;
-  background-size: cover;
-  flex-direction: column;
   border-radius: 10px;
   align-items: center;
   position: fixed;
   display: flex;
   height: 50vh;
   width: 100%;
+}
+
+
+.postogon-hero h1 {
+  color: white;
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Prevent overflow during scaling */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postogon-hero p {
+  font-size: clamp(14px, 1.25vw, 18px);
+  /* This is just an example; you need to adjust it based on your actual requirements */
+  color: white;
+}
+
+.postogon-hero h1 span:first-of-type {
+  /* Position "All-new" over "Postogon" */
+  font-size: clamp(14px, 1.25vw, 18px);
+  color: hsl(0 100% 50%);
+  z-index: 2; /* Ensure it's above the "Postogon" text */
+}
+
+.postogon-hero h1 span:last-of-type {
+  font-size: rem; /* Large initial size */
+  opacity: 1;
+    z-index: 1;
+  position: relative; /* Ensure it's stacked below "All-new" */
+  align-self: center; /* Center it within the flex container */
+  font-size: calc(53px + (4500vw - 46080px)/896);
+  letter-spacing: calc(-2px + (-200vw - -2048px)/896);
+}
+
+.postogon-hero h1 span {
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .down {
@@ -34,11 +70,7 @@ body {
   align-items: flex-end;
   position: relative;
   background: #000;
-  top: 50vh;
-
-
-
-  
+  top: 50vh;  
 }
 
 .footer{ 

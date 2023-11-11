@@ -17,14 +17,49 @@ function Postogon() {
   // Reference to the hero element
   const heroRef = useRef<HTMLDivElement>(null);
 
+  const firstSpanRef = useRef<HTMLSpanElement>(null);
+  const secondSpanRef = useRef<HTMLSpanElement>(null);
+  const pTagRef = useRef<HTMLParagraphElement>(null);
+
+
   useEffect(() => {
+
+
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      // Update hero element style
       if (heroRef.current) {
-        const scrollY = window.scrollY;
-        const scale = (100 - scrollY / 100) / 100;
-        heroRef.current.style.transform = `translate3d(0, ${scrollY / 100}%, 0) scale(${scale})`;
+        const heroScale = (100 - scrollY / 100) / 100;
+        heroRef.current.style.transform = `translate3d(0, ${scrollY / 100}%, 0) scale(${heroScale})`;
       }
-    };
+
+
+      if (firstSpanRef.current) {
+        const firstSpanOpacity = Math.max(0, 1 - scrollY / 100);
+        firstSpanRef.current.style.opacity = firstSpanOpacity.toString();
+      }
+  
+
+    // Update "Postogon" span style with the perfect scaling
+    if (secondSpanRef.current) {
+      const secondSpanScale = Math.min(2, 1 + scrollY / 500); // Perfect scaling
+      secondSpanRef.current.style.transform = `scale(${secondSpanScale})`;
+
+      // Start fading out later like in the second block, but spread it out more
+      const fadeStart = 50; // Start fading out just after this scrollY value
+      const fadeDistance = 200; // Spread the fading effect over this scroll distance
+      const secondSpanOpacity = scrollY < fadeStart ? '1' : Math.max(0, 1 - (scrollY - fadeStart) / fadeDistance).toString();
+      secondSpanRef.current.style.opacity = secondSpanOpacity;
+    }
+
+    if (pTagRef.current) {
+      const pTagOpacity = scrollY > 100 ? Math.min(1, (scrollY - 100) / 100) : 0; // Starts appearing after scrolling 100px
+      pTagRef.current.style.opacity = pTagOpacity.toString();
+      pTagRef.current.style.display = pTagOpacity > 0 ? 'block' : 'none';
+    }
+
+  };
 
     // Attach the event listener
     window.addEventListener('scroll', handleScroll);
@@ -43,12 +78,20 @@ function Postogon() {
     >
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <motion.section
-            className="postogon-hero bg-red-500"
+            className="postogon-hero bg-red-950"
             ref={heroRef}
             initial={{ opacity: 1, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
           >      
-        <h1>postogon</h1>
+            <div className="hero container text-center mx-auto justify-center items-center">
+            <p ref={pTagRef} className="">
+Currently Raising
+</p>           
+            <h1>
+          <span ref={firstSpanRef}>Coming Soon</span>
+          <span ref={secondSpanRef}>Postogon</span>
+          </h1>
+          </div>
         <div className="down">
           <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
         </div>
@@ -59,7 +102,7 @@ function Postogon() {
             animate={{ opacity: 1, y: 0 }}
           >           
           <div>
-            <img src="https://postogon.com/clunk/assets/img/index-guy.png" className=" select-none	" />
+            <img src="https://postogon.com/clunk/assets/img/index-guy.png" className=" select-none	" alt="person"/>
           </div>
 
           <div className="footer">
