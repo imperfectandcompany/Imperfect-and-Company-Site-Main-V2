@@ -10,11 +10,12 @@ body {
 .postogon-hero {
   background-size: cover;
   flex-direction: column;
-  border-radius: 10px;
+  border-radius: 10px 0 0 0;
   align-items: center;
   position: fixed;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: red;
   width: 100%;
 }
 
@@ -34,6 +35,5 @@ body {
   position: relative;
   background: #000;
   display: flex;
-  top: 50 vh;
+  top: 50vh;
 }
-
