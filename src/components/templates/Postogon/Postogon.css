@@ -8,14 +8,14 @@ body {
 
 
 .postogon-hero {
+  justify-content: center;
   background-size: cover;
   flex-direction: column;
-  border-radius: 10px 0 0 0;
+  border-radius: 10px;
   align-items: center;
   position: fixed;
   display: flex;
-  min-height: 100vh;
-  background-color: red;
+  height: 50vh;
   width: 100%;
 }
 
@@ -23,9 +23,9 @@ body {
   text-align: center;
   position: absolute;
   opacity: 0.6;
+  color:white;
   height: 40px;
-  width: 100%;
-  bottom: 0;
+  bottom: 40px;
 }
 
 .content {
@@ -34,6 +34,14 @@ body {
   align-items: flex-end;
   position: relative;
   background: #000;
-  display: flex;
   top: 50vh;
+
+
+
+  
+}
+
+.footer{ 
+  z-index:999;
+  color:black!important;
 }
