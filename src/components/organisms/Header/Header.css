@@ -11,13 +11,15 @@ header {
   transition: all 0.3s ease-in-out;
 }
 
-/* Header container */
-.header {
-  align-items: center; /* Align items vertically */
-  justify-content: space-between; /* Space out logo and nav */
-  padding-right: 24px; /* Right padding */
-  box-sizing: border-box; /* Include padding in width */
+@media screen and (min-width: 800px) {
+  .header {
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space out logo and nav */
+    box-sizing: border-box; /* Include padding in width */
+  }
 }
+
+
 
 /* CSS */
 .sticky {

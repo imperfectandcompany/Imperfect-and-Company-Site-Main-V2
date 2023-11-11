@@ -1,12 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css"; // Import the CSS for styling
-import Navigation from "../../molecules/Navigation/Navigation";
+import NavigationDesktop from "components/molecules/Navigation/NavigationDesktop";
+import NavigationMobile from "../../molecules/Navigation/NavigationMobile";
 
 function Header({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean, setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>> }): React.JSX.Element {
   const [isScrolled, setIsScrolled] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [isDesktop, setDesktop] = useState(false);
 
+  useEffect(() => {
+    if (window.innerWidth > 1450) {
+      setDesktop(true);
+    } else {
+      setDesktop(false);
+    }
+
+    const updateMedia = () => {
+      if (window.innerWidth > 1450) {
+        setDesktop(true);
+      } else {
+        setDesktop(false);
+      }
+    };
+    window.addEventListener('resize', updateMedia);
+    return () => window.removeEventListener('resize', updateMedia);
+  }, []);
+    
   useEffect(() => {
     // Function to add the "scrolled" class when scrolling down
     function handleScroll() {
@@ -43,7 +63,9 @@ function Header({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean, setIsMenuO
     <div className={`sticky ${visible ? '' : isMenuOpen ? '' : 'sticky-hidden'}`}>
     <header className={`header md:pt-2 md:pb-2 ${isScrolled ? isMenuOpen ? "sticky-background " : "sticky-background" : ""}`}>
       <div className="content-header">
-        <Navigation isOpen={isMenuOpen} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        {isDesktop ? <NavigationDesktop isOpen={isMenuOpen} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/> : 
+        <NavigationMobile isOpen={isMenuOpen} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/>
+        }
       </div>
     </header>
     </div>

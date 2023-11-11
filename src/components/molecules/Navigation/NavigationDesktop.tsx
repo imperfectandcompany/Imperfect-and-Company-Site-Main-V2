@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import "./Navigation.css"; // Import the CSS for styling
+import "./NavigationDesktop.css"; // Import the CSS for styling
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import useNavigationData from "components/hooks/useNavigationData";
@@ -24,7 +24,7 @@ const SkeletonLoader = () => (
 );
 
 
-function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationProps) {
+function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationProps) {
     const location = useLocation();
     const currentPage = location.pathname;
     const sections = useNavigationData();
@@ -142,4 +142,4 @@ function Navigation({ isOpen, isScrolled, isMenuOpen, toggleMenu }: NavigationPr
 
 
 
-export default Navigation;
+export default NavigationDesktop;
