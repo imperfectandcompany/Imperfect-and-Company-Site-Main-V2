@@ -44,6 +44,7 @@ body {
 .postogon-hero h1 span:last-of-type {
   font-size: rem; /* Large initial size */
   opacity: 1;
+  color:black;
     z-index: 1;
   position: relative; /* Ensure it's stacked below "All-new" */
   align-self: center; /* Center it within the flex container */
