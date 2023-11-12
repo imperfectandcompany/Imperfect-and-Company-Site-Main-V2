@@ -7,11 +7,24 @@ import Footer from "components/organisms/Footer/Footer";
 import rocket from "../../images/rocket.svg";
 import phoneFeed from "../../images/phoneFeed.svg";
 import unity from "../../images/unity.svg";
+import Splash from "./Splash";
 
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 1 } },
+};
+
+const raisingTextVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.3, // Adjust as needed
+    },
+  },
 };
 
 
@@ -104,9 +117,14 @@ function Postogon() {
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="hero container text-center mx-auto justify-center items-center">
-            <p ref={pTagRef} className="">
-              Currently Raising
-            </p>
+            <motion.div
+              className="raising-text hidden"
+              variants={raisingTextVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span layout>Open for raising</motion.span>
+            </motion.div>
             <h1>
               <span ref={firstSpanRef}>Coming Soon</span>
               <span ref={secondSpanRef}>Postogon</span>
@@ -116,26 +134,18 @@ function Postogon() {
             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
           </div>
         </motion.section>
-        <motion.section
-          className="content text-white"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
+        <motion.div className="content"
+          initial={{ opacity: 1, y: 0 }}
         >
-          <section>
-            <div className="section__content">
-              <svg>
-                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
-                  Redefining Social Media
-                </text>
-              </svg>
-            </div>
-          </section>
-          <div className="mb-80 p-10">
-            <p>
-              Welcome to Postogon, where your online persona is no longer lost in a tangled web of context collapse. We understand the importance of privacy, authentic interactions and user-driven experiences. Say goodbye to unwanted scrutiny and embrace ethical connectivity.
-              .<br />Pretty cool.
-            </p>
+          <div className="p-10">
+          <motion.section
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className=""
+          >
+            <Splash />
+          </motion.section>           
             <motion.div
               className="flex gap-10 flex-wrap-responsive mt-10"
               variants={container}
@@ -150,8 +160,7 @@ function Postogon() {
           <div className="footer">
             <Footer />
           </div>
-        </motion.section>
-
+        </motion.div>
       </motion.div>
     </>
   );
@@ -166,8 +175,8 @@ const InfoCard = ({ image, textNumber, titleText }: { image: string, textNumber:
       <div className="bg-white rounded-full p-2 info-card-div">
         <img className="info-card-image" alt={'info-img'}src={image} />
       </div>
-      <div className="text-xl font-bold">{textNumber}</div>
-      <div className="text-lg">{titleText}</div>
+      <div className="text-xl font-bold text-white">{textNumber}</div>
+      <div className="text-lg text-white">{titleText}</div>
     </motion.div>
   )
 }
