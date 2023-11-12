@@ -62,7 +62,7 @@ function Postogon() {
     // Attach the event listener
     window.addEventListener('scroll', handleScroll);
 
-    
+
 
     // Clean up the event listener
     return () => {
@@ -96,32 +96,23 @@ function Postogon() {
             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
           </div>
         </motion.section>
-        <motion.section
-          className="content text-white"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
+        <motion.div className="content"
+          initial={{ opacity: 1, y: 0 }}
         >
-              <section>
-      <div className="section__content">
-        <svg>
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
-           Redefining Social Media
-          </text>
-        </svg>
-      </div>
-    </section>
-          <div className="mb-80">
+          <motion.section
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
             <p>
               Welcome to Postogon, where your online persona is no longer lost in a tangled web of context collapse. We understand the importance of privacy, authentic interactions and user-driven experiences. Say goodbye to unwanted scrutiny and embrace ethical connectivity.
               .<br />Pretty cool.
             </p>
-          </div>
+          </motion.section>
           <div className="footer">
             <Footer />
           </div>
-        </motion.section>
-
+        </motion.div>
       </motion.div>
     </>
   );
