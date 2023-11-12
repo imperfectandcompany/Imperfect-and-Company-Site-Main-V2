@@ -71,6 +71,10 @@ body {
   position: relative;
   background: #000;
   top: 50vh;  
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0; /* Start with 0 opacity */
+  transform: translateY(50px); /* Start slightly below its final position */
 }
 
 .footer{ 
