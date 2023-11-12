@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     position: relative; /* Set to relative to position children absolutely within it */
-    height: 100vh;
+    height: 60vh;
     font-family: 'Poppins', sans-serif; /* Assuming you're importing this font elsewhere */
     background-color: var(--c-background);
     overflow: hidden; /* Ensure nothing spills out of the splash container */
