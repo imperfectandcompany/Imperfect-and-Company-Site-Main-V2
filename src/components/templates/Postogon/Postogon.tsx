@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import "./Postogon.css"; // Import your Contact-specific CSS file
 import Header from "components/organisms/Header/Header";
 import Footer from "components/organisms/Footer/Footer";
+import Splash from "./Splash";
+
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -103,12 +106,20 @@ function Postogon() {
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
+            className=""
+          >
+            <Splash />
+          </motion.section>           
+          <motion.section
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
           >
             <p>
               Welcome to Postogon, where your online persona is no longer lost in a tangled web of context collapse. We understand the importance of privacy, authentic interactions and user-driven experiences. Say goodbye to unwanted scrutiny and embrace ethical connectivity.
               .<br />Pretty cool.
             </p>
-          </motion.section>
+          </motion.section>                 
           <div className="footer">
             <Footer />
           </div>

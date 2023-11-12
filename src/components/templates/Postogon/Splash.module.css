@@ -1,0 +1,54 @@
+/* Splash.module.css */
+
+.splash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Set to relative to position children absolutely within it */
+    height: 100vh;
+    font-family: 'Poppins', sans-serif; /* Assuming you're importing this font elsewhere */
+    background-color: var(--c-background);
+    overflow: hidden; /* Ensure nothing spills out of the splash container */
+  }
+  
+  .splashBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .circle {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    border: 1px solid var(--c-ring);
+    height: 120px;
+    width: 120px;
+    transform: translate(-50%, -50%);
+  }
+  
+  .splash h1 {
+    position: relative;
+    font-size: 3.5vw;
+    color: var(--c-primary);
+    z-index: 2;
+  }
+  
+  .spanSecondary {
+    color: var(--c-secondary);
+  }
+  
+  /* Define your colors */
+  :root {
+    --c-secondary: hsl(0 100% 50%);
+    --c-ring: rgba(239,68,68,1);
+    --c-background: #000;
+    --c-primary: #fff;
+  }
+  
