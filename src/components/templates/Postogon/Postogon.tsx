@@ -13,6 +13,18 @@ const containerVariants = {
   visible: { opacity: 1, transition: { duration: 1 } },
 };
 
+const raisingTextVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.3, // Adjust as needed
+    },
+  },
+};
+
 
 function Postogon() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -87,9 +99,14 @@ function Postogon() {
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="hero container text-center mx-auto justify-center items-center">
-            <p ref={pTagRef} className="">
-              Currently Raising
-            </p>
+            <motion.div
+              className="raising-text hidden"
+              variants={raisingTextVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span layout>Open for raising</motion.span>
+            </motion.div>
             <h1>
               <span ref={firstSpanRef}>Coming Soon</span>
               <span ref={secondSpanRef}>Postogon</span>

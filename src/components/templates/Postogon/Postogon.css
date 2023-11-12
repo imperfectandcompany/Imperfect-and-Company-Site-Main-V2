@@ -31,8 +31,9 @@ body {
 .postogon-hero p {
   font-size: clamp(14px, 1.25vw, 18px);
   /* This is just an example; you need to adjust it based on your actual requirements */
-  color: white;
+  color: black;
 }
+
 
 .postogon-hero h1 span:first-of-type {
   /* Position "All-new" over "Postogon" */
