@@ -4,11 +4,31 @@ import { motion } from "framer-motion";
 import "./Postogon.css"; // Import your Contact-specific CSS file
 import Header from "components/organisms/Header/Header";
 import Footer from "components/organisms/Footer/Footer";
+import rocket from "../../images/rocket.svg";
+import phoneFeed from "../../images/phoneFeed.svg";
+import unity from "../../images/unity.svg";
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 1 } },
 };
+
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // delay between each child animation
+    }
+  }
+}
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 }
+}
 
 
 function Postogon() {
@@ -62,7 +82,7 @@ function Postogon() {
     // Attach the event listener
     window.addEventListener('scroll', handleScroll);
 
-    
+
 
     // Clean up the event listener
     return () => {
@@ -102,20 +122,30 @@ function Postogon() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-              <section>
-      <div className="section__content">
-        <svg>
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
-           Redefining Social Media
-          </text>
-        </svg>
-      </div>
-    </section>
-          <div className="mb-80">
+          <section>
+            <div className="section__content">
+              <svg>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+                  Redefining Social Media
+                </text>
+              </svg>
+            </div>
+          </section>
+          <div className="mb-80 p-10">
             <p>
               Welcome to Postogon, where your online persona is no longer lost in a tangled web of context collapse. We understand the importance of privacy, authentic interactions and user-driven experiences. Say goodbye to unwanted scrutiny and embrace ethical connectivity.
               .<br />Pretty cool.
             </p>
+            <motion.div
+              className="flex gap-10 flex-wrap-responsive mt-10"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
+              <InfoCard image={rocket} textNumber={1} titleText={"Pilot Markets"} />
+              <InfoCard image={phoneFeed} textNumber={2} titleText={"Unique Feeds"} />
+              <InfoCard image={unity} textNumber={3} titleText={"Unified Platform"} />
+            </motion.div>
           </div>
           <div className="footer">
             <Footer />
@@ -127,4 +157,18 @@ function Postogon() {
   );
 }
 
+const InfoCard = ({ image, textNumber, titleText }: { image: string, textNumber: number, titleText: string }) => {
+  return (
+    <motion.div
+      variants={item}
+      className="rounded-md bg-red-800 flex flex-col items-center h-48 justify-evenly p-5 info-card"
+    >
+      <div className="bg-white rounded-full p-2 info-card-div">
+        <img className="info-card-image" alt={'info-img'}src={image} />
+      </div>
+      <div className="text-xl font-bold">{textNumber}</div>
+      <div className="text-lg">{titleText}</div>
+    </motion.div>
+  )
+}
 export default Postogon;
