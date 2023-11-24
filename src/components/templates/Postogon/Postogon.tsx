@@ -145,7 +145,22 @@ function Postogon() {
             className=""
           >
             <Splash />
-          </motion.section>           
+          </motion.section>  
+<motion.section
+className="postogon-card bg-[#f8f5f5] flex justify-center items-center min-h-screen text-[#242e4c]">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" version="1.1">
+  <circle cx="500" cy="500" r="400" stroke="black" fill="none"/>
+  <circle cx="500" cy="500" r="250" stroke="black" fill="none"/>
+  <circle cx="500" cy="500" r="100" stroke="black" fill="none"/>
+  <text x="500" y="150" fill="black">Public Eye</text>
+  <text x="500" y="350" fill="black">Feed 1, Barrier To Entry</text>
+  <text x="500" y="550" fill="black">Feed 2, Contacts Only</text>
+  <line x1="500" y1="180" x2="500" y2="300" stroke="black"/>
+  <line x1="500" y1="380" x2="500" y2="450" stroke="black"/>
+  <line x1="500" y1="580" x2="500" y2="600" stroke="black"/>
+</svg>
+</motion.section>          
+
             <motion.div
               className="flex gap-10 flex-wrap-responsive mt-10"
               variants={container}
