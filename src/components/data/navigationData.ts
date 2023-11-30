@@ -15,15 +15,16 @@ interface Link {
       title: 'Projects',
       links: [
         { name: 'Postogon', path: 'projects/postogon' },
-        { name: 'Imperfect Private', path: 'projects/imperfectgamers' },
+        // TODO: Add back when complete
+        // { name: 'Imperfect Private', path: 'projects/imperfectgamers' },
       ],
     },
     {
       title: 'Company',
       links: [
         { name: 'About', path: '/about' },
-        { name: 'Team', path: '/team' },
-        { name: 'Contact', path: '/contact' },
+        // TODO: Add back when complete
+        // { name: 'Contact', path: '/contact' },
       ],
     },
     {
