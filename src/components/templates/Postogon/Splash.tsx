@@ -48,6 +48,7 @@ const Splash: React.FC = () => {
 
 
     return (
+        
         <section className={styles.splash}>
 <h1>
                 The web is{' '}

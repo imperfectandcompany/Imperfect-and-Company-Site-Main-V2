@@ -3,6 +3,8 @@
 .splash {
     display: flex;
     align-items: center;
+    margin:auto;
+    text-align: center;
     justify-content: center;
     position: relative; /* Set to relative to position children absolutely within it */
     height: 60vh;
@@ -13,7 +15,7 @@
   
   .splashBg {
     position: absolute;
-    top: 0;
+    top: -15px;
     left: 0;
     height: 100%;
     width: 100%;
@@ -52,3 +54,24 @@
     --c-primary: #fff;
   }
   
+
+@media screen and (max-width:768px) {
+  .circle {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    border: 1px solid var(--c-ring);
+    height: 70px;
+    width: 70px;
+    transform: translate(-50%, -50%);
+  }
+
+  .splash h1 {
+    position: relative;
+    font-size: 6vw;
+    color: var(--c-primary);
+    z-index: 2;
+  }
+}
