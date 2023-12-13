@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css"; // Import the CSS for styling
 import NavigationDesktop from "components/molecules/Navigation/NavigationDesktop";
-import NavigationMobile from "../../molecules/Navigation/NavigationMobile";
 
 function Header({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean, setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>> }): React.JSX.Element {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,7 +63,7 @@ function Header({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean, setIsMenuO
     <header className={`header md:pt-2 md:pb-2 ${isScrolled ? isMenuOpen ? "sticky-background " : "sticky-background" : ""}`}>
       <div className="content-header">
         {isDesktop ? <NavigationDesktop isOpen={isMenuOpen} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/> : 
-        <NavigationMobile isOpen={isMenuOpen} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/>
+        <NavigationDesktop isOpen={isMenuOpen} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/>
         }
       </div>
     </header>

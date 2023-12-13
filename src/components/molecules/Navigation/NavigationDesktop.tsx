@@ -1,8 +1,11 @@
 import React, { Suspense } from "react";
 import "./NavigationDesktop.css"; // Import the CSS for styling
+import "./NavigationMobile.css"; // Import the CSS for styling
+
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import useNavigationData from "components/hooks/useNavigationData";
+import MobileMenuContact from "../MobileMenuContact/MobileMenuContact";
 
 interface NavigationProps {
     isOpen: boolean;
@@ -48,7 +51,7 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
     // Consider a function that renders categories for the desktop version
     const renderDesktopMenu = () => (
         <>
-            <div className="flex justify-between items-center ">
+            <div className="flex justify-between items-center">
                 <motion.div className="items-center hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
                     <a href="/" className='flex space-x-6 ml-6'>
                         <div className="logo">
@@ -89,15 +92,13 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
                     </div>
                 </a>
             </motion.li>
-            {sections.map((section) => (
-                <>
-                    {section.links.map(link => (
-                        <>
-                            {renderLink(link)}
-                        </>
-                    ))}
-                </>
-            ))}
+            <motion.li
+            whileHover={{ scale: 0.99 }}
+            whileTap={{ scale: 1.0 }}
+        >
+            <MobileMenuContact/>
+</motion.li>
+
         </>
     );
 
