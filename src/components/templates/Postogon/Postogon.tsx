@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import "./Postogon.css";
 import Header from "components/organisms/Header/Header";
 import Footer from "components/organisms/Footer/Footer";
 import rocket from "../../images/rocket.svg";
@@ -83,7 +84,7 @@ function Postogon() {
     const clientHeight = document.documentElement.clientHeight;
     const scrollTop = document.documentElement.scrollTop;
     const scrollPercentage = 100 * (scrollTop / (scrollHeight - clientHeight));
-    
+
     // Use TypeScript's type assertion to ensure the element has a style property
     const containerElement = document.querySelector("#container") as HTMLElement | null;
     if (containerElement) {
@@ -97,7 +98,7 @@ function Postogon() {
       const splashSection = document.querySelector('.splash') as HTMLElement;
       return splashSection ? splashSection.offsetHeight + splashSection.offsetTop : 0;
     };
-  
+
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -196,17 +197,17 @@ function Postogon() {
               className=""
             >
               <Splash />
-            </motion.section>        
+            </motion.section>
             <motion.section
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-
+              className="hidden"
               onScroll={onScroll} id="container" style={{ '--percentage': '5%' } as React.CSSProperties}
             >
-      <span className="reveal-text my-64 pb-64">But here's the issue...</span>
-    </motion.section>        
-            <motion.section
+              <span className="reveal-text my-64 pb-64">But here's the issue...</span>
+            </motion.section>
+            {5 + 5 == 4 ? <>    <motion.section
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
@@ -214,23 +215,29 @@ function Postogon() {
               className="problems-list"
 
               onScroll={onScroll} id="container" style={{ '--percentage': '5%' } as React.CSSProperties}
-    >    
-{problems.map((problem, index) => (
-  <motion.div
-    key={index}
-    variants={itemVariants}
-    className={`problem-item ${showProblems ? 'visible' : ''}`}
-  >
-    {problem}
-  </motion.div>
-))}
-    </motion.section>        
-
-
-
-
-
-            <motion.section className="postogon-card bg-red-500 items-center text-[#242e4c] hidden">
+            >
+              {problems.map((problem, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className={`problem-item ${showProblems ? 'visible' : ''}`}
+                >
+                  {problem}
+                </motion.div>
+              ))}
+            </motion.section>
+              <motion.div
+                className="flex gap-10 flex-wrap-responsive mt-10"
+                variants={container}
+                initial="hidden"
+                animate="show"
+              >
+                <InfoCard image={rocket} textNumber={1} titleText={"Pilot Markets"} />
+                <InfoCard image={phoneFeed} textNumber={2} titleText={"Unique Feeds"} />
+                <InfoCard image={unity} textNumber={3} titleText={"Unified Platform"} />
+              </motion.div>
+            </> : <></>}
+            <motion.section className="postogon-card text-white hidden md:block items-center md:text-[#242e4c] ">
               <div className="flex">
                 <div className="text-container w-1/2 z-10">
                   <div className="text-group public-eye">
@@ -277,16 +284,7 @@ function Postogon() {
                 </div>
               </div>
             </motion.section>
-            <motion.div
-              className="flex gap-10 flex-wrap-responsive mt-10"
-              variants={container}
-              initial="hidden"
-              animate="show"
-            >
-              <InfoCard image={rocket} textNumber={1} titleText={"Pilot Markets"} />
-              <InfoCard image={phoneFeed} textNumber={2} titleText={"Unique Feeds"} />
-              <InfoCard image={unity} textNumber={3} titleText={"Unified Platform"} />
-            </motion.div>
+
           </div>
           <div className="footer">
             <Footer />

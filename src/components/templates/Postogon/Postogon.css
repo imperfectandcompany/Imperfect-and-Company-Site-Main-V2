@@ -1,10 +1,6 @@
   
 @import url('https://rsms.me/inter/inter.css');
 
-html,
-body {
-  background: #000;
-}
 
 #container {
   position: sticky;
@@ -133,11 +129,7 @@ h1 {
   color:black!important;
 }
 
-.flex {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-}
+
 .info-card-div {
   width: 20%;
 }
@@ -231,7 +223,11 @@ font-weight: bold;
     color: black;
   }
   
-  
+  .text-container{
+    display: flex;
+    flex-direction: column;
+    color:white;
+  }
   
   .postogon-hero h1 span:first-of-type {
     /* Position "All-new" over "Postogon" */
