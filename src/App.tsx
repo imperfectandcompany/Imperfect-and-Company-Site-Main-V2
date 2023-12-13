@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import HomePage from './components/templates/HomePage/HomePage';
@@ -20,7 +20,21 @@ function NoiseEffect() {
 }
 
 
+function loadSnowStormScript(callback: Function) {
+  const script = document.createElement('script');
+  script.src = process.env.PUBLIC_URL + '/snowstorm.js';
+  script.onload = () => callback();
+  document.head.appendChild(script);
+}
+
 function App() {
+  useEffect(() => {
+    loadSnowStormScript(() => {
+      if (window.snowStorm) {
+        window.snowStorm.start();
+      }
+    });
+  }, []);
   return (
     <Router>
       <div className="App">

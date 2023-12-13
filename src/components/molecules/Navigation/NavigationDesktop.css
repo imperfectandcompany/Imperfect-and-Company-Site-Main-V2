@@ -55,6 +55,19 @@ nav ul {
     padding: 0;
 }
 
+
+
+nav .desktop-nav li {
+    margin-right: 0;
+    
+}
+
+.nav-container.active .desktop-nav {
+    height: 100vh;
+}
+
+
+
 nav .desktop-nav li {
     text-decoration: none;
     font-size: 14px;
@@ -207,35 +220,7 @@ nav p {
         height: 44px;
     }
 
-    x
-    nav .desktop-nav li {
-        margin-right: 0;
-        
-    }
-
-    .nav-container.active .desktop-nav {
-        height: 100vh;
-    }
-
- 
-
-    nav .desktop-nav li.active {
-        border-bottom: none;
-    }
-
-    /* Add styles for the active link */
-    .nav-container.active .desktop-nav li.active a {
-        font-weight: 100;
-        border-bottom: 1px solid white;
-    }
-
-    /* Add styles for the active link:hover */
-    .nav-container.active .desktop-nav li.active a:hover {
-        opacity: 0.50 !important;
-        font-weight: 200;
-        transition: all 700ms ease;
-        border-bottom: 1px solid white;
-    }
+  
 
     .nav-container.active .desktop-nav li a {
         transform: translateY(0);
@@ -361,37 +346,31 @@ nav p {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    padding-left: 0;
-    padding-right: 0;
     display: none;
     position: absolute;
-    min-width: 160px; /* Or as per content size */
+    right: 0;
+    background-color: rgba(50, 50, 50, 0.7); /* Darker translucent background */
+    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 0;
 }
 
 
-/* Ensure the dropdown link fills its container for the hover effect */
 .dropdown-content a {
-    padding-left: 0;
-    padding-right: 0;    
+    color: white;
     text-decoration: none;
     display: block;
-    width: 100%;
+    padding: 12px 16px;
 }
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: transparent; /* No background color */
-    color: white; /* Dropdown text color */
-    padding: 16px; /* Dropdown button padding */
-  font-size: 0.8rem; /* Smaller font size */
-  font-weight: 300; /* Lighter font weight, if needed */
-      border: none; /* Remove borders */
-    cursor: pointer; /* Cursor to signify it's clickable */
-    width: 100%; /* Full width to fill the container */
-    text-align: left; /* Align text to the left */
+    background: none;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
   }
 
   /* The container <div> - needed to position the dropdown content */
@@ -400,10 +379,11 @@ nav p {
     display: inline-block;
   }
   
-  .dropdown:hover .dropdown-content { 
+  .dropdown:hover .dropdown-content {
     display: block;
-    animation: fadeIn 0.3s ease-in-out;
-  }
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
 
   .dropdown:hover .dropdown-content .link:hover { 
     opacity: 25%;
@@ -414,7 +394,6 @@ nav p {
 .dropdown:hover .dropbtn {
     background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
     backdrop-filter: blur(5px); /* Blur effect for the background */
-    border-radius: 5px; /* Rounded corners for the hover effect */
 }
 
     .nav-container .desktop-nav a {

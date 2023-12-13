@@ -1,0 +1,75 @@
+// Team.scss
+@import 'globals'; // Import variables, mixins, etc.
+
+.team-page {
+  // Example styles for your team page
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.tile-wrapper {
+  // Example styles for the tile wrapper
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tile-link {
+  // Styles for the tile links
+  background: none;
+  border: 1px solid #fff;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover, &:focus {
+    transform: translateY(-5px);
+    border-color: #1CE783;
+  }
+}
+
+.tile-details {
+  // Styles for the tile details
+  position: relative;
+  padding: 10px;
+  color: #fff;
+}
+
+.detail-wrapper {
+  // Styles for the detail wrapper when inactive
+  position: absolute;
+  top: 0;
+  left: 100vw; // Start off-screen
+  width: 80vw;
+  height: 100%;
+  background-color: gray;
+  padding: 110px 15px 40px;
+  color: #fff;
+  transition: left 550ms ease-in-out;
+  
+  &.display-details {
+    // Use the animations you defined
+    left: 20vw; // Move into view
+  }
+}
+
+@keyframes detail-slide-in {
+  0% { left: 100vw; }
+  100% { left: 20vw; }
+}
+
+// Repeat similar keyframe animations for detail-slide-out, tile-slide-in, and tile-slide-out...
+
+// Include media queries using SCSS syntax
+@include breakpoint($end-small) {
+  .tile-wrapper {
+    justify-content: space-between;
+  }
+}
+
+// You could define more styles below...

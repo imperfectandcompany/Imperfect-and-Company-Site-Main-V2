@@ -2,7 +2,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.c-footer {
+  width:100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: #fff;
+  border-top: 1px solid #e3e3e3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 
+.c-footer__contact a {
+  line-height: 30px;
+}
+
+.c-footer .c-container {
+  /* justify-content: space-between; */
+  padding: 0 100px;
+}
+
+/* For example, you can define styles for .content-contact and .ft-h elements */
+
+@media screen and (max-width: 768px) {
+  .c-footer__contact {
+    width: 100%; /* Make it full width on smaller screens */
+    flex-direction: column; /* Stack elements vertically */
+  }
+
+  .c-footer .c-container {
+    padding: 0 0px;
+  }
+  
+}
+
+
+
+.imperfect-absolute {
+  bottom: 10px;  /* You can adjust this to change distance from the bottom */
+  right: 20px; /* Adjust the right position if it's too close to the edge */
+  opacity: 0.15;
+  font-weight: 600;
+  letter-spacing: -1px;
+  cursor: pointer;
+  font-size: text-xl;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -28,7 +72,11 @@
 }
 
 body {
-  background: #f1f1f1;
+  background: #000;
+  margin: 0px;
+  min-height: 100%;
+  height: auto;
+
   font-family: 'Poppins', sans-serif;
   /* overflow: hidden; for custom scrolling later */
   font-size: 16px;
@@ -37,6 +85,9 @@ body {
 html {
   overflow-x:hidden;
   height: 100%;
+  min-height: 100%;
+  position: relative;
+
 }
 
 /*RESPONSIVE*/

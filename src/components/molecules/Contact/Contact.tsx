@@ -94,7 +94,7 @@ function Contact() {
               </div>
               {/* Desktop view - Non-collapsible */}
               <div className="hidden md:block">
-                <h4 className="text-sm font-bold">{section.title}</h4>
+                <h4 className="text-sm font-bold select-none">{section.title}</h4>
                 <ul className="list-none mt-2 space-y-1">
                   {section.links.map((link) => (
                     <li key={link.name}>

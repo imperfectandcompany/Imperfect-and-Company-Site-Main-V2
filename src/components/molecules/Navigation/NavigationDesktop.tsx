@@ -36,10 +36,10 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
             whileTap={{ scale: 1.0 }}
             className={`${currentPage === link.path ? "active" : ""}`}
         >
-    <a href={link.path} className="link">
+            <a href={link.path} className="link">
 
                 {link.name}
-        </a>
+            </a>
 
         </motion.li>
     );
@@ -48,26 +48,30 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
     // Consider a function that renders categories for the desktop version
     const renderDesktopMenu = () => (
         <>
-            <motion.li className="items-center hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
-                <a href="/" className='flex space-x-6 ml-6'>
-                    <div className="logo">
-                        <Suspense fallback={<SkeletonLoader />}>
-                            <LogoComponent />
-                        </Suspense>
-                    </div>
-                    <div>
-                        Imperfect and Company
-                    </div>
-                </a>
-            </motion.li>
-            {sections.map((section) => (
-                <div key={section.title} className="dropdown">
-                    <button className="dropbtn">{section.title}</button>
-                    <div className="dropdown-content">
-                        {section.links.map(renderLink)}
-                    </div>
-                </div>
-            ))}
+            <div className="flex justify-between items-center ">
+                <motion.div className="items-center hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
+                    <a href="/" className='flex space-x-6 ml-6'>
+                        <div className="logo">
+                            <Suspense fallback={<SkeletonLoader />}>
+                                <LogoComponent />
+                            </Suspense>
+                        </div>
+                        <div>
+                            Imperfect and Company
+                        </div>
+                    </a>
+                </motion.div>
+                <ul className="items-center hidden md:flex md:space-x-6">
+                    {sections.map((section) => (
+                        <li key={section.title} className="dropdown">
+                            <button className="dropbtn">{section.title}</button>
+                            <div className="dropdown-content">
+                                {section.links.map(renderLink)}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </>
     );
 
@@ -87,9 +91,9 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
             </motion.li>
             {sections.map((section) => (
                 <>
-                        {section.links.map(link => (
+                    {section.links.map(link => (
                         <>
-                        {renderLink(link)}
+                            {renderLink(link)}
                         </>
                     ))}
                 </>
@@ -129,11 +133,9 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
                 <ul className="mobile-nav">
                     {renderMobileCategories()}
                 </ul>
-                <ul className="desktop-nav items-center hidden md:flex">
-                   {renderDesktopMenu()}
-                </ul>
+                {renderDesktopMenu()}
                 <ul className="desktop-nav items-center md:hidden">
-                   {renderMobileMenu()}
+                    {renderMobileMenu()}
                 </ul>
             </nav>
         </motion.div>

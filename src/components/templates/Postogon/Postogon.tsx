@@ -1,7 +1,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import "./Postogon.css"; // Import your Contact-specific CSS file
 import Header from "components/organisms/Header/Header";
 import Footer from "components/organisms/Footer/Footer";
 import rocket from "../../images/rocket.svg";
@@ -29,6 +28,13 @@ const raisingTextVariants = {
   },
 };
 
+const problems = [
+  "Social media warped our online behavior.",
+  "Authenticity is gone.",
+  "Algorithm based predictions.",
+  "Profits over ethics.",
+  "We cannot escape."
+];
 
 const container = {
   hidden: { opacity: 0 },
@@ -45,9 +51,24 @@ const item = {
   show: { opacity: 1, y: 0 }
 }
 
+const listVariants = {
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.3 }
+  },
+  hidden: { opacity: 0 }
+};
+
+const itemVariants = {
+  visible: { y: 0, opacity: 1 },
+  hidden: { y: 20, opacity: 0 }
+};
+
 
 function Postogon() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showProblems, setShowProblems] = useState(false);
+
 
   // Reference to the hero element
   const heroRef = useRef<HTMLDivElement>(null);
@@ -72,8 +93,22 @@ function Postogon() {
 
   useEffect(() => {
 
+    const calculateTriggerPoint = () => {
+      const splashSection = document.querySelector('.splash') as HTMLElement;
+      return splashSection ? splashSection.offsetHeight + splashSection.offsetTop : 0;
+    };
+  
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
+      const triggerPointForProblemsList = calculateTriggerPoint();
+
+
+      if (window.scrollY > triggerPointForProblemsList) {
+        setShowProblems(true);
+      } else {
+        setShowProblems(false);
+      }
 
       // Update hero element style
       if (heroRef.current) {
@@ -175,20 +210,20 @@ function Postogon() {
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
+              variants={listVariants}
+              className="problems-list"
 
               onScroll={onScroll} id="container" style={{ '--percentage': '5%' } as React.CSSProperties}
     >    
-<div className="section text-white">
-  <div className="container">
-    <h1 className="problems">Social media warped our online behavior.</h1>
-    <h1 className="problems">Authenticity is gone.</h1>
-    <h1 className="problems">Algorithm based predictions.</h1>
-    <h1 className="problems">Prrofits over ethics.</h1>
-    <h1 className="problems">We cannot escape.</h1>
-    <div className="end-spacing"></div>
-  </div>
-</div>
-<div className="section"></div>
+{problems.map((problem, index) => (
+  <motion.div
+    key={index}
+    variants={itemVariants}
+    className={`problem-item ${showProblems ? 'visible' : ''}`}
+  >
+    {problem}
+  </motion.div>
+))}
     </motion.section>        
 
 

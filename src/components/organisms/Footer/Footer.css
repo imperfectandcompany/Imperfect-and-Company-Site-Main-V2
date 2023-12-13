@@ -1,8 +1,12 @@
 .c-footer {
-  padding-top: 37px;
-  padding-bottom: 40px;
+  width:100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background: #fff;
   border-top: 1px solid #e3e3e3;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .c-footer__contact a {
@@ -10,7 +14,7 @@
 }
 
 .c-footer .c-container {
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 0 100px;
 }
 

@@ -1,366 +1,103 @@
-/* Team.css */
-.team-page {
-position: relative;
-min-height: 100vh;
-height: 100%;
-margin:0px;
-display:flex;
-flex-direction: column;
+.founder-name {
+  color: #fff;
+  display: block;
+  /* Ensure it's on its own line */
+
 }
 
-/* Styling for the Hero section */
-.team-page .hero {
-  width: 100%;
-  align-items: center;
-  flex: 1 0 auto;
-  align-items: center;
-  padding: 0 20px 2.5rem;
+.founder-title {
+  font-style: normal;
+  /* No italic */
+  display: block;
+  /* Space between the title and the location */
 }
 
-.team-page .footer {
-  position: absolute;
-  width: 100%;
-  clear:both;
-  padding: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;            /* Footer height */
-  flex-shrink: 0;
+.founder-location {
+  display: block;
+  /* Same size as the title */
+  color: #aaa;
+  /* Space between the location and the description */
 }
 
-.team-page .hero .container h1 {
-  color: white;
-  font-size: calc(53px + (4500vw - 46080px)/896);
-  letter-spacing: calc(-2px + (-200vw - -2048px)/896);
+#detail-wrapper{
+  font-family: 'Open Sans', sans-serif;
 }
 
-.team-page .hero .container p {
-  font-size: clamp(14px, 1.25vw, 18px);
-  /* This is just an example; you need to adjust it based on your actual requirements */
-  color: white;
-}
-
-
-.team-container {
-  font-family: 'Poppins', sans-serif; /* Modern and geometric font */
-  line-height: 1.6;
-  color: #333;
-  padding: 20px;
-}
-
-/* Hero section */
-.hero {
-  text-align: center;
-}
-
-
-
-/* Tabs */
-.tabs {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.tabs li {
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  cursor: pointer;
-  background-color: #060606; /* Slightly different background for content area */
-  transition: transform 0.3s ease;
-}
-
-.tabs li:hover {
+.profile-card:hover {
+  border-color: #b91010;
   transform: translateY(-5px);
 }
 
-.tabs li button {
-  all: unset;
-  cursor: pointer;
-  opacity: 0.8;
-  color: white;
+.profile-card {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  /* Set a fixed height for the card */
+  border: 1px solid white;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+
 }
 
-.tabs li.__active button {
-  color: #fff;
-  
-  background-color: #007bff;
-}
-
-.tabs li button.__active,
-.tabs li button:hover {
-opacity:25%;
-}
-
-.tabs li:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
-  opacity:25%;
-}
-
-
-/* Tabs content */
-.tabs-content {
-  background-color: #060606; /* Slightly different background for content area */
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  padding: 30px;
-}
-
-/* Founder Image and Text */
-.founder-image {
+.profile-card img {
   width: 100%;
-  max-width: 200px;
-  margin-bottom: 20px;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-.founder-text h4 {
-  font-size: 1.5rem;
-  color: #333;
+.profile-card:hover img {
+  transform: scale(1.05);
+  filter: grayscale(100%);
 }
 
-.founder-text p {
-  color: #666;
-  font-size: 1rem;
+.team-container {
+  position: relative;
+    text-align: center;
+    max-width: 880px;
 }
 
-/* Founder Details */
-.founder-detail h3 {
-  font-weight: bold;
-  margin-top: 20px;
+.team-container h1 {
+  text-rendering: geometricPrecision;
+  text-align: center;
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  font-size: 3rem;
+  letter-spacing: normal;
+  line-height: 1em;
 }
 
-.founder-detail h4 {
-  margin-top: 10px;
+.team-container p {
+  text-rendering: geometricPrecision;
+  text-align: center;
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  margin: 2em auto 2.5em;
+  line-height: 1.6;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
-.founder-detail p {
-  margin-top: 5px;
+.related-btn{
+ border:white 1px solid;
+  text-decoration: none;
+  transition: all 0.3s ease; 
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .tabs {
-    grid-template-columns: 1fr;
-  }
-
-  .tabs-content,
-  .founder-image {
-    padding: 20px;
-    max-width: 100%;
-  }
+.related-btn:hover{
+  background-color: #b91010;
+  color: #fff;
 }
 
-  
-  /* Style for the navigation tabs */
-  .phases-tabs {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
-    justify-content: flex-start; /* Align tabs to the start */
-    color: white;
-    gap: 10px; /* Add gap between tabs */
-    margin: 0;
-    padding: 0;
-}
-  
-.phases-tabs li {
-    padding: 10px;
-    background-color: #272639; /* Light grey background for tabs */
-    border-radius: 5px; /* Rounded corners for tabs */
-    transition: background-color 0.3s; /* Smooth background color transition */
-}
-  
-
-.phases-tabs li button {
-    background: none;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    transition: color 0.3s; /* Smooth color transition */
+.related-btn:focus{
+  outline: none;
 }
 
-  .phases-tabs li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .phases-tabs li button.__active,
-  .phases-tabs li button:hover {
-      color: #007bff; /* Highlight color */
-  }
-  
 
-  .phases-tabs li button {
-    background: none;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    outline: none;
-    /* Add any additional styling for your buttons here */
-  }
-
-.phases-tabs li button.__active,
-.phases-tabs li button:hover {
-    color: #007bff; /* Highlight color */
-    background-color: #07283f; /* Light blue background for active/hover state */
+.related-btn:disabled:hover{
+  background-color: #b91010;
+  color: #fff;
 }
-
-    .phases-tabs li button:focus {
-        outline: none;
-    }
-
-    .phases-tabs li button:hover {
-        color: #007bff; /* Exaple active link color */
-        border-bottom: 2px solid #007bff;
-    }
-  
-/* Style for the content area */
-.phases-container {
-    padding: 20px;
-    background-color: #060606; /* Slightly different background for content area */
-    border-radius: 5px; /* Rounded corners for content area */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-  /* Style for each tab content */
-  .phases-tabbox {
-    display: none; /* Initially hide all */
-  }
-  
-  .phases-tabbox.__active {
-    display: block; /* Show active tab content */
-  }
-  
-/* Image and description container within each tab */
-.phases-content .phases-img {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 20px; /* Add space between image and text */
-}
-  
-
-  .founder-image {
-    width: 100%;
-    max-width: 250px;
-    float: left;
-    margin-right: 25px;
-}
-
-.founder-text h4,
-.founder-text p {
-    margin: 0;
-}
-
-/* Module titles and content styling */
-.founder-detail h3 {
-    margin-top: 20px;
-    color: #333;
-}
-
-.founder-detail h4 {
-    margin-top: 10px;
-    color: #555;
-}
-
-.founder-detail p {
-    color: #666;
-    margin-top: 5px;
-}
-
-  .phases-content .phases-img img {
-    /* Adjustments to the image are already inline styles in your component */
-  }
-  
-  .phases-content .phases-img h4,
-  .phases-content .phases-img p {
-    margin-left: 20px; /* Spacing between image and text */
-  }
-  
-  /* Module titles and content styling */
-  .phases-content h3 {
-    color: white; /* Example color for module titles */
-    margin-top: 20px;
-  }
-  
-  .phases-content h4 {
-    color: #555; /* Example color for module subtitles */
-    margin-top: 10px;
-  }
-  
-  .phases-content p {
-    color: white; /* Example color for text */
-    margin-top: 5px;
-  }
-  
-hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, #f0f0f0, #8c8c8c, #f0f0f0);
-}
-  
-  /* Responsive adjustments can be made below */
-  @media (max-width: 768px) {
-    .phases-tabs {
-      flex-direction: column;
-      justify-content: center; /* Center tabs on smaller screens */
-    }
-    
-    .phases-content .phases-img {
-      flex-direction: column;
-      text-align: center;
-    }
-    
-    .phases-content .phases-img h4,
-    .phases-content .phases-img p {
-      margin-left: 0;
-      margin-top: 10px;
-    }
-
-    .founder-image {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
-
-  }
-  
-  @media only screen and (max-width: 768px) {
-    /* Adjustments for landscape phones and smaller tablets */
-    .tabs {
-      grid-template-columns: 1fr; /* Stack tabs on smaller screens */
-    }
-    
-    .tabs li {
-      padding: 10px;
-    }
-  
-    .founder-detail h3,
-    .founder-detail h4 {
-      font-size: smaller;
-    }
-  }
-
-
-  @media only screen and (max-width: 480px) {
-    /* Adjustments for portrait phones */
-    .hero {
-    }
-  
-    .tabs-content {
-      padding: 20px;
-    }
-    
-    /* Make sure the text doesn't overflow on small screens */
-    .founder-text h4,
-    .founder-text p {
-      word-wrap: break-word;
-    }
-  }
-  
-
-  

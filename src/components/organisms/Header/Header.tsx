@@ -38,7 +38,7 @@ function Header({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean, setIsMenuO
     }
 
     const handleScrollUp = () => {
-      const currentScrollPos = window.pageYOffset;
+      const currentScrollPos = window.scrollY;
       const visible = prevScrollPos > currentScrollPos;
       setPrevScrollPos(currentScrollPos);
       setVisible(visible);

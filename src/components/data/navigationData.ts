@@ -23,6 +23,7 @@ interface Link {
       title: 'Company',
       links: [
         { name: 'About', path: '/about' },
+        { name: 'Team', path: '/team' }
         // TODO: Add back when complete
         // { name: 'Contact', path: '/contact' },
       ],

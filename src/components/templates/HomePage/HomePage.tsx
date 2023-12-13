@@ -34,7 +34,7 @@ function HomePage() {
             initial={{ opacity: 1, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="container space-y-4">
+            <div className="text-white space-y-4">
               {/** 
             <img
                 src={`${iconPath}umbrella_top.svg`}
@@ -42,7 +42,7 @@ function HomePage() {
                 alt="umbrella"
             />
                */}
-              <h1 className="border-solid  bord">Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
+              <h1 className="border-solid ">Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
               <p>To Foster Authentic, User-Driven Connectivity</p>
             </div>
           </motion.section>
