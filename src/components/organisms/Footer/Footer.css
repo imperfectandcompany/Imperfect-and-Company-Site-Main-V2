@@ -32,14 +32,9 @@
   
 }
 
-
-
 .imperfect-absolute {
-  bottom: 10px;  /* You can adjust this to change distance from the bottom */
-  right: 20px; /* Adjust the right position if it's too close to the edge */
   opacity: 0.15;
   font-weight: 600;
   letter-spacing: -1px;
-  cursor: pointer;
-  font-size: text-xl;
 }
+

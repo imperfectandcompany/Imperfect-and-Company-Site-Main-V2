@@ -15,8 +15,7 @@ interface Link {
       title: 'Projects',
       links: [
         { name: 'Postogon', path: '/projects/postogon' },
-        // TODO: Add back when complete
-        // { name: 'Imperfect Private', path: 'projects/imperfectgamers' },
+        { name: 'Imperfect Gamers', path: '/projects/imperfect-gamers' },
       ],
     },
     {

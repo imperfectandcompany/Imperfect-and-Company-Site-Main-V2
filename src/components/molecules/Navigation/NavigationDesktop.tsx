@@ -3,7 +3,7 @@ import "./NavigationDesktop.css"; // Import the CSS for styling
 import "./NavigationMobile.css"; // Import the CSS for styling
 
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useNavigationData from "components/hooks/useNavigationData";
 import MobileMenuContact from "../MobileMenuContact/MobileMenuContact";
 
@@ -39,10 +39,9 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
             whileTap={{ scale: 1.0 }}
             className={`${currentPage === link.path ? "active" : ""}`}
         >
-            <a href={link.path} className="link">
-
+            <Link to={link.path} className="link">
                 {link.name}
-            </a>
+            </Link>
 
         </motion.li>
     );
@@ -53,7 +52,7 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
         <>
             <div className="flex justify-between items-center">
                 <motion.div className="items-center hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
-                    <a href="/" className='flex space-x-6 ml-6'>
+                    <Link to="/" className='flex space-x-6 ml-6'>
                         <div className="logo">
                             <Suspense fallback={<SkeletonLoader />}>
                                 <LogoComponent />
@@ -62,7 +61,7 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
                         <div>
                             Imperfect and Company
                         </div>
-                    </a>
+                    </Link>
                 </motion.div>
                 <ul className="items-center hidden md:flex md:space-x-6">
                     {sections.map((section) => (
@@ -81,7 +80,7 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
     const renderMobileMenu = () => (
         <>
             <motion.li className="items-center hidden text-white select-none cursor-pointer justify-center animate__animated animate__backInRight md:block" whileTap={{ scale: 0.9 }} >
-                <a href="/" className='flex space-x-6 ml-6'>
+                <Link to="/" className='flex space-x-6 ml-6'>
                     <div className="logo">
                         <Suspense fallback={<SkeletonLoader />}>
                             <LogoComponent />
@@ -90,7 +89,7 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
                     <div>
                         Imperfect and Company
                     </div>
-                </a>
+                </Link>
             </motion.li>
             <motion.li
             whileHover={{ scale: 0.99 }}
@@ -107,7 +106,7 @@ function NavigationDesktop({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Navig
         <ul className="mobile-nav">
             <li className="flex items-center justify-between w-full">
                 <div className="items-center text-white flex justify-center animate__animated animate__backInRight">
-                    <p><a href="/">Imperfect and Company</a></p>
+                    <p><Link to="/">Imperfect and Company</Link></p>
                 </div>
                 <div className="menu-icon-container items-center animate__animated animate__slideInDown animate__slow" onClick={() => toggleMenu()} >
                     <div className="menu-icon">

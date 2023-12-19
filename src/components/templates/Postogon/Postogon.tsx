@@ -207,7 +207,7 @@ function Postogon() {
             >
               <span className="reveal-text my-64 pb-64">But here's the issue...</span>
             </motion.section>
-            {5 + 5 == 4 ? <>    <motion.section
+            {5 + 5 === 4 ? <>    <motion.section
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}

@@ -78,9 +78,9 @@ function MobileMenuContact() {
                       {section.links.map((link) => (
                         <motion.div key={link.name} className="block cursor-pointer">
                           {/^https?:\/\//.test(link.path) || /^mailto:/.test(link.path) ? (
-                            <a href={link.path} className="hover:underline w-full inline-block text-black">
+                            <Link to={link.path} className="hover:underline w-full inline-block text-black">
                               {link.name}
-                            </a>
+                              </Link>
                           ) : (
                             <Link to={link.path} className="hover:underline w-full inline-block text-black">
                               {link.name}

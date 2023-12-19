@@ -1,0 +1,73 @@
+.image-feature-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(182, 0, 0, 0.85));
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.image-carousel {
+  display: flex;
+  gap: 6px;
+  /* Slightly more space between images */
+  overflow: hidden;
+  flex-grow: 1;
+  position: relative;
+}
+
+.image-carousel img {
+  transition: all 400ms ease;
+  height: 200px;
+  padding: 0px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  box-shadow: 0 0 30px -16px #000;
+  object-fit: cover;
+  position: relative;
+}
+
+.image-carousel img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 3px;
+}
+
+.image-carousel img.inactive {
+  width: 5%;
+  border-color: #ff3d11;
+  background-color: #512626;
+  opacity: 0.35;
+  cursor: pointer;
+}
+
+.image-carousel img.active {
+  width: 15%;
+  border-color: #ff3d11;
+  background-color: #143f2c;
+  opacity: 1;
+}
+
+.image-carousel img.inactive:hover {
+  opacity: 0.6;
+}
+
+.featuring-section {
+  flex-shrink: 0;
+}
+
+.featuring-text h2 {
+  color: #ffffff;
+  /* Text color for "FEATURING" */
+}
+
+.featuring-text p {
+  color: #f7a3a3;
+  /* Light green color for the name */
+}

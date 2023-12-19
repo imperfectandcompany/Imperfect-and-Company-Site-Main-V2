@@ -137,9 +137,8 @@ function NavigationMobile({ isOpen, isScrolled, isMenuOpen, toggleMenu }: Naviga
                     <ul className="mobile-nav">
                         <li className="flex items-center justify-between w-full">
                             <div className="items-center text-white flex justify-center animate__animated animate__backInRight">
-                                <p><a href="/">Imperfect and Company</a></p>
+                                <p><Link to="/">Imperfect and Company</Link></p>
                             </div>
-
                             <div className="menu-icon-container items-center animate__animated animate__slideInDown animate__slow" onClick={() => toggleMenu()} >
                                 <div className="menu-icon">
                                     <span className="line-1"></span>

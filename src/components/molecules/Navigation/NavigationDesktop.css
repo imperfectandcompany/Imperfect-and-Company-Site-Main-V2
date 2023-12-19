@@ -182,8 +182,6 @@ nav p {
     display: none;
 }
 
-/* Media Queries */
-
 @media (max-width: 1100px) {
     .nav-container nav {
         width: 100%;
@@ -192,14 +190,7 @@ nav p {
 }
 
 @media (max-width: 768px) {
-
-    .dropdown-content {
-        right: auto; /* Reset right positioning */
-        left: 50%; /* Center it */
-        transform: translateX(-50%); /* Adjust translation to align properly */
-      }
-
-      .nav-container .desktop-nav {
+    .nav-container .desktop-nav {
         flex-direction: column;
         top: 0;
         left: 0;
@@ -220,7 +211,57 @@ nav p {
         height: 44px;
     }
 
-  
+    nav .desktop-nav li {
+        margin-right: 0;
+    }
+
+    .nav-container.active .desktop-nav {
+        height: 100vh;
+    }
+
+    .nav-container .desktop-nav li {
+        width: 100%;
+        padding: 0 24px;
+    }
+
+    .nav-container .desktop-nav li.mobilemenunav {
+        width: 100%;
+        padding: 0 24px;
+    }
+
+    .nav-container .desktop-nav li:nth-of-type(2) {
+        margin-top: 90px;
+    }
+
+    .nav-container .desktop-nav li a {
+        padding: 16px 0;
+        display: inline-block;
+        border-bottom: 1px solid #616161;
+        width: 100%;
+        font-size: 20px;
+        font-weight: 100;
+        opacity: 0;
+        transform: translateY(-80px);
+        transition: all 700ms ease;
+    }
+
+    nav .desktop-nav li.active {
+        border-bottom: none;
+    }
+
+    /* Add styles for the active link */
+    .nav-container.active .desktop-nav li.active a {
+        font-weight: 100;
+        border-bottom: 1px solid white;
+    }
+
+    /* Add styles for the active link:hover */
+    .nav-container.active .desktop-nav li.active a:hover {
+        opacity: 0.50 !important;
+        font-weight: 200;
+        transition: all 700ms ease;
+        border-bottom: 1px solid white;
+    }
 
     .nav-container.active .desktop-nav li a {
         transform: translateY(0);
@@ -228,6 +269,7 @@ nav p {
     }
 
     /* Mobile Nav */
+
     nav .mobile-nav {
         display: inline-block;
         display: flex;
@@ -236,8 +278,6 @@ nav p {
         list-style: none;
         transition: all;
     }
-
-
 
     nav .menu-icon-container {
         min-width: 44px;

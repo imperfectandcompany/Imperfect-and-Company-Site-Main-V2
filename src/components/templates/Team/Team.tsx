@@ -84,7 +84,7 @@ const Team: React.FC = () => {
             name: 'Daiyaan Ijaz',
             title: 'Founder & Visionary',
             location: 'United States',
-            description: 'Daiyaan has been at the forefront of platform innovation from a young age, with notable ventures like TorvaPlawks, KitPvpCC.com, and Imperfect Gamers, and a Bitcoin exchange service launched in 2014.',
+            description: 'Daiyaan has been at the forefront of platform innovation from a young age, with notable ventures like TorvaPlawks, KitPvPCC.com, and Imperfect Gamers, and a Bitcoin exchange service launched in 2014.',
             image: daiyaan,
             altText: 'Daiyaan Ijaz, founder standing in front of a colorful abstract painting, wearing a brown jacket and smiling.',
             details: [
@@ -152,7 +152,7 @@ const Team: React.FC = () => {
                     </motion.div>) : (<motion.div id="detail-wrapper" className="grid grid-cols-1 md:grid-cols-2 gap-4 p-12">
                         {foundersData.map((founder, index) => (
                             //onClick={() => handleFounderClick(founder.id)} cursor-pointer until we have a detail view fully implemented
-                            <div key={index} className="profile-card mb-10  border-2 border-white transition-transform duration-300 ease-in-out hover:border-red-500 hover:-translate-y-1">
+                            <div key={index} className="profile-card mb-10 border-2 border-white transition-transform duration-300 ease-in-out hover:border-red-500 hover:-translate-y-1">
                                 <img src={founder.image} alt={`${founder.name} profile`} className="w-full h-auto object-cover" />
                                 <div className="p-4 bg-gradient-to-t from-black to-transparent absolute bottom-0 w-full">
                                     <h2 className="founder-name text-4xl font-bold mb-2">{founder.name}</h2>
