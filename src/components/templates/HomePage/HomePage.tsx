@@ -70,8 +70,8 @@ function HomePage() {
                   </CTAButton>
                   <Input as="input" type="text" placeholder="Enter text here" />
 <Input as="textarea" placeholder="Enter text here" />
-<Input as="radio" name="option" value="option1" />
-<Input as="radio" name="option" value="option2" />
+<Input as="radio" name="option" value="option1" label="Option 1" />
+<Input as="radio" name="option" value="option2" label="Option 2" />
 
                 </div>
               </motion.div>

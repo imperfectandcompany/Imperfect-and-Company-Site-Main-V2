@@ -15,12 +15,14 @@ type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
     warning?: boolean;
   };
 
-type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
+  type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
     as: 'radio';
     className?: string;
     error?: boolean;
     warning?: boolean;
+    label?: string;
   };
+  
 
 const InputComponent: React.FC<InputProps> = ({ className, error, warning, ...props }) => {
   const classNames = `${styles.input} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
@@ -32,9 +34,14 @@ const InputComponent: React.FC<InputProps> = ({ className, error, warning, ...pr
     return <textarea className={classNames} {...props} />;
   };
   
-  const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, ...props }) => {
+  const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label, ...props }) => {
     const classNames = `${styles.radio} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
-    return <input type="radio" className={classNames} {...props} />;
+    return (
+      <label>
+        <input type="radio" className={classNames} {...props} />
+        {label}
+      </label>
+    );
   };
 
 type Props = InputProps | TextareaProps | RadioProps;
