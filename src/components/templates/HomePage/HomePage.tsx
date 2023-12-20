@@ -4,6 +4,7 @@ import Footer from "../../organisms/Footer/Footer";
 import styles from './HomePage.module.css';
 import { motion } from "framer-motion";
 import CTAButton from "components/molecules/CtaButton";
+import Input from "components/atoms/Input";
 
 //const iconPath = process.env.PUBLIC_URL + '/icons/';
 
@@ -56,10 +57,22 @@ function HomePage() {
                   <p className="ft-h">Sign Up<br /> For our newsletter</p>
                   <p className="subtitle">Drop your
                     email here</p>
-                  <CTAButton link="mailto:hello@imperfectandcompany.com">
+                    <CTAButton link="/path" size="small">Small Button</CTAButton>
+<CTAButton link="/path" size="large">Large Button</CTAButton>
+<CTAButton link="/path" size="fullWidth">Full Width Button</CTAButton>
+
+                    <CTAButton link="/path" size="small">Small Button</CTAButton>
+<CTAButton link="/path" size="large">Large Button</CTAButton>
+<CTAButton link="/path" size="fullWidth">Full Width Button</CTAButton>
+                  <CTAButton size="medium" link="mailto:hello@imperfectandcompany.com">
                     <span className="strong">hello</span>
                     <span>@imperfectandcompany.com</span>
                   </CTAButton>
+                  <Input as="input" type="text" placeholder="Enter text here" />
+<Input as="textarea" placeholder="Enter text here" />
+<Input as="radio" name="option" value="option1" />
+<Input as="radio" name="option" value="option2" />
+
                 </div>
               </motion.div>
             </div>

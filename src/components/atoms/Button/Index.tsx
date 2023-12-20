@@ -5,19 +5,21 @@ import LinkButton from '../LinkButton';
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   as?: 'button';
   className?: string;
+  size?: 'small' | 'medium' | 'large' | 'fullWidth';
 };
 
 type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   as: 'a';
   className?: string;
+  size?: 'small' | 'medium' | 'large' | 'fullWidth';
 };
 
-const ButtonComponent: React.FC<ButtonProps> = ({ className, ...props }) => {
-  return <button className={`${styles.button} ${className}`} {...props} />;
+const ButtonComponent: React.FC<ButtonProps> = ({ className, size, ...props }) => {
+  return <button className={`${styles.button} ${size ? styles[size] : ''} ${className}`} {...props} />;
 };
 
-const AnchorComponent: React.FC<AnchorProps> = ({ className, href, ...props }) => {
-  return <LinkButton to={href || '/'} className={`${styles.button} ${className}`} {...props} />;
+const AnchorComponent: React.FC<AnchorProps> = ({ className, href, size, ...props }) => {
+  return <LinkButton to={href || '/'} className={`${styles.button} ${size ? styles[size] : ''} ${className}`} {...props} />;
 };
 
 type Props = ButtonProps | AnchorProps;
