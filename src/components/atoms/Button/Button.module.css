@@ -1,0 +1,8 @@
+.button {
+  /* Add your base button styles here */
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px 20px;
+  text-decoration: none;
+}

@@ -76,7 +76,7 @@ function ImperfectGamers() {
               {influencers.map((influencer, index) => (
                 <>
                 <img
-                  key={index}
+                  key={index+1}
                   src={influencer.image}
                   alt={influencer.alt}
                   className={`rounded-lg  ${selectedInfluencer?.name === influencer.name ? 'active' : 'inactive'}`}

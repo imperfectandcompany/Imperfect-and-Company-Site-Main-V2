@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
-import "./HomePage.css";
+import styles from './HomePage.module.css';
 import { motion } from "framer-motion";
+import CTAButton from "components/molecules/CtaButton";
 
 //const iconPath = process.env.PUBLIC_URL + '/icons/';
 
@@ -15,71 +16,57 @@ function HomePage() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const container = `items-center justify-center transition-bg ${styles.dark}`;
+  const mainDiv = `${styles.main}`;
+  const heroSection = `${styles.hero} `;
+  const jumboOverlay = `absolute -inset-[10px] opacity-40 ${styles.jumbo}`;
+
   return (
     <>
-      <div className="items-center justify-center transition-bg dark">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="jumbo absolute -inset-[10px] opacity-40"></div>
+      <div className={container}>
+        <div className=" inset-0 overflow-hidden">
+          <div className={jumboOverlay}></div>
         </div>
-        <motion.div
-          className="main"
+        <motion.main
+          className={mainDiv}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           exit="hidden"
         >
-            <Header  isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           <motion.section
-            className="hero"
+            className={heroSection}
             initial={{ opacity: 1, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="text-white space-y-4">
-              {/** 
-            <img
-                src={`${iconPath}umbrella_top.svg`}
-                className="h-4 mb-2 md:h-12 "
-                alt="umbrella"
-            />
-               */}
-              <h1 className="border-solid ">Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
-              <p>To Foster Authentic, User-Driven Connectivity</p>
+            <div>
+              <div className="text-white space-y-4">
+                <h1 className="">Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
+                <p>To Foster Authentic, User-Driven Connectivity</p>
+              </div>
+
+
+
+              <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="contact bxdehite flex">
+                <div className="container content-contact">
+                  <p className="ft-h">Sign Up<br /> For our newsletter</p>
+                  <p className="subtitle">Drop your
+                    email here</p>
+                  <CTAButton link="mailto:hello@imperfectandcompany.com">
+                    <span className="strong">hello</span>
+                    <span>@imperfectandcompany.com</span>
+                  </CTAButton>
+                </div>
+              </motion.div>
             </div>
           </motion.section>
-
-          {/**
-           Keep main page very simple for now. Only render finished parts.
-        <motion.section
-        className="about"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <div className="container about-content">
-          <h2>About Us</h2>
-          <p>
-            At Imperfect and Company, we're dedicated to crafting digital solutions that prioritize user needs and ethical practices. Our mission is to foster authentic, user-driven connectivity in the digital world.
-          </p>
-        </div>
-        </motion.section>
-
-  <div className="contact">
-    <div className="container content-contact">
-      <p className="ft-h">Sign Up<br/> For our newsletter</p>
-      <p className="subtitle">Drop your 
-email here</p>
-      <a href="mailto:hello@imperfectandcompany.com" className="c-btn">
-        <span className="strong">hello</span>
-        <span>@imperfectandcompany.com</span>
-      </a>
-    </div>
-  </div>*/}
-
-
-
-          {/* Add more sections below */}
           <Footer />
-        </motion.div>
-      </div>
+        </motion.main>
+      </div >
 
     </>
   );

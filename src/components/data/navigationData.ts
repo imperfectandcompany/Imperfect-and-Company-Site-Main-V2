@@ -22,13 +22,13 @@ interface Link {
       title: 'Company',
       links: [
         { name: 'About', path: '/about' },
-        { name: 'Team', path: '/team' }
+        { name: 'Team', path: '/team' },
         // TODO: Add back when complete
-        // { name: 'Contact', path: '/contact' },
+        { name: 'Contact', path: '/contact' }
       ],
     },
     {
-      title: 'Contact Us',
+      title: 'Email Us',
       links: [
         { name: 'hello@imperfectandcompany.com', path: 'mailto:hello@imperfectandcompany.com' },
       ],
