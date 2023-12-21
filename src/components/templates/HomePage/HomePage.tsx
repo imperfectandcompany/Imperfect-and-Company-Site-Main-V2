@@ -73,6 +73,12 @@ function HomePage() {
 <Input as="radio" name="option" value="option1" label="Option 1" />
 <Input as="radio" name="option" value="option2" label="Option 2" />
 
+<Input 
+  radios={[
+    { as: 'radio', name: 'option', value: 'option1', label: 'Option 1' }
+  ]}
+/>
+
                 </div>
               </motion.div>
             </div>

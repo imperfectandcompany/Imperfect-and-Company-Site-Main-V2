@@ -23,6 +23,11 @@ type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
 };
 
+type RadioGroupProps = {
+  radios: RadioProps[];
+};
+
+
 const InputComponent: React.FC<InputProps> = ({ className, error, warning, ...props }) => {
   const classNames = `${styles.input} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
   return <input className={classNames} {...props} />;
@@ -32,6 +37,7 @@ const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning
   const classNames = `${styles.input} ${styles.textarea} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
   return <textarea className={classNames} {...props} />;
 };
+
 
 const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label, ...props }) => {
   const [isChecked, setIsChecked] = React.useState(false);
@@ -53,18 +59,40 @@ const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label
   );
 };
 
-type Props = InputProps | TextareaProps | RadioProps;
+
+const RadioGroup: React.FC<RadioGroupProps> = ({ radios }) => {
+  return (
+    <>
+      {radios.map((radios, index) => (
+        <RadioComponent key={index} {...radios} />
+      ))}
+    </>
+  );
+};
+
+
+type AsProps = InputProps | TextareaProps | RadioProps;
+type Props = AsProps | RadioGroupProps;
+
 
 const Input: React.FC<Props> = (props) => {
-  if (props.as === 'textarea') {
-    return <TextInputComponent {...props} />;
+  if ('as' in props) {
+    if (props.as === 'textarea') {
+      return <TextInputComponent {...(props as TextareaProps)} />;
+    }
+
+    if (props.as === 'radio') {
+      return <RadioComponent {...(props as RadioProps)} />;
+    }
+
+    return <InputComponent {...(props as InputProps)} />;
   }
 
-  if (props.as === 'radio') {
-    return <RadioComponent {...props} />;
+  if ('radios' in props) {
+    return <RadioGroup radios={props.radios} />;
   }
 
-  return <InputComponent {...props} />;
+  return null;
 };
 
 export default Input;
