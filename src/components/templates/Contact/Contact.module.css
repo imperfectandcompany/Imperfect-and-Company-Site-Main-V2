@@ -1,0 +1,20 @@
+.main {
+  /* Add your main styles here */
+}
+
+.hero {
+  /* Add your hero styles here */
+}
+
+.contact {
+  /* Add your contact styles here */
+}
+
+.container {
+  /* Add your container styles here */
+}
+
+.form-footer {
+  flex-direction: column;
+  justify-content: flex-end;
+}

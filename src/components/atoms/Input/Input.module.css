@@ -37,6 +37,8 @@
   transition: background 0.3s ease;
   display: flex;
   align-items:center;
+  margin-bottom: 20px; /* Added to create more space between form groups */
+
 }
 
 .radio::before {
