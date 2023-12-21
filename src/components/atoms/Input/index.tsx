@@ -27,6 +27,14 @@ type RadioGroupProps = {
   radios: RadioProps[];
 };
 
+type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
+  as: 'checkbox';
+  className?: string;
+  error?: boolean;
+  warning?: boolean;
+  label?: string;
+};
+
 
 const InputComponent: React.FC<InputProps> = ({ className, error, warning, ...props }) => {
   const classNames = `${styles.input} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
@@ -70,8 +78,29 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ radios }) => {
   );
 };
 
+const CheckboxComponent: React.FC<CheckboxProps> = ({ className, error, warning, label, ...props }) => {
+  const [isChecked, setIsChecked] = React.useState(false);
+  const [isClicked, setIsClicked] = React.useState(false);
+  const classNames = `${styles.checkbox} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
+  const labelClassNames = `${styles.checkboxLabel} ${isChecked ? styles.defaultCursor : ''} ${isClicked ? styles.clickedCursor : ''}`;
+  const id = Math.random().toString(); // generate a unique id
 
-type AsProps = InputProps | TextareaProps | RadioProps;
+  const handleInputChange = () => {
+    setIsClicked(true);
+    setIsChecked(prev => !prev); // toggle isChecked state
+    setTimeout(() => setIsClicked(false), 200); // reset isClicked state after 200ms
+  };
+
+  return (
+    <div className={styles.checkboxContainer}>
+      <input type="checkbox" id={id} className={classNames} checked={isChecked} onChange={handleInputChange} {...props} />
+      <label htmlFor={id} className={labelClassNames}>{label}</label>
+    </div>
+  );
+};
+
+
+type AsProps = InputProps | TextareaProps | RadioProps | CheckboxProps;
 type Props = AsProps | RadioGroupProps;
 
 
@@ -83,6 +112,10 @@ const Input: React.FC<Props> = (props) => {
 
     if (props.as === 'radio') {
       return <RadioComponent {...(props as RadioProps)} />;
+    }
+
+    if (props.as === 'checkbox') {
+      return <CheckboxComponent {...(props as CheckboxProps)} />;
     }
 
     return <InputComponent {...(props as InputProps)} />;
