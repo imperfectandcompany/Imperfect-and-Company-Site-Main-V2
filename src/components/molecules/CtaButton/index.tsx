@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import styles from './CtaButton.module.css';
-import Button from 'components/atoms/Button/Index';
+import Button from '../../../components/atoms/Button/Index';
+
 
 type CTAButtonProps = {
   link: string;

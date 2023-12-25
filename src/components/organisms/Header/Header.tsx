@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css"; // Import the CSS for styling
-import NavigationDesktop from "components/molecules/Navigation/NavigationDesktop";
+import NavigationDesktop from "../../../components/molecules/Navigation/NavigationDesktop";
 
 function Header({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean, setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>> }): React.JSX.Element {
   const [isScrolled, setIsScrolled] = useState(false);

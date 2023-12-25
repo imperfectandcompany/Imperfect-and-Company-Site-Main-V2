@@ -1,58 +1,60 @@
-const path = require('path');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-module.exports = {
-  mode: 'development', // Change to 'production' when ready for production builds
-  // Entry point is now pointing to a TypeScript file
-  entry: './src/index.ts', 
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: ['.ts', '.tsx', '.js', '.json'],
-  },
+module.exports = (env, argv) => ({
+  entry: './src/index.tsx',
+  mode: argv.mode === 'development' ? 'development' : 'production',
+  devtool: 'inline-source-map',
   module: {
     rules: [
-      // TypeScript loader
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
       {
         test: /\.tsx?$/,
-        
-        use: ['ts-loader',
-        'babel-loader'
-      ],
-      exclude: /node_modules/,
-    },
-      // CSS loader
+        use: ['ts-loader'],
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
         ],
       },
     ],
   },
+  resolve: {
+    extensions: [".*", ".js", ".jsx", ".ts", ".tsx"],
+  },
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, "build"),
+  },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
     }),
-    // Uncomment below for bundle analysis
-    // new BundleAnalyzerPlugin(),
+    new MiniCssExtractPlugin(),
   ],
-  optimization: {
-    minimizer: [
-      new TerserPlugin(),
-      new OptimizeCSSAssetsPlugin(),
-    ],
-  },
-  devtool: 'inline-source-map', // Source maps support
-  devServer: {
-    contentBase: './dist',
-    hot: true,
-  },
-};
+});

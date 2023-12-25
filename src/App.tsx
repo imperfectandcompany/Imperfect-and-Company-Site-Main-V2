@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import HomePage from './components/templates/HomePage/HomePage';
-import AboutUs from 'components/templates/AboutUs/AboutUs';
-import Contact from 'components/templates/Contact/Contact';
+import AboutUs from './components/templates/AboutUs/AboutUs';
+import Contact from './components/templates/Contact/Contact';
 import { motion } from 'framer-motion';
-import Postogon from 'components/templates/Postogon/Postogon';
-import Team from 'components/templates/Team/Team';
-import ImperfectGamers from 'components/templates/ImperfectGamers/ImperfectGamers';
+import Postogon from './components/templates/Postogon/Postogon';
+import Team from './components/templates/Team/Team';
+import ImperfectGamers from './components/templates/ImperfectGamers/ImperfectGamers';
 
 function NoiseEffect() {
   return (
@@ -47,7 +47,6 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/projects/postogon" element={<Postogon  />} />
         <Route path="/projects/imperfect-gamers" element={<ImperfectGamers  />} />
-
         </Routes>
       </div>
     </Router>

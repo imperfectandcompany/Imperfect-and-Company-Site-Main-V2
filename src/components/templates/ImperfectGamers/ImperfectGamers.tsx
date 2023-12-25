@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
-import "./ImperfectGamers.css"; // Import your AboutUs-specific CSS file
+import "./ImperfectGamers.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 

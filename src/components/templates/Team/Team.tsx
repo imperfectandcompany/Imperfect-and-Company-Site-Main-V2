@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Team.css';
 import { motion } from 'framer-motion';
-import Header from 'components/organisms/Header/Header';
-import Footer from 'components/organisms/Footer/Footer';
+import Header from '../../organisms/Header/Header';
+import Footer from '../../organisms/Footer/Footer';
 import jhan from "../../images/team/jhan_araja.png";
 import daiyaan from "../../images/team/daiyaan_ijaz.png";
 import { Link } from 'react-router-dom';

@@ -2,8 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "./Postogon.css";
-import Header from "components/organisms/Header/Header";
-import Footer from "components/organisms/Footer/Footer";
+import Header from "../../organisms/Header/Header";
+import Footer from "../../organisms/Footer/Footer";
 import rocket from "../../images/rocket.svg";
 import phoneFeed from "../../images/phoneFeed.svg";
 import unity from "../../images/unity.svg";

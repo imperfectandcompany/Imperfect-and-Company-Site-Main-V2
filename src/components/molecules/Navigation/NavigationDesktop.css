@@ -331,9 +331,7 @@ nav p {
         width: 20px;
         margin: 0px 0px 0px 0px;
         background: #fff;
-        transition-property: transform, top;
-        transition-delay: 0ms, 160ms;
-        transition-duration: 200ms;
+        transition: transform 200ms 0ms, top 200ms 160ms;
     }
 
     nav .menu-icon .line-1 {
@@ -352,17 +350,13 @@ nav p {
     .nav-container.active nav .menu-icon-container .menu-icon .line-1 {
         top: 0;
         transform: rotateZ(45deg);
-        transition-property: top, transform;
-        transition-delay: 0ms, 160ms;
-        transition-duration: 200ms;
+        transition: top 200ms 0ms, transform 200ms 160ms;
     }
-
+    
     .nav-container.active nav .menu-icon-container .menu-icon .line-2 {
         top: 0;
         transform: rotateZ(-45deg);
-        transition-property: top, transform;
-        transition-delay: 0ms, 160ms;
-        transition-duration: 200ms;
+        transition: top 200ms 0ms, transform 200ms 160ms;
     }
 
     /* Nav Animation */

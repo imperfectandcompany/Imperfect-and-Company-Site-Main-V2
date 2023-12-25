@@ -4,7 +4,7 @@ import "./NavigationMobile.css"; // Import the CSS for styling
 
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import useNavigationData from "components/hooks/useNavigationData";
+import useNavigationData from "../../../components/hooks/useNavigationData";
 import MobileMenuContact from "../MobileMenuContact/MobileMenuContact";
 
 interface NavigationProps {

@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import useNavigationData from "components/hooks/useNavigationData";
+import useNavigationData from "../../../components/hooks/useNavigationData";
 
 function useMeasureHeight(ref: React.RefObject<HTMLElement>) {
   const [height, setHeight] = useState<number>(0);

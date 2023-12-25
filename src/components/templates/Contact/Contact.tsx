@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Header from "components/organisms/Header/Header";
-import Footer from "components/organisms/Footer/Footer";
-import Input from "components/atoms/Input";
-import CTAButton from "components/molecules/CtaButton";
+import Header from "../../organisms/Header/Header";
+import Footer from "../../organisms/Footer/Footer";
+import Input from "../../atoms/Input";
+import CTAButton from "../../molecules/CtaButton";
 
 const containerVariants = {
   hidden: { opacity: 0 },
