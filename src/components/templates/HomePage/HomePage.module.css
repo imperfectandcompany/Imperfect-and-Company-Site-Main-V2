@@ -11,8 +11,7 @@
 
 .main .hero h1 {
   color: white;
-  font-size: 4em;
-  letter-spacing: calc(-2px + (-200vw - -2048px)/896);
+  font-size: clamp(4.5rem, 4vw, 3rem) !important;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -23,7 +22,9 @@
 
 /* Simplify designs for mobile devices */
 @media screen and (max-width: 768px) {
-  .main .hero {}
+  .main .hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem) !important; 
+  }
 }
 
 @keyframes jumbo {

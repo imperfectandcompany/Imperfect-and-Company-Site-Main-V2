@@ -125,13 +125,14 @@
   transition: background 0.3s ease;
   display: flex;
   align-items:center;
+  box-sizing: content-box;
 }
 
 .checkbox::before {
   content: '';
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 0px;
+  left: 0px;
   width: 20px;
   height: 20px;
   border: 2px solid #333;

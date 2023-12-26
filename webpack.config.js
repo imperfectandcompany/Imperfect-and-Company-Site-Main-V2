@@ -1,11 +1,23 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssNano = require('cssnano');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+const glob = require('glob-all');
 
 module.exports = (env, argv) => ({
   entry: './src/index.tsx',
   mode: argv.mode === 'development' ? 'development' : 'production',
   devtool: 'inline-source-map',
+  performance: {
+    hints: "warning", // enum
+    maxAssetSize: 200000, // int (in bytes),
+    maxEntrypointSize: 400000, // int (in bytes)
+    assetFilter: function(assetFilename) {
+      // Function predicate that provides asset filenames
+      return assetFilename.endsWith('.css') || assetFilename.endsWith('.tsx') || assetFilename.endsWith('.ts');
+    }
+  },
   module: {
     rules: [
       {
@@ -39,7 +51,22 @@ module.exports = (env, argv) => ({
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    'postcss-preset-env',
+                    {
+                      // Options
+                    },
+                  ],
+                  argv.mode === 'production' ? CssNano() : false,
+                ].filter(Boolean),
+              },
+            },
+          },
         ],
       },
     ],
@@ -56,5 +83,10 @@ module.exports = (env, argv) => ({
       template: "./public/index.html",
     }),
     new MiniCssExtractPlugin(),
-  ],
+    argv.mode === 'production'
+      ? new PurgeCSSPlugin({
+          paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`,  { nodir: true }),
+        })
+      : false,
+  ].filter(Boolean),
 });

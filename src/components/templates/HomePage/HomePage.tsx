@@ -33,6 +33,9 @@ function HomePage() {
           exit="hidden"
         >
           <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          <React.Suspense fallback={ <div className="container content-contact">
+              <h1 className="text-2xl font-bold text-white mb-4">Loading</h1>
+              </div>}>
           <motion.section
             className={heroSection}
             initial={{ opacity: 1, y: -100 }}
@@ -43,11 +46,9 @@ function HomePage() {
                 <h1 className="">Continually Crafting<span><br />User-Centric</span><span><br />Ethical Digital Solutions</span></h1>
                 <p>To Foster Authentic, User-Driven Connectivity</p>
               </div>
-
-
-
             </div>
           </motion.section>
+          </React.Suspense>
           <Footer />
         </motion.main>
       </div >
