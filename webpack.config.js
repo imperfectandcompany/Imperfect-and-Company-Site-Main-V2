@@ -1,14 +1,17 @@
+const webpack = require('webpack');
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssNano = require('cssnano');
-const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
+
+
 const glob = require('glob-all');
 
 module.exports = (env, argv) => ({
   entry: './src/index.tsx',
+  devtool: argv.mode === 'development' ? 'inline-source-map' : false,
   mode: argv.mode === 'development' ? 'development' : 'production',
-  devtool: 'inline-source-map',
   performance: {
     hints: "warning", // enum
     maxAssetSize: 200000, // int (in bytes),
@@ -77,16 +80,30 @@ module.exports = (env, argv) => ({
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, "build"),
+    publicPath: 'https://demo.imperfectandcompany.com/'
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+      interpolate: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env.PUBLIC_URL': JSON.stringify('https://demo.imperfectandcompany.com')
     }),
     new MiniCssExtractPlugin(),
-    argv.mode === 'production'
-      ? new PurgeCSSPlugin({
-          paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`,  { nodir: true }),
-        })
-      : false,
+argv.mode === 'productiodddn'
+  ? new PurgeCSSPlugin({
+      paths: glob.sync([
+        `${path.join(__dirname, 'src')}/**/*`,
+        './node_modules/tailwindcss/**/*.js',
+      ],  { nodir: true }),
+      extractors: [
+        {
+          extractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+          extensions: ['html', 'jsx', 'js', 'ts', 'tsx'],
+        },
+      ],
+    })
+  : false,
   ].filter(Boolean),
 });
