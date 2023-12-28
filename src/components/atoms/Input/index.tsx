@@ -1,11 +1,12 @@
 import React, { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
 import styles from './Input.module.css';
 
-type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-  as?: 'input';
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  as?: 'input' | 'submit';
   className?: string;
   error?: boolean;
   warning?: boolean;
+  label?: string; 
 };
 
 type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
@@ -25,6 +26,7 @@ type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
 
 type RadioGroupProps = {
   radios: RadioProps[];
+  label?: string;
 };
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -36,9 +38,14 @@ type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 
-const InputComponent: React.FC<InputProps> = ({ className, error, warning, ...props }) => {
-  const classNames = `${styles.input} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
-  return <input className={classNames} {...props} />;
+const InputComponent: React.FC<InputProps> = ({ className, error, warning, label, ...props }) => {
+  const classNames = `${styles.input} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className} ${props.disabled ? styles.disabled : ''}`;
+  return (
+    <>
+{label && <label className={styles.label} htmlFor={props.id || props.name}>{label}</label>}
+      {props.as === 'submit' ? <input type="submit" value={props.value || 'Submit'} className={classNames} {...props} /> : <input className={classNames} {...props} />}
+    </>
+  );
 };
 
 const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning, ...props }) => {
@@ -67,14 +74,14 @@ const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label
   );
 };
 
-
-const RadioGroup: React.FC<RadioGroupProps> = ({ radios }) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({ radios, label }) => {
   return (
-    <>
-      {radios.map((radios, index) => (
-        <RadioComponent key={index} {...radios} />
+    <div>
+      {label && <label className={styles.radioGroupLabel}>{label}</label>}
+      {radios.map((radio, index) => (
+        <RadioComponent key={index} {...radio} />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -122,7 +129,9 @@ const Input: React.FC<Props> = (props) => {
   }
 
   if ('radios' in props) {
-    return <RadioGroup radios={props.radios} />;
+    return (
+      <RadioGroup radios={props.radios} label={props.label} />
+    );
   }
 
   return null;

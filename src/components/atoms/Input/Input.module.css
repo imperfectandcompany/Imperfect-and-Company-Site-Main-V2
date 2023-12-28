@@ -3,7 +3,7 @@
   margin-bottom: 20px; /* Added to create more space between form groups */
   border: 1px solid #333;
   font-size: 16px;
-  color: #333;
+  color: #999;
   background: transparent;
   outline: none;
   transition: box-shadow 0.3s ease;
@@ -11,6 +11,17 @@
   box-sizing: border-box;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.input::placeholder, .textarea::placeholder {
+  color: #333; /* Change this to any color you want for the placeholder color */
+}
+
+/* Input.module.css */
+.label {
+  color: #fff !important;
+  font-size: 1.2em;
+}
+
 .input.error, .textarea.error {
   border-color: #f44336;
   box-shadow: 0px 0px 5px #f44336;
@@ -24,12 +35,13 @@
   min-height: 100px;
   resize: vertical;
 }
+
 .radio {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
+  -webkit-appearance: checkbox !important;
+  -moz-appearance: checkbox !important;
+  appearance: checkbox !important;
+  width: 20px;
+  height: 20px;
   border: 2px solid #333;
   outline: none;
   position: relative;
@@ -37,17 +49,32 @@
   transition: background 0.3s ease;
   display: flex;
   align-items:center;
+  justify-content: center;
+  box-sizing: content-box;
   margin-bottom: 20px; /* Added to create more space between form groups */
+}
 
+.radio, .checkbox {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;  
+  position: relative;
+}
+
+.radio::after, .checkbox::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid #333;
+  background: #333;
+  /* ...other styles... */
 }
 
 .radio::before {
   content: '';
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
   height: 20px;
+  width: 20px;
   border: 2px solid #333;
   background: #333;
   transition: background 0.3s ease, border-color 0.3s ease;
@@ -58,9 +85,15 @@
   border-color: #333;
 }
 
+.radioGroupLabel {
+  color: #fff !important;
+  font-size: 1.2em;
+  margin-bottom: 6em;
+}
+
 .radioLabel {
   cursor: pointer;
-  color: white;
+  color: #9f9f9f; /* Change this to any color you want */
   margin-left: 10px;
   line-height: 24px;
 }
@@ -105,6 +138,7 @@
 
 .radio:checked + .radioLabel {
   cursor: default;
+  color: #999;
 }
 
 .defaultCursor {
@@ -113,9 +147,9 @@
 
 
 .checkbox {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  -webkit-appearance: none !important;;
+  -moz-appearance: none !important;;
+  appearance: none !important;;
   width: 24px;
   height: 24px;
   border: 2px solid #333;
@@ -133,8 +167,8 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border: 2px solid #333;
   background: #333;
   transition: background 0.3s ease, border-color 0.3s ease;
@@ -189,4 +223,55 @@
 
 .clickedCursor {
   cursor: pointer;
+}
+
+input[type="submit"] {
+  color: white; /* Change this to any color you want */
+  cursor: pointer;
+  border-color: white;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: white; /* This is just an example, change it to any color you want */
+}
+
+input[type="submit"]:disabled {
+  cursor: not-allowed;
+  border-color: #333;
+  color: #333;
+}
+
+
+/* Use the same font size for all elements */
+.input, .textarea, .label, .radioLabel, .checkboxLabel {
+  font-size: 16px;
+}
+
+/* Use the same margin-bottom for all elements */
+.input, .textarea, .radio, .checkbox {
+}
+
+/* Use the same color for all placeholders and labels */
+.input::placeholder, .textarea::placeholder, .label, .radioLabel, .checkboxLabel {
+  color: #333;
+}
+
+/* Use the same hover effect for all elements */
+.radio:hover::before, .checkbox:hover::before, input[type="submit"]:hover {
+  background: #666;
+  border-color: #666;
+}
+
+/* Use the same cursor style for all clickable elements */
+.radioLabel, .checkboxLabel, input[type="submit"] {
+  cursor: pointer;
+}
+
+/* Use the same responsive design for all elements */
+@media (max-width: 600px) {
+  .input, .textarea, .label, .radioLabel, .checkboxLabel {
+      padding: 8px;
+      font-size: 14px;
+ }
 }

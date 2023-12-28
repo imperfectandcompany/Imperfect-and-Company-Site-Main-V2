@@ -21,6 +21,21 @@
 }
 
 
+input[type="radio"], input[type="checkbox"] {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  position: relative;
+}
+
+input[type="radio"]::after, input[type="checkbox"]::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #333 !important;
+}
+
+
 @keyframes noise {
   0% {
     transform: translate3d(1%, -1%, 0);
