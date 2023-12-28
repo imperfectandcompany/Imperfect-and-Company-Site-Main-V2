@@ -1,6 +1,5 @@
 .input, .textarea {
   padding: 10px;
-  margin-bottom: 20px; /* Added to create more space between form groups */
   border: 1px solid #333;
   font-size: 16px;
   color: #999;
@@ -12,14 +11,19 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.input:focus, .textarea:focus {
+  border-color: #666; /* Change this to any color you want */
+  transition: border-color 0.3s ease;
+}
+
 .input::placeholder, .textarea::placeholder {
   color: #333; /* Change this to any color you want for the placeholder color */
 }
 
-/* Input.module.css */
 .label {
   color: #fff !important;
   font-size: 1.2em;
+  margin-bottom: 1em; /* Added */
 }
 
 .input.error, .textarea.error {
@@ -51,7 +55,11 @@
   align-items:center;
   justify-content: center;
   box-sizing: content-box;
-  margin-bottom: 20px; /* Added to create more space between form groups */
+  margin-bottom: 0.75em; /* Added to create more space between form groups */
+}
+
+.lastRadio {
+  margin-bottom: 0;
 }
 
 .radio, .checkbox {
@@ -81,14 +89,14 @@
 }
 
 .radio:checked::before {
-  background: white;
+  background: #999;
   border-color: #333;
 }
 
 .radioGroupLabel {
   color: #fff !important;
   font-size: 1.2em;
-  margin-bottom: 6em;
+  margin-bottom: 1em;
 }
 
 .radioLabel {
@@ -244,9 +252,10 @@ input[type="submit"]:disabled {
 
 
 /* Use the same font size for all elements */
-.input, .textarea, .label, .radioLabel, .checkboxLabel {
+.input, .textarea, .label, .radioLabel, .checkboxLabel, .radioGroupLabel {
   font-size: 16px;
 }
+
 
 /* Use the same margin-bottom for all elements */
 .input, .textarea, .radio, .checkbox {

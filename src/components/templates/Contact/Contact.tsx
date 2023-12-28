@@ -96,7 +96,7 @@ function Contact() {
                     { as: 'radio', value: 'other', label: 'Other', name: 'context', checked: formData.context === 'other', onChange: handleChange }
                   ]}
                 />
-                <Input as="textarea" name="message" value={formData.message} onChange={handleChange} placeholder="Your Message" />
+                <Input as="textarea" name="message" value={formData.message} onChange={handleChange} label="Your Message" placeholder="Do you know Joe Mama?" />
                 <div className="items-end flex flex-col space-y-2 mb-2">
                   <div>
                     <Input as="checkbox" name="agreement" checked={formData.agreement} onChange={handleChange} label="I agree to the terms of service" />

@@ -6,7 +6,7 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
   error?: boolean;
   warning?: boolean;
-  label?: string; 
+  label?: string;
 };
 
 type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
@@ -14,6 +14,7 @@ type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
   error?: boolean;
   warning?: boolean;
+  label?: string;
 };
 
 type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -22,6 +23,7 @@ type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: boolean;
   warning?: boolean;
   label?: string;
+  isLast?: boolean;
 };
 
 type RadioGroupProps = {
@@ -39,22 +41,30 @@ type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
 
 
 const InputComponent: React.FC<InputProps> = ({ className, error, warning, label, ...props }) => {
+  const id = props.id || props.name || Math.random().toString();
   const classNames = `${styles.input} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className} ${props.disabled ? styles.disabled : ''}`;
   return (
     <>
-{label && <label className={styles.label} htmlFor={props.id || props.name}>{label}</label>}
-      {props.as === 'submit' ? <input type="submit" value={props.value || 'Submit'} className={classNames} {...props} /> : <input className={classNames} {...props} />}
+      {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{label}</label>}
+      {props.as === 'submit' ? <input type="submit" value={props.value || 'Submit'} className={classNames} {...props} id={id} /> : <input className={classNames} {...props} id={id} />}
     </>
   );
 };
 
-const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning, ...props }) => {
+const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning, label, ...props }) => {
+  const id = props.id || props.name || Math.random().toString();
   const classNames = `${styles.input} ${styles.textarea} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
-  return <textarea className={classNames} {...props} />;
+  return (
+    <>
+      {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{label}</label>}
+      <textarea className={classNames} {...props} id={id} />
+    </>
+  );
 };
 
 
-const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label, ...props }) => {
+const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label, isLast, ...props }) => {
+  const radioStyle = isLast ? styles.lastRadio : styles.radio;
   const [isChecked, setIsChecked] = React.useState(false);
   const classNames = `${styles.radio} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
   const labelClassNames = `${styles.radioLabel} ${isChecked ? styles.defaultCursor : ''}`;
@@ -67,7 +77,7 @@ const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label
   return (
     <div className={styles.radioContainer}>
       <div className="flex">
-        <input type="radio" id={id} className={classNames} onChange={handleInputChange} {...props} />
+        <input type="radio" id={id} className={`${classNames} ${radioStyle}`} onChange={handleInputChange} {...props} />
         <label htmlFor={id} className={labelClassNames}>{label}</label>
       </div>
     </div>
@@ -77,9 +87,9 @@ const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label
 const RadioGroup: React.FC<RadioGroupProps> = ({ radios, label }) => {
   return (
     <div>
-      {label && <label className={styles.radioGroupLabel}>{label}</label>}
+      {label && <label className={styles.radioGroupLabel + ' flex'}>{label}</label>}
       {radios.map((radio, index) => (
-        <RadioComponent key={index} {...radio} />
+        <RadioComponent key={index} isLast={index === radios.length - 1} {...radio} />
       ))}
     </div>
   );
