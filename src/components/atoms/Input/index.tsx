@@ -7,6 +7,7 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   error?: boolean;
   warning?: boolean;
   label?: string;
+  required?: boolean;
 };
 
 type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
@@ -15,6 +16,7 @@ type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   error?: boolean;
   warning?: boolean;
   label?: string;
+  required?: boolean;
 };
 
 type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -29,6 +31,7 @@ type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
 type RadioGroupProps = {
   radios: RadioProps[];
   label?: string;
+  required?: boolean;
 };
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -40,25 +43,27 @@ type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 
-const InputComponent: React.FC<InputProps> = ({ className, error, warning, label, ...props }) => {
+const InputComponent: React.FC<InputProps> = ({ className, error, warning, label, required, ...props }) => {
   const id = props.id || props.name || Math.random().toString();
   const classNames = `${styles.input} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className} ${props.disabled ? styles.disabled : ''}`;
+  const labelText = required ? `${label} (required)` : label; // Modify label text based on required prop
   return (
-    <>
-      {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{label}</label>}
-      {props.as === 'submit' ? <input type="submit" value={props.value || 'Submit'} className={classNames} {...props} id={id} /> : <input className={classNames} {...props} id={id} />}
-    </>
+    <div>
+      {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{labelText}</label>}
+      {props.as === 'submit' ? <input type="submit" value={props.value || 'Submit'} className={classNames + ' mt-6'} {...props} id={id} /> : <input className={classNames} {...props} id={id} required={required}/>}
+    </div>
   );
 };
 
-const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning, label, ...props }) => {
+const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning, label, required, ...props }) => {
   const id = props.id || props.name || Math.random().toString();
   const classNames = `${styles.input} ${styles.textarea} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
+  const labelText = required ? `${label} (required)` : label; // Modify label text based on required prop
   return (
-    <>
-      {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{label}</label>}
+    <div>
+      {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{labelText}</label>}
       <textarea className={classNames} {...props} id={id} />
-    </>
+    </div>
   );
 };
 
@@ -84,12 +89,14 @@ const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label
   );
 };
 
-const RadioGroup: React.FC<RadioGroupProps> = ({ radios, label }) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({ radios, label, required }) => {
+  console.log('Required:', required); // Add this line to log the value of required
+  const labelText = required ? `${label} (required)` : label;
   return (
     <div>
-      {label && <label className={styles.radioGroupLabel + ' flex'}>{label}</label>}
+      {label && <label className={styles.radioGroupLabel + ' flex'}>{labelText}</label>}
       {radios.map((radio, index) => (
-        <RadioComponent key={index} isLast={index === radios.length - 1} {...radio} />
+        <RadioComponent key={index} isLast={index === radios.length - 1} {...radio} required={required}/>
       ))}
     </div>
   );
@@ -140,7 +147,7 @@ const Input: React.FC<Props> = (props) => {
 
   if ('radios' in props) {
     return (
-      <RadioGroup radios={props.radios} label={props.label} />
+      <RadioGroup required={props.required} radios={props.radios} label={props.label} />
     );
   }
 

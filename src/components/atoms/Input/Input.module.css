@@ -101,9 +101,9 @@
 
 .radioLabel {
   cursor: pointer;
-  color: #9f9f9f; /* Change this to any color you want */
   margin-left: 10px;
   line-height: 24px;
+  user-select: none;
 }
 
 .radio:checked {
@@ -192,24 +192,35 @@
   color: white;
   margin-left: 10px;
   line-height: 24px;
+  user-select: none !important;
+
 }
 
 .checkbox:checked {
-  cursor: default;
+}
+
+.checkbox:checked + .checkboxLabel {
+  color: white;
 }
 
 .checkbox:checked:hover::before {
-  background: white;
   border-color: #333;
 }
 
+.checkbox:checked::before + .checkboxLabel {
+  color: #333
+}
+
 .checkbox:checked {
-  cursor: default;
 }
 
 .checkbox:hover::before {
   background: #666;
   border-color: #666;
+}
+
+.checkbox:hover::before + .checkboxLabel {
+  color:white !important;
 }
 
 .checkboxContainer {
@@ -219,10 +230,7 @@
 
 .checkbox:not(:checked) + .checkboxLabel {
   cursor: pointer;
-}
-
-.checkbox:checked + .checkboxLabel {
-  cursor: default;
+  user-select: none;
 }
 
 .defaultCursor {
