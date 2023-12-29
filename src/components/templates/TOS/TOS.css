@@ -1,0 +1,59 @@
+/* Styling for the hero section */
+.hero-image {
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.about h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  text-rendering: geometricPrecision;
+  text-align: center;
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  margin: 2em auto 2.5em;
+  line-height: 1.6;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+/* Styling for the hero section */
+.mission {
+  background: #f8f9fa;
+  padding: 60px 0;
+}
+
+.mission h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.mission p {
+  font-size: 18px;
+}
+
+
+/* Styling for the Our Founders section */
+.founders {
+  background: #f8f9fa; /* Replace with your desired background color */
+  padding: 60px 0;
+}
+
+.founders h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.founders p {
+  font-size: 18px;
+}
+
+.container {
+  margin: 0px 30px;
+}

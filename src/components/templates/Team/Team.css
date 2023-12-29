@@ -1,25 +1,25 @@
 .founder-name {
   color: #fff;
   display: block;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   /* Ensure it's on its own line */
-
 }
 
 .founder-title {
   font-style: normal;
   /* No italic */
   display: block;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Lighter shadow for the title */
   /* Space between the title and the location */
 }
 
 .founder-location {
   display: block;
-  /* Same size as the title */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Even lighter shadow for the location */
   color: #aaa;
-  /* Space between the location and the description */
 }
 
-#detail-wrapper{
+#detail-wrapper {
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -35,7 +35,6 @@
   /* Set a fixed height for the card */
   border: 1px solid white;
   transition: transform 0.3s ease, border-color 0.3s ease;
-
 }
 
 .profile-card img {
@@ -52,8 +51,8 @@
 
 .team-container {
   position: relative;
-    text-align: center;
-    max-width: 880px;
+  text-align: center;
+  max-width: 880px;
 }
 
 .team-container h1 {
@@ -81,23 +80,23 @@
   margin-inline-end: 0px;
 }
 
-.related-btn{
- border:white 1px solid;
+.related-btn {
+  border: white 1px solid;
   text-decoration: none;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 }
 
-.related-btn:hover{
+.related-btn:hover {
   background-color: #b91010;
   color: #fff;
 }
 
-.related-btn:focus{
+.related-btn:focus {
   outline: none;
 }
 
 
-.related-btn:disabled:hover{
+.related-btn:disabled:hover {
   background-color: #b91010;
   color: #fff;
 }

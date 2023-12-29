@@ -5,15 +5,17 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   as?: 'input' | 'submit';
   className?: string;
   error?: boolean;
+  errorMessage?: string;
   warning?: boolean;
   label?: string;
   required?: boolean;
 };
 
 type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  as: 'textarea';
+  as?: 'textarea';
   className?: string;
   error?: boolean;
+  errorMessage?: string;
   warning?: boolean;
   label?: string;
   required?: boolean;
@@ -32,18 +34,21 @@ type RadioGroupProps = {
   radios: RadioProps[];
   label?: string;
   required?: boolean;
+  error?: boolean;
+  errorMessage?: string;
 };
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   as: 'checkbox';
   className?: string;
   error?: boolean;
+  errorMessage?: string;
   warning?: boolean;
   label?: string;
 };
 
 
-const InputComponent: React.FC<InputProps> = ({ className, error, warning, label, required, ...props }) => {
+const InputComponent: React.FC<InputProps> = ({ className, error, warning, label, required, errorMessage, ...props }) => {
   const id = props.id || props.name || Math.random().toString();
   const classNames = `${styles.input} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className} ${props.disabled ? styles.disabled : ''}`;
   const labelText = required ? `${label} (required)` : label; // Modify label text based on required prop
@@ -51,11 +56,12 @@ const InputComponent: React.FC<InputProps> = ({ className, error, warning, label
     <div>
       {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{labelText}</label>}
       {props.as === 'submit' ? <input type="submit" value={props.value || 'Submit'} className={classNames + ' mt-6'} {...props} id={id} /> : <input className={classNames} {...props} id={id} required={required}/>}
+      {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
     </div>
   );
 };
 
-const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning, label, required, ...props }) => {
+const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning, label, required, errorMessage, ...props }) => {
   const id = props.id || props.name || Math.random().toString();
   const classNames = `${styles.input} ${styles.textarea} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
   const labelText = required ? `${label} (required)` : label; // Modify label text based on required prop
@@ -63,6 +69,7 @@ const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning
     <div>
       {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{labelText}</label>}
       <textarea className={classNames} {...props} id={id} />
+      {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
     </div>
   );
 };
@@ -89,7 +96,7 @@ const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label
   );
 };
 
-const RadioGroup: React.FC<RadioGroupProps> = ({ radios, label, required }) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({ radios, label, required, error, errorMessage }) => {
   console.log('Required:', required); // Add this line to log the value of required
   const labelText = required ? `${label} (required)` : label;
   return (
@@ -98,11 +105,12 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ radios, label, required }) => {
       {radios.map((radio, index) => (
         <RadioComponent key={index} isLast={index === radios.length - 1} {...radio} required={required}/>
       ))}
+      {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
     </div>
   );
 };
 
-const CheckboxComponent: React.FC<CheckboxProps> = ({ className, error, warning, label, ...props }) => {
+const CheckboxComponent: React.FC<CheckboxProps> = ({ className, error, errorMessage, warning, label, ...props }) => {
   const [isChecked, setIsChecked] = React.useState(false);
   const [isClicked, setIsClicked] = React.useState(false);
   const classNames = `${styles.checkbox} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
@@ -119,6 +127,7 @@ const CheckboxComponent: React.FC<CheckboxProps> = ({ className, error, warning,
     <div className={styles.checkboxContainer}>
       <input type="checkbox" id={id} className={classNames} checked={isChecked} onChange={handleInputChange} {...props} />
       <label htmlFor={id} className={labelClassNames}>{label}</label>
+      {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
     </div>
   );
 };

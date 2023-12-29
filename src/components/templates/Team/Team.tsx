@@ -8,11 +8,6 @@ import daiyaan from "../../images/team/daiyaan_ijaz.png";
 import { Link } from 'react-router-dom';
 
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 1 } },
-};
-
 const tabVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -63,6 +58,20 @@ const FounderComponent: React.FC<FounderProps> = ({ founder }) => {
 };
 
 
+// In your router component
+const pageVariants = {
+    initial: { opacity: 0 },
+    in: { opacity: 1 },
+    out: { opacity: 0 },
+};
+
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.5,
+};
+
+
 const Team: React.FC = () => {
     const [activeFounder, setActiveFounder] = useState<string | null>(null);
 
@@ -77,6 +86,16 @@ const Team: React.FC = () => {
         setActiveFounder(null);
     };
 
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: (i: number) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: i * 0.3,
+            },
+        }),
+    };
 
     const foundersData = [
         {
@@ -109,11 +128,9 @@ const Team: React.FC = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
-
     return (
         <>
-            <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
                 <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
                 <div className="md:min-h-screen">
                     <section className="team-container text-center text-white my-10 relative max-w-screen-md mx-auto">
@@ -131,7 +148,6 @@ const Team: React.FC = () => {
                             <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
                         </div>
                     </section>
-
 
                     {activeFounder ? (<motion.div
                         id="detail-wrapper"
@@ -152,25 +168,33 @@ const Team: React.FC = () => {
                     </motion.div>) : (<motion.div id="detail-wrapper" className="grid grid-cols-1 md:grid-cols-2 gap-4 p-12">
                         {foundersData.map((founder, index) => (
                             //onClick={() => handleFounderClick(founder.id)} cursor-pointer until we have a detail view fully implemented
-                            <div key={index} className="profile-card mb-10 border-2 border-white transition-transform duration-300 ease-in-out hover:border-red-500 hover:-translate-y-1">
+                            <motion.div key={index} className="profile-card mb-10 border-2 border-white transition-transform duration-300 ease-in-out hover:border-red-500 hover:-translate-y-1"
+                                variants={cardVariants}
+                                initial="hidden"
+                                animate="visible"
+                                custom={index}
+                            >
                                 <img src={founder.image} alt={`${founder.name} profile`} className="w-full h-auto object-cover" />
                                 <div className="p-4 bg-gradient-to-t from-black to-transparent absolute bottom-0 w-full">
                                     <h2 className="founder-name text-4xl font-bold mb-2">{founder.name}</h2>
                                     <p className="founder-title text-red-500 text-xl font-semibold mb-2">{founder.title.toUpperCase()}</p>
                                     <p className="founder-location mb-4">{founder.location}</p>
-                            <p className="mb-6 text-gray-300">{founder.description}</p>
+                                    <p className="mb-6 text-gray-300">{founder.description}</p>
 
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </motion.div>)}
 
-                    <section className="team-container text-center text-white my-10 relative max-w-screen-md mx-auto">
+                    <motion.section
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        className="team-container text-center text-white my-10 relative max-w-screen-md mx-auto">
                         <h3 className="text-5xl font-bold uppercase border-4 mb-4">Related Pages</h3>
-                        <Link to="/about"> 
-                        <button className="py-2 px-4 border-2 border-white related-btn text-white hover:opacity-10">
-<div className="font-bold underline decoration-red-500">About</div>
-                        </button>
+                        <Link to="/about">
+                            <button className="py-2 px-4 related-btn text-white hover:opacity-10">
+                                <span className="">About</span>
+                            </button>
                         </Link>
                         <div className="text-center mt-4">
                             <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
@@ -179,10 +203,7 @@ const Team: React.FC = () => {
                             <span className="inline-block w-3 h-1 rounded-full bg-red-500 ml-1"></span>
                             <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
                         </div>
-                    </section>
-
-
-
+                    </motion.section>
                 </div>
                 <Footer />
             </motion.div >

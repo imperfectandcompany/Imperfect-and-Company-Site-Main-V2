@@ -18,9 +18,12 @@ type FormData = {
   [key: string]: string | boolean;
 };
 
+type TouchedFields = { [K in keyof FormData]?: boolean; };
+
 function Contact() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+  const [touchedFields, setTouchedFields] = useState<TouchedFields>({});
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -30,17 +33,16 @@ function Contact() {
     agreement: false,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const value = e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value;
-    setFormData({
-      ...formData,
-      [e.target.name]: value,
-    });
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+    setTouchedFields(prevState => ({ ...prevState, [name]: true }));
   };
 
   const validateForm = () => {
     for (let key in formData) {
-      if (formData[key] === '' || formData[key] === false) {
+      const typedKey = key as keyof FormData;
+      if (formData[typedKey] === '' || formData[typedKey] === false) {
         return false;
       }
     }
@@ -48,7 +50,9 @@ function Contact() {
   };
 
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
       console.log(formData);
@@ -62,7 +66,6 @@ function Contact() {
     const isAnyFieldEmpty = Object.values(formData).some(value => value === '' || value === false);
     setIsSubmitDisabled(isAnyFieldEmpty);
   }, [formData]);
-
 
   return (
     <motion.div
@@ -83,10 +86,11 @@ function Contact() {
             className="my-10 p-4">
             <div className="container content-contact">
               <h1 className="text-2xl font-bold text-white mb-4">Contact Us</h1>
-              <p className='text-white mb-4'>We welcome your interest in Imperfect and Company. Please fill out the form below to inquire about partnerships, proposals, investment opportunities, or any other inquiries.</p>
+              <p className='text-white/90 mb-4'>We welcome your interest in Imperfect and Company. Please fill out the form below to inquire about partnerships, proposals, investment opportunities, or any other inquiries.</p>
               <form onSubmit={handleSubmit} className="flex flex-col space-y-8">
-                <Input as="input" type="text" name="name" value={formData.name} onChange={handleChange} label="Your Name" required={true} placeholder="Joe Mama" />
-                <Input as="input" type="email" name="email" value={formData.email} onChange={handleChange} label="Your Email" required={true} placeholder="joemama32@gmail.com" />
+                <Input as="input" type="text" name="name" value={formData.name} onChange={handleChange} label="Your Name" required={true} placeholder="Joe Mama" error={touchedFields.name && !formData.name} errorMessage="" />
+
+                <Input as="input" type="email" name="email" value={formData.email} onChange={handleChange} label="Your Email" required={true} placeholder="joemama32@gmail.com" error={touchedFields.email && !formData.email} errorMessage="" />
                 <Input
                   label="Please select the context of your inquiry"
                   required={true}
@@ -97,10 +101,10 @@ function Contact() {
                     { as: 'radio', value: 'other', label: 'Other', name: 'context', checked: formData.context === 'other', onChange: handleChange }
                   ]}
                 />
-                <Input as="textarea" name="message" value={formData.message} onChange={handleChange} label="Your Message" required={true} placeholder="Do you know Joe Mama?" />
+                <Input as="textarea" name="message" value={formData.message} onChange={handleChange} label="Your Message" required={true} placeholder="Do you know Joe Mama?" error={touchedFields.message && !formData.message} errorMessage="" />
                 <div className="items-end flex flex-col space-y-2 mb-2">
                   <div>
-                    <Input as="checkbox" name="agreement" checked={formData.agreement} onChange={handleChange} label="I agree to the terms of service" />
+                    <Input as="checkbox" name="agreement" checked={formData.agreement} onChange={handleChange} label="I agree to the terms of service"  required={true} error={touchedFields.agreement && !formData.agreement} errorMessage=""/>
                   </div>
                   <div>
                     <Input as="submit" value="Submit" disabled={isSubmitDisabled} />                  </div>

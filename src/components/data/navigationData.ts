@@ -23,8 +23,15 @@ interface Link {
       links: [
         { name: 'About', path: '/about' },
         { name: 'Team', path: '/team' },
-        // TODO: Add back when complete
         { name: 'Contact', path: '/contact' }
+      ],
+    },
+    {
+      title: 'Legal',
+      links: [
+        { name: 'Cookies', path: '/cookie-policy' },
+        { name: 'Privacy', path: '/privacy-policy' },
+        { name: 'Terms of Service', path: '/terms-of-service' },
       ],
     },
     {
