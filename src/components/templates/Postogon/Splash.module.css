@@ -1,77 +1,54 @@
-/* Splash.module.css */
-
 .splash {
-    display: flex;
-    align-items: center;
-    margin:auto;
-    text-align: center;
-    justify-content: center;
-    position: relative; /* Set to relative to position children absolutely within it */
-    height: 60vh;
-    font-family: 'Poppins', sans-serif; /* Assuming you're importing this font elsewhere */
-    background-color: var(--c-background);
-    overflow: hidden; /* Ensure nothing spills out of the splash container */
-  }
-  
-  .splashBg {
-    position: absolute;
-    top: -15px;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    overflow: hidden;
-  }
-  
-  .circle {
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    border-radius: 100%;
-    border: 1px solid var(--c-ring);
-    height: 120px;
-    width: 120px;
-    transform: translate(-50%, -50%);
-  }
-  
-  .splash h1 {
-    position: relative;
-    font-size: 3.5vw;
-    color: var(--c-primary);
-    z-index: 2;
-  }
-  
-  .spanSecondary {
-    color: var(--c-secondary);
-  }
-  
-  /* Define your colors */
-  :root {
-    --c-secondary: hsl(0 100% 50%);
-    --c-ring: rgba(239,68,68,1);
-    --c-background: #000;
-    --c-primary: #fff;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 60vh;
+  font-family: 'Poppins', sans-serif;
+  background-color: #000;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+}
+
+.circle {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+  border: 1px solid rgba(239,68,68,1);
+  height: 120px;
+  width: 120px;
+  transform: translate(-50%, -50%);
+}
+
+.splash h1 {
+  position: relative;
+  font-size: 3.5vw;
+  color: #fff;
+  z-index: 2;
+}
+
+.spanSecondary {
+  color: hsl(0 100% 50%);
+  transition: opacity 0.5s ease-in-out;
+}
 
 @media screen and (max-width:768px) {
   .circle {
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    border-radius: 100%;
-    border: 1px solid var(--c-ring);
-    height: 70px;
-    width: 70px;
-    transform: translate(-50%, -50%);
+      height: 70px;
+      width: 70px;
   }
 
   .splash h1 {
-    position: relative;
-    font-size: 6vw;
-    color: var(--c-primary);
-    z-index: 2;
+      font-size: 6vw;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .circle {
+      height: 100px;
+      width: 100px;
   }
 }

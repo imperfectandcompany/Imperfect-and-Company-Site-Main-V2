@@ -8,12 +8,25 @@ import { motion } from 'framer-motion';
 import Postogon from './components/templates/Postogon/Postogon';
 import Team from './components/templates/Team/Team';
 import ImperfectGamers from './components/templates/ImperfectGamers/ImperfectGamers';
-import TOS from 'components/templates/TOS';
+import TOS from './components/templates/TOS';
+import noiseBackground from './background-noise.png';
 
 function NoiseEffect() {
   return (
     <motion.div
-      className="noise"
+      style={{
+        animation: "noise 1.2s steps(3) infinite both",
+        backgroundImage: `url(${noiseBackground})`,
+        height: "300%",
+        left: "-50%",
+        pointerEvents: "none",
+        position: "fixed",
+        top: "-50%",
+        width: "200%",
+        willChange: "transform",
+        transform: "translate3d(0, 0, 0)",
+        zIndex: 2,
+      }}
       initial={{ opacity: 0, scale: 1.2 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.2 }}

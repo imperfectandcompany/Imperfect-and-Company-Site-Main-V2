@@ -9,6 +9,7 @@ import phoneFeed from "../../images/phoneFeed.svg";
 import unity from "../../images/unity.svg";
 import Splash from "./Splash";
 import 'animate.css';
+import { Link } from "react-router-dom";
 
 
 
@@ -205,7 +206,7 @@ function Postogon() {
               className="hidden"
               onScroll={onScroll} id="container" style={{ '--percentage': '5%' } as React.CSSProperties}
             >
-              <span className="reveal-text my-64 pb-64">But here's the issue...</span>
+              <span className="reveal-text my-64 pb-64">But there's an issue...</span>
             </motion.section>
             {5 + 5 === 4 ? <>    <motion.section
               initial={{ opacity: 0, y: -100 }}
@@ -284,6 +285,27 @@ function Postogon() {
                 </div>
               </div>
             </motion.section>
+
+
+
+            {
+  true ?         <section className="team-container text-center text-white my-10 relative max-w-screen-md mx-auto">
+  <h3 className="text-5xl font-bold uppercase border-4 mb-4">Related Pages</h3>
+  <Link to="/projects/imperfect-gamers">
+    <button className="py-2 px-4 border-2 border-white related-btn text-white hover:opacity-10">
+      <div>Imperfect Gamers</div>
+    </button>
+  </Link>
+  <div className="text-center mt-4">
+    <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
+    <span className="inline-block w-3 h-1 rounded-full bg-red-500 ml-1"></span>
+    <span className="inline-block w-40 h-1 rounded-full bg-red-500"></span>
+    <span className="inline-block w-3 h-1 rounded-full bg-red-500 ml-1"></span>
+    <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
+  </div>
+</section> : <></>
+}
+
 
           </div>
           <div className="footer">

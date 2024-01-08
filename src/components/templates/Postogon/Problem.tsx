@@ -6,7 +6,7 @@ const Problem: React.FC = () => {
         <main>
             <section className={styles.sectionHeight}>
                 <h1>
-                    But here's the issue...</h1>
+                    But there's an issue...</h1>
             </section>
             <div className={styles.contents}>
                 <svg viewBox="0 0 1440 4096" fill="none" xmlns="http://www.w3.org/2000/svg">

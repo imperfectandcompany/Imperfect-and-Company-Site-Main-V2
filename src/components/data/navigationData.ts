@@ -29,8 +29,8 @@ interface Link {
     {
       title: 'Legal',
       links: [
-        { name: 'Cookies', path: '/cookie-policy' },
-        { name: 'Privacy', path: '/privacy-policy' },
+     /*   { name: 'Cookies', path: '/cookie-policy' },
+        { name: 'Privacy', path: '/privacy-policy' }, */ 
         { name: 'Terms of Service', path: '/terms-of-service' },
       ],
     },

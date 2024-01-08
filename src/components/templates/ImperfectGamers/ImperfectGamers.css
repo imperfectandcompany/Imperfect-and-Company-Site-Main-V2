@@ -1,18 +1,24 @@
 .image-feature-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(182, 0, 0, 0.85));
   padding: 20px;
-  border-radius: 8px;
+  
+}
+
+@media (min-width: 768px) {
+  .image-feature-container {
+    flex-direction: row;
+  }
 }
 
 .image-carousel {
   display: flex;
+  flex-direction: row;
   gap: 6px;
-  /* Slightly more space between images */
-  overflow: hidden;
+  overflow-x: auto;
   flex-grow: 1;
   position: relative;
 }
@@ -27,20 +33,11 @@
   box-shadow: 0 0 30px -16px #000;
   object-fit: cover;
   position: relative;
-}
-
-.image-carousel img::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 3px;
+  flex: 0 0 auto;
 }
 
 .image-carousel img.inactive {
-  width: 5%;
+  width: 100px;
   border-color: #ff3d11;
   background-color: #512626;
   opacity: 0.35;
@@ -48,7 +45,7 @@
 }
 
 .image-carousel img.active {
-  width: 15%;
+  width: 200px;
   border-color: #ff3d11;
   background-color: #143f2c;
   opacity: 1;
@@ -56,6 +53,19 @@
 
 .image-carousel img.inactive:hover {
   opacity: 0.6;
+}
+
+.featuring-section {
+  text-align: center;
+}
+
+.featuring-text h2 {
+  color: white;
+}
+
+.featuring-text p {
+  color: white;
+  font-weight: bold;
 }
 
 .featuring-section {
@@ -71,3 +81,125 @@
   color: #f7a3a3;
   /* Light green color for the name */
 }
+
+.hover-effect:hover {
+  /* Add your hover effect styles here */
+  transform: scale(1.1); /* Example effect: scale up the image */
+  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.common-section-style {
+  padding: 20px;
+  color: white;
+}
+
+.featured-section-container {
+  border-radius: 8px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(182, 0, 0, 0.85));
+}
+
+/* Default mobile view without gradient */
+.history-section {
+  background: url('overlay_history_ig.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden; /* This will contain the absolute positioned pseudo-element */
+}
+
+/* Media query for desktop screens */
+@media (min-width: 1024px) {
+  .history-section {
+    /* Apply the gradient on top of the background image for desktop */
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.90), /* This is the dark hue overlay */
+      rgba(0, 0, 0, 0.90)
+    ),
+    url('overlay_history_ig.png') no-repeat center center;
+    background-size: cover;
+  }
+}
+
+
+/* Dark overlay for all screens */
+.history-section::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75) !important;
+  z-index: 0; /* Below the content but above the background image */
+  transition: background 0.3s ease; /* Smooth transition for background change */
+}
+
+
+/* Adjust the text container within the history section */
+.history-overlay {
+  background: rgba(0, 0, 0, 0.75); /* Dark overlay for text readability */
+  position: relative; /* Ensure it's above the pseudo-element */
+  padding: 40px;
+  border-radius: 5px;
+  z-index: 1; /* Higher than the pseudo-element */
+  
+}
+
+/* Responsive media query for desktop screens */
+@media (min-width: 1024px) {
+  .history-section::before {
+    background: rgba(0, 0, 0, 0.2); /* Lighter overlay for desktop */
+
+    opacity: 0.2; /* Even lower opacity for the overlay on desktop for subtlety */
+  }
+}
+
+/* Ensure text is styled and positioned correctly */
+.history-text {
+  color: #fff;
+  text-align: center;
+  position: relative; /* Ensure it's above the pseudo-element */
+}
+
+
+.stats-section {
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 0;
+}
+.stats-card {
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.stats-card:hover {
+  transform: translateY(-5px);
+}
+.stats-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.stats-text {
+  font-size: 1.125rem;
+}
+@media (min-width: 768px) {
+  .stats-card:nth-child(odd) {
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(182, 0, 0, 0.65));
+  }
+  .stats-card:nth-child(even) {
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(182, 0, 0, 0.85));
+  }
+}
+@media (max-width: 767px) {
+  .stats-card {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(182, 0, 0, 0.85));
+  }
+}
+

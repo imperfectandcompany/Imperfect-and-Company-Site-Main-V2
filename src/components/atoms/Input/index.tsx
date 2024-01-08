@@ -55,7 +55,7 @@ const InputComponent: React.FC<InputProps> = ({ className, error, warning, label
   return (
     <div>
       {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{labelText}</label>}
-      {props.as === 'submit' ? <input type="submit" value={props.value || 'Submit'} className={classNames + ' mt-6'} {...props} id={id} /> : <input className={classNames} {...props} id={id} required={required}/>}
+      {props.as === 'submit' ? <input type="submit" value={props.value || 'Submit'} className={classNames + ' mt-6'} {...props} id={id} /> : <input className={classNames} {...props} id={id} required={required} />}
       {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
     </div>
   );
@@ -65,10 +65,21 @@ const TextInputComponent: React.FC<TextareaProps> = ({ className, error, warning
   const id = props.id || props.name || Math.random().toString();
   const classNames = `${styles.input} ${styles.textarea} ${error ? styles.error : ''} ${warning ? styles.warning : ''} ${className}`;
   const labelText = required ? `${label} (required)` : label; // Modify label text based on required prop
+
+  const [charCount, setCharCount] = React.useState(0);
+  const maxCharCount = 280; // Maximum number of characters
+
+  const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    event.target.style.height = 'inherit';
+    event.target.style.height = `${event.target.scrollHeight}px`;
+    setCharCount(event.target.value.length);
+  };
+
   return (
     <div>
       {label && <label id="label" className={styles.label + ' flex'} htmlFor={id}>{labelText}</label>}
-      <textarea className={classNames} {...props} id={id} />
+      <textarea className={classNames} {...props} id={id} onInput={handleInput} maxLength={maxCharCount} />
+      <div className="text-white/50">{maxCharCount - charCount} characters left</div>
       {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
     </div>
   );
@@ -97,13 +108,12 @@ const RadioComponent: React.FC<RadioProps> = ({ className, error, warning, label
 };
 
 const RadioGroup: React.FC<RadioGroupProps> = ({ radios, label, required, error, errorMessage }) => {
-  console.log('Required:', required); // Add this line to log the value of required
   const labelText = required ? `${label} (required)` : label;
   return (
     <div>
       {label && <label className={styles.radioGroupLabel + ' flex'}>{labelText}</label>}
       {radios.map((radio, index) => (
-        <RadioComponent key={index} isLast={index === radios.length - 1} {...radio} required={required}/>
+        <RadioComponent key={index} isLast={index === radios.length - 1} {...radio} required={required} />
       ))}
       {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
     </div>
@@ -124,10 +134,14 @@ const CheckboxComponent: React.FC<CheckboxProps> = ({ className, error, errorMes
   };
 
   return (
-    <div className={styles.checkboxContainer}>
-      <input type="checkbox" id={id} className={classNames} checked={isChecked} onChange={handleInputChange} {...props} />
-      <label htmlFor={id} className={labelClassNames}>{label}</label>
-      {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
+    <div className={styles.checkboxContainer + "items-center"}>
+      <div className="flex flex-row items-center">
+        <input type="checkbox" id={id} className={classNames} checked={isChecked} onChange={handleInputChange} {...props} />
+        <label htmlFor={id} className={labelClassNames}>{label}</label>
+      </div>
+      <div>
+        {error && <div className={styles.errorMessage}>{errorMessage || 'This field is required'}</div>}
+      </div>
     </div>
   );
 };

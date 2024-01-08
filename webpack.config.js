@@ -85,7 +85,10 @@ module.exports = (env, argv) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
-      interpolate: true
+      interpolate: true,
+      templateParameters: {
+        'PUBLIC_URL': 'https://demo.imperfectandcompany.com'
+      }
     }),
     new webpack.DefinePlugin({
       'process.env.PUBLIC_URL': JSON.stringify('https://demo.imperfectandcompany.com')

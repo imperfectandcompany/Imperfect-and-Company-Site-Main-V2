@@ -24,6 +24,12 @@ function Contact() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
   const [touchedFields, setTouchedFields] = useState<TouchedFields>({});
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+  const [errors, setErrors] = useState<{ [K in keyof FormData]?: string; }>({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -34,9 +40,33 @@ function Contact() {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
+    const { name, type } = event.target;
+    const value = type === 'checkbox' && 'checked' in event.target ? event.target.checked : event.target.value;
     setFormData(prevState => ({ ...prevState, [name]: value }));
     setTouchedFields(prevState => ({ ...prevState, [name]: true }));
+
+    // Validate email
+    if (name === 'email' && typeof value === 'string' && !emailRegex.test(value)) {
+      setErrors(prevState => ({ ...prevState, email: 'Invalid email format' }));
+    } else {
+      setErrors(prevState => ({ ...prevState, email: '' }));
+    }
+  };
+
+
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+
+    // Validate email
+    if (name === 'email') {
+      if (typeof value === 'string' && value.trim() === '') {
+        setErrors(prevState => ({ ...prevState, email: 'This field is required' }));
+      } else if (typeof value === 'string' && !emailRegex.test(value)) {
+        setErrors(prevState => ({ ...prevState, email: 'Invalid email format' }));
+      } else {
+        setErrors(prevState => ({ ...prevState, email: '' }));
+      }
+    }
   };
 
   const validateForm = () => {
@@ -46,18 +76,69 @@ function Contact() {
         return false;
       }
     }
+
+    // Check if there are any errors
+    for (let key in errors) {
+      if (errors[key]) {
+        return false;
+      }
+    }
+
     return true;
   };
 
-
-
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log(formData);
-    } else {
-      setIsSubmitDisabled(true);
+    // Validate the form data
+    if (!validateForm()) {
+      // If the form data is not valid, stop the function execution
+      return;
+    }
+    // Reset states
+    setError(null);
+    setSuccess(false);
+    setLoading(true);
+  
+    const startTime = Date.now(); // Record the start time
+  
+    try {
+      const response = await fetch('/your-endpoint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log(data);
+      setSuccess(true); // Set success to true
+    } catch (error) {
+      console.error(error);
+      const errorMessage = typeof error === 'string' ? error : 'An error occurred';
+    
+      setTimeout(() => {
+        setError(errorMessage);
+        setLoading(false);
+    
+      }, 3000);
+    } finally {
+      // If no error occurred, handle the time elapsed here
+      if (!error) {
+        const endTime = Date.now(); // Record the end time
+        const timeElapsed = endTime - startTime; // Calculate the time elapsed
+  
+        // If less than 3 seconds have passed, wait until 3 seconds have passed before setting loading to false
+        if (timeElapsed < 3000) {
+          setTimeout(() => setLoading(false), 3000 - timeElapsed);
+        } else {
+          setLoading(false);
+        }
+      }
     }
   };
 
@@ -84,13 +165,12 @@ function Contact() {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             className="my-10 p-4">
-            <div className="container content-contact">
+            <div className="md:mx-20 content-contact">
               <h1 className="text-2xl font-bold text-white mb-4">Contact Us</h1>
               <p className='text-white/90 mb-4'>We welcome your interest in Imperfect and Company. Please fill out the form below to inquire about partnerships, proposals, investment opportunities, or any other inquiries.</p>
               <form onSubmit={handleSubmit} className="flex flex-col space-y-8">
                 <Input as="input" type="text" name="name" value={formData.name} onChange={handleChange} label="Your Name" required={true} placeholder="Joe Mama" error={touchedFields.name && !formData.name} errorMessage="" />
-
-                <Input as="input" type="email" name="email" value={formData.email} onChange={handleChange} label="Your Email" required={true} placeholder="joemama32@gmail.com" error={touchedFields.email && !formData.email} errorMessage="" />
+                <Input as="input" type="email" name="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} label="Your Email" required={true} placeholder="joemama32@gmail.com" error={touchedFields.email && (!formData.email || !!errors.email)} errorMessage={errors.email || ''} />
                 <Input
                   label="Please select the context of your inquiry"
                   required={true}
@@ -101,13 +181,17 @@ function Contact() {
                     { as: 'radio', value: 'other', label: 'Other', name: 'context', checked: formData.context === 'other', onChange: handleChange }
                   ]}
                 />
-                <Input as="textarea" name="message" value={formData.message} onChange={handleChange} label="Your Message" required={true} placeholder="Do you know Joe Mama?" error={touchedFields.message && !formData.message} errorMessage="" />
+                <Input as="textarea" name="message" value={formData.message} onChange={handleChange} label="Your Message" required={true} placeholder="Please enter your message." error={touchedFields.message && !formData.message} errorMessage="" />
                 <div className="items-end flex flex-col space-y-2 mb-2">
                   <div>
-                    <Input as="checkbox" name="agreement" checked={formData.agreement} onChange={handleChange} label="I agree to the terms of service"  required={true} error={touchedFields.agreement && !formData.agreement} errorMessage=""/>
+                    <Input as="checkbox" name="agreement" checked={formData.agreement} onChange={handleChange} label="I agree to the terms of service" required={true} error={touchedFields.agreement && !formData.agreement} errorMessage="" />
                   </div>
+                  {error && <span className="text-red-700">Error: {error}</span>}
+
                   <div>
-                    <Input as="submit" value="Submit" disabled={isSubmitDisabled} />                  </div>
+                    <Input as="submit" value={loading ? "Loading..." : "Submit"} disabled={isSubmitDisabled || loading} />
+                    {success && <div>Form submitted successfully!</div>}
+                  </div>
                 </div>
               </form>
             </div>

@@ -4,26 +4,12 @@ import Footer from "../../organisms/Footer/Footer";
 import "./ImperfectGamers.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import igisomorphic from "../../images/imperfect-gamers.svg";
 
 
 
 function ImperfectGamers() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3, // delay between each child animation
-      }
-    }
-  }
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
-  }
 
   const influencers = [
     { name: 'summit1g', image: 'https://www.levelpush.com/wp-content/uploads/2020/05/summit1g-scaled.jpg', alt: 'Image representing streamer summit1g' },
@@ -35,17 +21,23 @@ function ImperfectGamers() {
 
   const [selectedInfluencer, setSelectedInfluencer] = React.useState(influencers[0]);
 
+  function StatsCard({ icon, number, text }: { icon: string, number: string, text: string }) {
+    return (
+        <div className="stats-card shadow-lg">
+            <i className={`${icon} stats-icon`}></i>
+            <div className="stats-number">{number}</div>
+            <div className="stats-text">{text}</div>
+        </div>
+    );
+}
+
 
   return (
     <motion.div initial="hidden" animate="visible" exit="hidden">
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div className="md:min-h-screen">
-
         <div className="hero-image">
-          <div className="mt-10">
-            <img src="https://imperfectdesignsystem.com/assets/img/imperfectandcompany/imperfectandcompany_unfilled.png" alt="Imperfect and Company" className="w-1/2 mx-auto mb-10"
-            />
-          </div>
+          <object type="image/svg+xml" data={igisomorphic} className="w-1/2 h-32 mx-auto">Your browser does not support SVG</object>
         </div>
         <div className="p-8">
           <section className="about py-8 text-white text-center">
@@ -63,9 +55,40 @@ function ImperfectGamers() {
             <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
           </div>
 
-          <section className="py-8 text-white">
-            <p className="text-gray-400">
-              Several successful musicians can trace their roots back to IG. We
+
+          <section className="history-section py-8">
+  <div className="history-overlay">
+    <h2 className="font-bold text-3xl mb-4 history-text">Our History</h2>
+    <p className="history-text">
+              Historically ranked in the Top 10 (game-tracker) over the years, Imperfect Gamers revolves around
+              entertainment, particularly freestyle rap,
+              singing, producing, prank calls, and much more. We're a supportive community where drama has no place,
+              and respect for
+              fellow users is paramount.
+              </p>
+  </div>
+</section>
+
+<section className="stats-section">
+                        <div className=" mx-auto px-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                                <StatsCard icon="fas fa-dollar-sign" number="5 Figures" text="In Revenue" />
+                                <StatsCard icon="fas fa-chart-line" number="150M+" text="Hits" />
+                                <StatsCard icon="fab fa-youtube" number="Millions" text="YouTube Views" />
+                                <StatsCard icon="fab fa-tiktok" number="Viral" text="On TikTok" />
+                                <StatsCard icon="fas fa-user-slash" number="40,000" text="Bad Actors Banned" />
+                                <StatsCard icon="fas fa-shopping-cart" number="Hundreds" text="Purchases" />
+                                <StatsCard icon="fas fa-users" number="250,000+" text="Users" />
+                                <StatsCard icon="fas fa-clock" number="Since 2015" text="Operations" />
+                            </div>
+                        </div>
+                    </section>
+
+<div className="featured-section-container">
+<section className="common-section-style py-8 text-white">
+            <h2 className="font-bold text-3xl mb-4">Our Legacy</h2>
+            <p className="text-gray-400 mb-10">
+            Several successful entertainers can trace their roots back to IG. We
               support and encourage our playerbase to be creative and empower them with a community platform aimed
               towards pure entertainment.
             </p>
@@ -75,16 +98,18 @@ function ImperfectGamers() {
             <div className="image-carousel">
               {influencers.map((influencer, index) => (
                 <>
-                <img
-                  key={index+1}
-                  src={influencer.image}
-                  alt={influencer.alt}
-                  className={`rounded-lg  ${selectedInfluencer?.name === influencer.name ? 'active' : 'inactive'}`}
-                  onClick={() => selectedInfluencer?.name !== influencer.name && setSelectedInfluencer(influencer)}
-                />
+                  <img
+                    key={index + 1}
+                    src={influencer.image}
+                    alt={influencer.alt}
+                    className={`rounded-lg  ${selectedInfluencer?.name === influencer.name ? 'active' : 'inactive'}`}
+                    onClick={() => selectedInfluencer?.name !== influencer.name && setSelectedInfluencer(influencer)}
+                  />
                 </>
               ))}
             </div>
+
+            
             <div className="featuring-section">
               <div className="featuring-text">
                 <h2 className="text-2xl mb-2">FEATURING</h2>
@@ -92,65 +117,13 @@ function ImperfectGamers() {
               </div>
             </div>
           </div>
-
-
-
-          <section className="py-8 text-white">
-            <h2 className="font-bold text-3xl mb-4">text</h2>
-            <p className="text-gray-400 mb-10">
-              Historically ranked in the Top 10 (game-tracker) over the years, Imperfect Gamers revolves around
-              entertainment, particularly freestyle rap,
-              singing, producing, prank calls, and much more. We're a supportive community where drama has no place,
-              and respect for
-              fellow members is paramount.
-            </p>
-
-            <motion.div
-              className="grid md:grid-cols-3 gap-4 text-center"
-              variants={container}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.div
-                variants={item}
-                className="flex flex-col items-center justify-evenly p-5 "
-              >
-                <i className="fas fa-users fa-3x mb-4"></i>
-                <h3 className="font-bold text-xl mb-2">text</h3>
-                <p className="text-gray-400">
-                  text<br /><span className="text-red-500">text</span>
-                </p>
-              </motion.div>
-              <motion.div
-                variants={item}
-                className="flex flex-col items-center justify-evenly p-5 "
-              >
-                <i className="fas fa-handshake fa-3x mb-4"></i>
-                <h3 className="font-bold text-xl mb-2">text</h3>
-                <p className="text-gray-400">
-                  text
-                  <br /><span className="text-red-500">text</span>
-                </p>
-              </motion.div>
-              <motion.div
-                variants={item}
-                className="flex flex-col items-center justify-evenly p-5 "
-              >
-                <i className="fas fa-balance-scale fa-3x mb-4"></i>
-                <h3 className="font-bold text-xl mb-2">text</h3>
-                <p className="text-gray-400">
-                  text
-                  <br /><span className="text-red-500">text</span>
-                </p>
-              </motion.div>
-            </motion.div>
-          </section>
+</div>
 
           <section className="mt-8">
             <h2 className="text-3xl font-bold text-white mb-4">Imperfect Gamers Team</h2>
             <p className="mb-4 text-gray-300">IG is staffed by a volunteer team comprised of Head Admins, Admins,
               Moderators, Zoners, Developers, and Media Specialists.</p>
-            <div className="grid grid-cols-2 gap-8 text-red-400">
+            <div className="grid grid-cols-2 gap-8 text-gray-400">
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">Owners</h3>
                 <p className="mb-2">Provide leadership and executive direction in all aspects of the network.</p>
@@ -176,33 +149,26 @@ function ImperfectGamers() {
               </div>
             </div>
           </section>
-
-
-          <section className="py-8 text-white">
-            <h2 className="font-bold text-3xl mb-4">Advocacy</h2>
-            <p className="text-gray-400">
-              While we deliver products that entertain and enrich lives, we recognize the importance of speaking up for those who struggle to find a voice. Whether it's due to internal challenges, external pressures, or complacency within systems that lack incentive or drive, we stand for the unheard and advocate for change. At Imperfect and Company, we're not just about innovation; we're about making a meaningful impact on society and empowering every individual to be heard.
-            </p>
-          </section>
-
         </div>
+        {
+  true ?         <section className="team-container text-center text-white my-10 relative max-w-screen-md mx-auto">
+  <h3 className="text-5xl font-bold uppercase border-4 mb-4">Related Pages</h3>
+  <Link to="/projects/postogon">
+    <button className="py-2 px-4 border-2 border-white related-btn text-white hover:opacity-10">
+    <div>Postogon</div>
+    </button>
+  </Link>
+  <div className="text-center mt-4">
+    <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
+    <span className="inline-block w-3 h-1 rounded-full bg-red-500 ml-1"></span>
+    <span className="inline-block w-40 h-1 rounded-full bg-red-500"></span>
+    <span className="inline-block w-3 h-1 rounded-full bg-red-500 ml-1"></span>
+    <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
+  </div>
+</section> : <></>
+}
 
 
-        <section className="team-container text-center text-white my-10 relative max-w-screen-md mx-auto">
-          <h3 className="text-5xl font-bold uppercase border-4 mb-4">Related Pages</h3>
-          <Link to="/team">
-            <button className="py-2 px-4 border-2 border-white related-btn text-white hover:opacity-10">
-              <div className="font-bold underline decoration-red-500">Team</div>
-            </button>
-          </Link>
-          <div className="text-center mt-4">
-            <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
-            <span className="inline-block w-3 h-1 rounded-full bg-red-500 ml-1"></span>
-            <span className="inline-block w-40 h-1 rounded-full bg-red-500"></span>
-            <span className="inline-block w-3 h-1 rounded-full bg-red-500 ml-1"></span>
-            <span className="inline-block w-1 h-1 rounded-full bg-red-500 ml-1"></span>
-          </div>
-        </section>
 
       </div>
       <Footer />

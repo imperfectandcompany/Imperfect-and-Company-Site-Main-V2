@@ -229,8 +229,6 @@
 }
 
 .checkboxContainer {
-  display: flex;
-  align-items: center;
 }
 
 .checkbox:not(:checked) + .checkboxLabel {
@@ -247,14 +245,14 @@
 }
 
 input[type="submit"] {
-  color: white; /* Change this to any color you want */
+  color: white;
   cursor: pointer;
   border-color: white;
   transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-  background-color: white; /* This is just an example, change it to any color you want */
+  background-color: white;
 }
 
 input[type="submit"]:disabled {
@@ -280,9 +278,14 @@ input[type="submit"]:disabled {
 }
 
 /* Use the same hover effect for all elements */
-.radio:hover::before, .checkbox:hover::before, input[type="submit"]:hover {
+.radio:hover::before, .checkbox:hover::before {
   background: #666;
   border-color: #666;
+}
+
+input[type="submit"]:hover {
+  background: #fff;
+  color: #666;
 }
 
 /* Use the same cursor style for all clickable elements */
