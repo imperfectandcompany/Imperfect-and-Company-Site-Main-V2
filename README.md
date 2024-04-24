@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Imperfect and Company
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Imperfect and Company Mind Map](https://imperfectdesignsystem.com/assets/img/imperfectandcompany/mindmap/imperfect_and_company_mindmap.png)
 
-## Available Scripts
+# Imperfect and Company Website
 
-In the project directory, you can run:
+Welcome to the official repository for the Imperfect and Company website. This repository contains all the necessary files and documentation for our main site and our associated projects, Imperfect Gamers and Postogon.
 
-### `npm start`
+## Introduction
+The mind map above illustrates the structure and interconnectedness of Imperfect and Company. It provides a holistic view of the hierarchical ordering, facilitating better decision-making and ensuring alignment with overarching design goals.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The Imperfect and Company website and its associated content are organized according to the following structure:
 
-### `npm test`
+- **Team**: Meet the founders and co-founders of Imperfect and Company.
+- **Advisory Board**: Learn about our advisory board members.
+- **Contact**: Reach out to us through our contact form.
+- **Blog/News**: Stay updated with the latest news and blog posts from Imperfect and Company.
+- **Investor Relations**: Information for potential investors.
+- **Legal & Compliance**: Access our privacy policy and terms of service.
+- **Affiliations & Networking**: Discover our affiliations and networking initiatives.
+- **ImperfectGamers**: Explore ImperfectGamers, including its overview, media kit, community, research, servers, staff, and discovery.
+- **Postogon**: Learn about Postogon, including its overview, media kit, features, discovery, and interns.
+- **Imperfect Design System**: Dive into the Imperfect Design System.
+- **Media Kit**: Download our logos, branding assets, corporate photos, press releases, and promotional videos.
+- **Login**: Access the login page.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ImperfectGamers
 
-### `npm run build`
+Imperfect Gamers is a unique community united by music, gaming, and entertainment. We run a network of Counter Strike: Global Offensive community servers and provide the only music community through CS:GO surfing[6].
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Postogon
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Postogon is another project under Imperfect and Company. More details about Postogon can be found on its dedicated section on the website.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Imperfect Design System
 
-### `npm run eject`
+The Imperfect Design System is our unique approach to digital design, providing a personal touch and focusing on creating complex designs.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How to Contribute
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To contribute to the Imperfect and Company website, follow these steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone this repository to your local machine.
+2. Make necessary changes or additions to the website content, code, or assets.
+3. Test your changes locally to ensure they work as expected.
+4. Once satisfied with your changes, push them to a new branch.
+5. Submit a pull request detailing the changes you've made and why they're necessary.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Be sure to navigate through each directory corresponding to different sections of our company structure as outlined in our mindmap.
 
-## Learn More
+## Contribution Guidelines
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Please refer to `CONTRIBUTING.md (pending)` for detailed information on how you can contribute towards improving our company's web presence.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Mind map Description
+The mind map is divided into several sections, each representing a key aspect of the design system. The central theme revolves around the core principles of Imperfect and Company's structure philosophy. Branching out from the center are various nodes that delve into specific components, guidelines, and processes.
 
-### Code Splitting
+## Integration
+Designers can integrate this mind map into their workflow by referring to it during ideation, conceptualization, and implementation stages. It provides a holistic view of the hierarchial ordering, facilitating better decision-making and ensuring alignment with overarching design goals.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Examples
+- **Project Kickoff**: Use the mind map to establish a common understanding of design principles and objectives among team members.
+- **Design Review**: Refer to specific nodes in the mind map during design reviews to evaluate adherence to design guidelines and standards.
 
-### Analyzing the Bundle Size
+## Additional Resources
+- [Imperfect and Company Design System Documentation](https://imperfectdesignsystem.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for being a part of our journey!
