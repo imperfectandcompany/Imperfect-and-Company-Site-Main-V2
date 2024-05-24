@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
 import "./AboutUs.css"; // Import your AboutUs-specific CSS file
@@ -23,6 +23,10 @@ function AboutUs() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   }
+
+  useEffect(() => {
+    document.title = 'About Us - Imperfect and Company';
+  }, []);
 
 
   return (

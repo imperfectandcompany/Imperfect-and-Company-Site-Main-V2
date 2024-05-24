@@ -38,3 +38,19 @@
   letter-spacing: -1px;
 }
 
+.c-footer .social-icons a {
+  margin: 0 10px;
+  color: #333; /* Change color as needed */
+  font-size: 24px; /* Adjust size as needed */
+}
+
+.c-footer .social-icons a:hover {
+  color: #555; /* Darken on hover for visual feedback */
+}
+
+
+@media (max-width: 768px) {
+  .c-footer .social-icons a {
+    font-size: 20px; /* Smaller icons for mobile */
+  }
+}

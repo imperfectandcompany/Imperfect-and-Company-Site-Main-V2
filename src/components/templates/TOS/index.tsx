@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../organisms/Header/Header';
 import Footer from '../../organisms/Footer/Footer';
 import './TOS.css';
@@ -59,10 +59,14 @@ const termsData = {
   "contactInformation": "For any concerns or questions regarding these Terms, please contact us at contact@imperfectandcompany.com"
 }
 
+
 function TOS() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
+  useEffect(() => {
+    document.title = 'Terms of Service - Imperfect and Company';
+  }, []);
+  
   return (
     <motion.div initial="hidden" animate="visible" exit="hidden">
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

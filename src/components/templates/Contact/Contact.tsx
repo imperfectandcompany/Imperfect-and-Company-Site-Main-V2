@@ -119,7 +119,7 @@ function Contact() {
       setSuccess(true); // Set success to true
     } catch (error) {
       console.error(error);
-      const errorMessage = typeof error === 'string' ? error : 'An error occurred';
+      const errorMessage = typeof error === 'string' ? error : 'This form is in progress. Please contact daiyaan@imperfectandcompany.com. For more information on the progress, view here: https://github.com/imperfectandcompany/Imperfect-and-Company-Site-Main-V2/issues/2';
     
       setTimeout(() => {
         setError(errorMessage);
@@ -148,6 +148,12 @@ function Contact() {
     setIsSubmitDisabled(isAnyFieldEmpty);
   }, [formData]);
 
+
+  useEffect(() => {
+    document.title = 'Contact - Imperfect and Company';
+  }, []);
+
+
   return (
     <motion.div
       className="main"
@@ -169,8 +175,8 @@ function Contact() {
               <h1 className="text-2xl font-bold text-white mb-4">Contact Us</h1>
               <p className='text-white/90 mb-4'>We welcome your interest in Imperfect and Company. Please fill out the form below to inquire about partnerships, proposals, investment opportunities, or any other inquiries.</p>
               <form onSubmit={handleSubmit} className="flex flex-col space-y-8">
-                <Input as="input" type="text" name="name" value={formData.name} onChange={handleChange} label="Your Name" required={true} placeholder="Joe Mama" error={touchedFields.name && !formData.name} errorMessage="" />
-                <Input as="input" type="email" name="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} label="Your Email" required={true} placeholder="joemama32@gmail.com" error={touchedFields.email && (!formData.email || !!errors.email)} errorMessage={errors.email || ''} />
+                <Input as="input" type="text" name="name" value={formData.name} onChange={handleChange} label="Your Name" required={true} placeholder="John Doe" error={touchedFields.name && !formData.name} errorMessage="" />
+                <Input as="input" type="email" name="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} label="Your Email" required={true} placeholder="johndoe@email.com" error={touchedFields.email && (!formData.email || !!errors.email)} errorMessage={errors.email || ''} />
                 <Input
                   label="Please select the context of your inquiry"
                   required={true}

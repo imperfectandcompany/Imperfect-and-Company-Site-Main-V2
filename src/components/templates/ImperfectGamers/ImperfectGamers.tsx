@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../organisms/Header/Header";
 import Footer from "../../organisms/Footer/Footer";
 import "./ImperfectGamers.css";
@@ -20,6 +20,18 @@ function ImperfectGamers() {
   ];
 
   const [selectedInfluencer, setSelectedInfluencer] = React.useState(influencers[0]);
+
+
+
+
+
+  useEffect(() => {
+    document.title = 'Imperfect Gamers - Imperfect and Company';
+  }, []);
+
+
+
+
 
   function StatsCard({ icon, number, text }: { icon: string, number: string, text: string }) {
     return (

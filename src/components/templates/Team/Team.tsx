@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Team.css';
 import { motion } from 'framer-motion';
 import Header from '../../organisms/Header/Header';
@@ -39,6 +39,11 @@ interface FounderProps {
 }
 
 const FounderComponent: React.FC<FounderProps> = ({ founder }) => {
+
+    useEffect(() => {
+        document.title = 'Team - Imperfect and Company';
+      }, []);
+      
     return (
         <div className="mb-10">
             <h1 className="text-4xl font-bold mb-2">{founder.name}</h1>

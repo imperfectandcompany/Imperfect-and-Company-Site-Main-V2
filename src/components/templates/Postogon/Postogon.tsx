@@ -67,7 +67,11 @@ const itemVariants = {
 };
 
 
+
 function Postogon() {
+  useEffect(() => {
+    document.title = 'Postogon - Imperfect and Company';
+  }, []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showProblems, setShowProblems] = useState(false);
 
@@ -237,7 +241,7 @@ function Postogon() {
                 <InfoCard image={phoneFeed} textNumber={2} titleText={"Unique Feeds"} />
                 <InfoCard image={unity} textNumber={3} titleText={"Unified Platform"} />
               </motion.div>
-            </> : <></>}
+          
             <motion.section className="postogon-card text-white hidden md:block items-center md:text-[#242e4c] ">
               <div className="flex">
                 <div className="text-container w-1/2 z-10">
@@ -285,9 +289,7 @@ function Postogon() {
                 </div>
               </div>
             </motion.section>
-
-
-
+            </> : <></>}
             {
   true ?         <section className="team-container text-center text-white my-10 relative max-w-screen-md mx-auto">
   <h3 className="text-5xl font-bold uppercase border-4 mb-4">Related Pages</h3>
